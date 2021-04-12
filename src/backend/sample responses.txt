@@ -1,0 +1,178 @@
+GET all topic list
+
+GET : {base url}/dicussions/alltopics
+
+Response :
+[
+	{
+		"postId": 1,
+		"parentPostId": null,
+		"categoryId": 1,
+		"categoryName": "General",
+		"subject": "Can I log in with Google and a forum log in too?",
+		"post": "I’m currently using my Google account (with two factor authentication for security) but I don’t want to log onto certain computers with my Google account for various paranoid reasons. Can I set up a sign on with Discourse so that I can type in a normal username/password at the log in screen and still get into my account?",
+		"isTopic": true,
+		"user": "johnsmith",
+		"createdOn": "2021-02-04 04:00:00",
+		"lastUpdatedOn": "2021-02-06 09:00:00",
+		"likeCount": 3,
+		"likedUsers": [
+			"haiku",
+			"codinghorror",
+			"Neil"
+		],
+		"replyCount": 2,
+		"repliedUsers": [
+			"haiku",
+			"codinghorror"
+		],
+		"views": 25
+	},
+	{
+		"postId": 1,
+		"parentPostId": null,
+		"categoryId": 1,
+		"categoryName": "General",
+		"subject": "What is your favorite TED Video",
+		"post": "Which TED Video do you find particularly inspiring?",
+		"isTopic": true,
+		"user": "rich",
+		"createdOn": "2021-02-07 04:00:00",
+		"lastUpdatedOn": "2021-02-09 06:00:00",
+		"likeCount": 1,
+		"likedUsers": [
+			"stienman"
+		],
+		"replyCount": 1,
+		"repliedUsers": [
+			"haiku"
+		],
+		"views": 15
+	}
+]
+
+
+
+
+GET Discussion Details By Id
+
+GET : {base url}/dicussions/{id}
+
+Response :
+{
+   "topicDetails":{
+      "postId":1,
+      "parentPostId":null,
+      "categoryId":1,
+      "categoryName":"General",
+      "subject":"Can I log in with Google and a forum log in too?",
+      "post":"I’m currently using my Google account (with two factor authentication for security) but I don’t want to log onto certain computers with my Google account for various paranoid reasons. Can I set up a sign on with Discourse so that I can type in a normal username/password at the log in screen and still get into my account?",
+      "isTopic":true,
+      "user":"johnsmith",
+      "createdOn":"2021-02-04 04:00:00",
+      "lastUpdatedOn":"2021-02-06 09:00:00",
+      "likeCount":3,
+      "likedUsers":[
+         "haiku",
+         "codinghorror",
+         "Neil"
+      ],
+      "replyCount":2,
+      "repliedUsers":[
+         "haiku",
+         "codinghorror"
+      ],
+      "views":25
+   },
+   "replyPosts":[
+      {
+         "postId":2,
+         "parentPostId":1,
+         "post":"this is first reply post",
+         "isTopic":false,
+         "user":"rekhil",
+         "createdOn":"2021-02-08 04:00:00",
+         "lastUpdatedOn":"2021-02-09 08:00:00",
+         "likeCount":1,
+         "likedUsers":[
+            "johnsmith"
+         ],
+         "replyCount":1,
+         "repliedUsers":[
+            "johnsmith"
+         ]
+      },
+      {
+         "postId":3,
+         "parentPostId":2,
+         "post":"this is reply post of first reply",
+         "isTopic":false,
+         "user":"johnsmith",
+         "createdOn":"2021-02-10 04:00:00",
+         "lastUpdatedOn":null,
+         "likeCount":1,
+         "likedUsers":[
+            "rekhil"
+         ],
+         "replyCount":0
+      },
+      {
+         "postId":4,
+         "parentPostId":1,
+         "post":"this is second reply post",
+         "isTopic":false,
+         "user":"abhinav",
+         "createdOn":"2021-02-11 04:00:00",
+         "lastUpdatedOn":null,
+         "likeCount":0,
+         "replyCount":0
+      }
+   ]
+}
+
+
+
+
+
+Create new topic/reply
+
+POST : {base url}/dicussions
+
+Request :
+	{
+		"categoryId": 1,
+		"subject": "Can I log in with Google and a forum log in too?",
+		"post": "I’m currently using my Google account (with two factor authentication for security) but I don’t want to log onto certain computers with my Google account for various paranoid reasons. Can I set up a sign on with Discourse so that I can type in a normal username/password at the log in screen and still get into my account?",
+		"isTopic": true,
+		"user": "johnsmith"
+	}
+
+Response :
+	{
+		"postId": 1,
+		"isSuccsess": true,
+		"statusCode": 200
+	}
+  
+  
+
+
+Update existing topic/reply
+
+PUT : {base url}/dicussions/{postId}
+
+Request :
+	{
+      		"postId":1,
+		"categoryId": 1,
+		"subject": "Can I log in with Google and a forum log in too????",
+		"post": "I’m currently using my Google account (with two factor authentication for security) but I don’t want to log onto certain computers with my Google account for various paranoid reasons. Can I set up a sign on with Discourse so that I can type in a normal username/password at the log in screen and still get into my account?",
+		"user": "johnsmith"
+	}
+
+Response :
+	{
+		"postId": 1,
+		"isSuccsess": true,
+		"statusCode": 200
+	}
