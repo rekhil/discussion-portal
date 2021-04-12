@@ -8,6 +8,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Discussions',
+    icon: 'home-outline',
+    link: '/pages/discussions'
+  },
+  {
     title: 'Auth',
     icon: 'lock-outline',
     children: [
