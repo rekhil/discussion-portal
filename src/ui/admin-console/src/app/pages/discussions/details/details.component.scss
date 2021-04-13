@@ -1,0 +1,34 @@
+.details-wrapper {
+    .header {
+        margin-bottom: 15px;
+        .title {
+            color: #3c4146;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+    }
+    .user-info {
+        .action-time {
+            color: #848d95;
+            font-size: 12px;
+        }
+        .user-name {
+            color: #0077cc;
+            font-size: 13px;
+        }
+    }
+    .tag-group {
+        .tag {
+            color: #2c5777;
+            background-color: #d1e5f1;
+            border-color: #00000000;
+            display: inline-block;
+            text-align: center;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 3px;
+            padding: 5px;
+            font-size: 11px;
+        }
+    }
+}

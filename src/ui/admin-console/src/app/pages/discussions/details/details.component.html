@@ -1,0 +1,17 @@
+<div class="details-wrapper" *ngIf="question">
+    <div class="header">
+        <div class="title">{{question.title}}</div>
+        <div class="user-info" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="action-time">asked {{question.userInfo.createdOn}}</div>
+            <div class="user-name">{{question.userInfo.createdBy}}</div>
+        </div>
+    </div>
+    <div class="description">{{question.description}}</div>
+    <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
+            <div class="tag" *ngFor="let tag of question.tags">
+                {{tag}}
+            </div>
+        </div>
+    </div>
+</div>

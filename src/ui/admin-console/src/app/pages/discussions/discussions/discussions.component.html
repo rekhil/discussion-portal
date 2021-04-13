@@ -1,14 +1,20 @@
 <div class="disc-wrapper">
     <ngx-filter></ngx-filter>
-    <div class="question" *ngFor="let question of questions">
-        <div class="count">
-            {{question.ansCount}} Answers
+    <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="question"
+        *ngFor="let question of questions">
+        <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
+            <div class="vote-count">
+                {{question.voteCount}} votes
+            </div>
+            <div class="ans-count">
+                {{question.ansCount}} answers
+            </div>
         </div>
-        <div class="content">
-            <div class="title">{{question.title}}</div>
+        <div fxFlex="85%" class="content">
+            <div class="title" (click)="goToDetails(question.id)">{{question.title}}</div>
             <div class="description">{{question.description}}</div>
-            <div class="bottom">
-                <div class="tag-group">
+            <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
                     <div class="tag" *ngFor="let tag of question.tags">
                         {{tag}}
                     </div>

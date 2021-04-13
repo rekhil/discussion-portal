@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DiscussionService } from '../services/discussion.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class DiscussionsComponent implements OnInit {
 
   public questions: any[];
 
-  constructor(private discussionService: DiscussionService) { }
+  constructor(private discussionService: DiscussionService, private router: Router) { }
 
   ngOnInit(): void {
     this.discussionService.getQuestions().subscribe(data => {
@@ -18,4 +19,7 @@ export class DiscussionsComponent implements OnInit {
     })
   }
 
+  goToDetails(id: any) {
+    this.router.navigate([`/pages/discussions/${id}`]);
+  }
 }
