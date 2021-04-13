@@ -9,6 +9,9 @@ import { DiscussionService } from '../services/discussion.service';
 export class FilterComponent implements OnInit {
 
   public qnCount: number;
+  public filterBy: any;
+  public showSettings: boolean;
+
   constructor(private discussionService: DiscussionService) { }
 
   ngOnInit(): void {

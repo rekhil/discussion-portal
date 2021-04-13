@@ -3,7 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DiscussionsComponent } from './discussions/discussions.component';
 import { FilterComponent } from './filter/filter.component';
-import { NbIconModule } from '@nebular/theme';
+import { ThemeModule } from '../../@theme/theme.module';
+import { FormsModule } from '@angular/forms';
+import {
+  NbActionsModule,
+  NbButtonModule,
+  NbCardModule,
+  NbTabsetModule,
+  NbUserModule,
+  NbRadioModule,
+  NbSelectModule,
+  NbListModule,
+  NbIconModule
+} from '@nebular/theme';
 
 
 
@@ -15,6 +27,16 @@ import { NbIconModule } from '@nebular/theme';
   imports: [
     CommonModule,
     FlexLayoutModule,
+    FormsModule,
+    ThemeModule,
+    NbActionsModule,
+    NbButtonModule,
+    NbCardModule,
+    NbTabsetModule,
+    NbUserModule,
+    NbRadioModule,
+    NbSelectModule,
+    NbListModule,
     NbIconModule
   ]
 })

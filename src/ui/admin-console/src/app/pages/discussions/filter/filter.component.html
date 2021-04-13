@@ -4,11 +4,27 @@
             {{qnCount}} questions
         </div>
         <div class="filter-btn">
-            <button type="button" fxLayout="row" fxLayoutAlign="center center">
+            <button type="button" fxLayout="row" fxLayoutAlign="center center" (click)="showSettings=!showSettings">
                 <nb-icon icon="settings-outline" pack="eva"></nb-icon> Settings
             </button>
         </div>
     </div>
-    <div class="filter-body">
+    <div *ngIf="showSettings" class="filter-body">
+        <div class="filterBy">
+            <div class="section-title">Filter by</div>
+            <div class="section">
+                <nb-radio-group [(ngModel)]="filterBy" name="filterBy">
+                    <nb-radio value="unanswered">
+                        Unanswered
+                    </nb-radio>
+                    <nb-radio value="active">
+                        Active
+                    </nb-radio>
+                    <nb-radio value="newest">
+                        Newest
+                    </nb-radio>
+                </nb-radio-group>
+            </div>
+        </div>
     </div>
 </div>
