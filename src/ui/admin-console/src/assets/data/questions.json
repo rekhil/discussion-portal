@@ -1,7 +1,9 @@
 [
     {
+        "id": 1,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",
@@ -14,8 +16,10 @@
         }
     },
     {
+        "id": 2,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",
@@ -28,8 +32,10 @@
         }
     },
     {
+        "id": 3,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",
@@ -42,8 +48,10 @@
         }
     },
     {
+        "id": 4,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",
@@ -56,8 +64,10 @@
         }
     },
     {
+        "id": 5,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",
@@ -70,8 +80,10 @@
         }
     },
     {
+        "id": 6,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",
@@ -84,8 +96,10 @@
         }
     },
     {
+        "id": 7,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",
@@ -98,8 +112,10 @@
         }
     },
     {
+        "id": 8,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",
@@ -112,8 +128,10 @@
         }
     },
     {
+        "id": 9,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",
@@ -126,8 +144,10 @@
         }
     },
     {
+        "id": 10,
         "title": "NodeJS request with range does not work with HTML5 video",
         "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "voteCount": 5,
         "ansCount": 1,
         "tags": [
             "jQuery",

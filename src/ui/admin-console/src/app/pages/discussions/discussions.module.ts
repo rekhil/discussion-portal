@@ -16,13 +16,15 @@ import {
   NbListModule,
   NbIconModule
 } from '@nebular/theme';
+import { DetailsComponent } from './details/details.component';
 
 
 
 @NgModule({
   declarations: [
     DiscussionsComponent,
-    FilterComponent
+    FilterComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,

@@ -1,24 +1,27 @@
 .disc-wrapper {
     .question {
-        display: flex;
-        align-items: center;
         padding-bottom: 15px;
         margin-bottom: 15px;
         border-bottom: 1px solid #b1b1b1;
     }
-    .count {
-        flex:15%;
+    .vote-count {
+        font-size: 11px;
+        text-align: center;
+    }
+    .ans-count {
+        background-color: #5eba7d;
+        color: white;
+        padding: 5px;
+        font-size: 11px;
+        border-radius: 5px;
+        text-align: center;
     }
     .content {
-        flex: 85%;
         .title {
             color: #0077cc;
             font-size: 16px;
             font-weight: 400;
-        }
-        .bottom {
-            display: flex;
-            justify-content: space-between;
+            cursor: pointer;
         }
         .user-info {
             .action-time {
@@ -31,9 +34,6 @@
             }
         }
         .tag-group {
-            display: inline-flex;
-            flex-wrap: wrap;
-            gap: 12px;
             .tag {
                 color: #2c5777;
                 background-color: #d1e5f1;
