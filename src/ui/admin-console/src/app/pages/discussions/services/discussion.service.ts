@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -8,14 +8,32 @@ import { map } from 'rxjs/operators';
 })
 export class DiscussionService {
 
-  constructor(private http: HttpClient) { }
+  private questions = new BehaviorSubject<any>([]);
+  public questions$ = this.questions.asObservable();
 
-  getQuestions(): Observable<any> {
-    return this.http.get('assets/data/questions.json');
+  constructor(private http: HttpClient) {
+    this.searchQuestions();
+  }
+
+  searchQuestions() {
+    this.http.get('assets/data/questions.json').subscribe(data => {
+      this.questions.next(data);
+    })
   }
 
   getQuestionById(questionId: any): Observable<any> {
-    return this.http.get('assets/data/questions.json')
-      .pipe(map<any[], any>(data => data.filter(item => item.id == questionId)))
+    return this.questions$.pipe(map<any[], any>(questions => {
+      return questions.filter(item => item.id == questionId)
+    }))
+  }
+
+  postAnswer(request: any): void {
+    const questions = [...this.questions.value]
+    questions.forEach(item => {
+      if (item.id == request.id) {
+        item.threads.push(request.answer)
+      }
+    });
+    this.questions.next(questions);
   }
 }

@@ -15,7 +15,7 @@ export class FilterComponent implements OnInit {
   constructor(private discussionService: DiscussionService) { }
 
   ngOnInit(): void {
-    this.discussionService.getQuestions().subscribe(data => {
+    this.discussionService.questions$.subscribe(data => {
       this.qnCount = data.length;
     })
   }

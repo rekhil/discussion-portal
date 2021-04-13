@@ -35,4 +35,13 @@
             </div>
         </div>
     </div>
+    <div class="comment-section" fxLayout="column">
+        <div class="comment-title">Your Answer</div>
+        <div class="editor">
+            <textarea [(ngModel)]="answer"></textarea>
+        </div>
+        <div class="actions">
+            <button type="button" (click)="post()">Post Your Answer</button>
+        </div>
+    </div>
 </div>

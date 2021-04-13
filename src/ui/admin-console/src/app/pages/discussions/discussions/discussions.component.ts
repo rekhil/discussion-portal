@@ -14,7 +14,7 @@ export class DiscussionsComponent implements OnInit {
   constructor(private discussionService: DiscussionService, private router: Router) { }
 
   ngOnInit(): void {
-    this.discussionService.getQuestions().subscribe(data => {
+    this.discussionService.questions$.subscribe(data => {
       this.questions = data;
     })
   }
