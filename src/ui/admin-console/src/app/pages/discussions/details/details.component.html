@@ -14,4 +14,25 @@
             </div>
         </div>
     </div>
+    <div class="thread-wrapper">
+        <div class="thread-count">{{question.threads.length}} Answers</div>
+        <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="thread"
+            *ngFor="let thread of question.threads">
+            <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
+                <div class="vote-count">
+                    {{thread.voteCount}} votes
+                </div>
+            </div>
+            <div fxFlex="85%" class="thread-content">
+                <div class="thread-title">{{thread.title}}</div>
+                <div class="thread-description">{{thread.description}}</div>
+                <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div class="user-info">
+                        <div class="action-time">answered {{thread.userInfo.createdOn}}</div>
+                        <div class="user-name">{{thread.userInfo.createdBy}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
