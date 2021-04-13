@@ -115,6 +115,15 @@ export const NB_CORE_PROVIDERS = [
         register: {
           endpoint: '/api/auth/register',
         },
+        logout: {
+          endpoint: '/auth/sign-out',
+        },
+        requestPass: {
+          endpoint: '/auth/request-pass',
+        },
+        resetPass: {
+          endpoint: '/auth/reset-pass',
+        },
       })
     ],
     forms: {
