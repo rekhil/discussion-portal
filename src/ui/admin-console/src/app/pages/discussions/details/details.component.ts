@@ -41,4 +41,13 @@ export class DetailsComponent implements OnInit {
     this.discussionService.postAnswer(request);
     this.answer = '';
   }
+
+  vote(vote: number, threadId: any) {
+    const request = {
+      vote: vote,
+      threadId: threadId,
+      id: this.id
+    }
+    this.discussionService.updateVote(request);
+  }
 }

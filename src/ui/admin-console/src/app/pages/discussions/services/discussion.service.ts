@@ -36,4 +36,18 @@ export class DiscussionService {
     });
     this.questions.next(questions);
   }
+
+  updateVote(request: any): void {
+    const questions = [...this.questions.value]
+    questions.forEach(item => {
+      if (item.id == request.id) {
+        item.threads.forEach(e => {
+          if (e.id == request.threadId) {
+            e.voteCount += request.vote;
+          }
+        })
+      }
+    });
+    this.questions.next(questions);
+  }
 }
