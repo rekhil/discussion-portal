@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { NbTagComponent, NbTagInputDirective } from '@nebular/theme';
 import { Editor } from 'ngx-editor';
 import { tags } from '../models/tags';
@@ -19,7 +20,10 @@ export class AskQuestionComponent implements OnInit {
   options = tags;
   @ViewChild(NbTagInputDirective, { read: ElementRef }) tagInput: ElementRef<HTMLInputElement>;
 
-  constructor(private discussionService: DiscussionService) { }
+  constructor(
+    private discussionService: DiscussionService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.editor = new Editor();
@@ -33,7 +37,10 @@ export class AskQuestionComponent implements OnInit {
       isTopic: true,
       createdBy: "Code Owner"
     };
-    this.discussionService.createPost(request);
+    this.discussionService.createPost(request)
+    .subscribe(data => {
+      this.router.navigate(['/pages/discussions']);
+    });
   }
 
   onTagRemove(tagToRemove: NbTagComponent): void {
