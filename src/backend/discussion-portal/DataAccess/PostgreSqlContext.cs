@@ -10,16 +10,16 @@ namespace DiscussionPortal.DataAccess
         }
 
         public DbSet<DiscussionPostRecord> DiscussionPosts { get; set; }
-        public DbSet<DiscussionPostTagRecords> DiscussionPostTags { get; set; }
+        public DbSet<DiscussionPostTagRecord> DiscussionPostTags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<DiscussionPostTagRecords>()
+            builder.Entity<DiscussionPostTagRecord>()
                 .HasOne(p => p.DiscussionPost)
                 .WithMany(b => b.Tags)
                 .HasForeignKey(p => p.DiscussionPostId);
 
-            builder.Entity<DiscussionPostLikeRecords>()
+            builder.Entity<DiscussionPostLikeRecord>()
                 .HasOne(p => p.DiscussionPost)
                 .WithMany(b => b.Likes)
                 .HasForeignKey(p => p.DiscussionPostId);

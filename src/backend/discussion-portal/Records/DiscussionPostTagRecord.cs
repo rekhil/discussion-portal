@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DiscussionPortal.Records
 {
-    public class DiscussionPostTagRecords
+    public class DiscussionPostTagRecord
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

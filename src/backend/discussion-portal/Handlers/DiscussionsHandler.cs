@@ -59,7 +59,7 @@ namespace DiscussionPortal.Handlers
 
                 var record = Map.MapDiscussionPostToRecord(postDetails);
 
-                record.Tags = postDetails.Tags?.Select(x => new DiscussionPostTagRecords
+                record.Tags = postDetails.Tags?.Select(x => new DiscussionPostTagRecord
                 {
                     Tag = x
                 }).ToList();

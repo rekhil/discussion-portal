@@ -19,6 +19,6 @@ namespace DiscussionPortal.DataAccess
 
         void DeletePost(long postId);
 
-        void CreatePostTag(List<DiscussionPostTagRecords> discussionPostTagRecords);
+        void CreatePostTag(List<DiscussionPostTagRecord> discussionPostTagRecords);
     }
 }

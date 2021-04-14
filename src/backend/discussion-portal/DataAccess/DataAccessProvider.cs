@@ -16,7 +16,7 @@ namespace DiscussionPortal.DataAccess
 
         public IEnumerable<DiscussionPostRecord> GetAllTopics()
         {
-            return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Include("Tags").Include("Likes");
+            return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Include("Tags");
         }
 
         public DiscussionPostRecord GetTopicDetailsByTopicId(long topicId)
@@ -53,7 +53,7 @@ namespace DiscussionPortal.DataAccess
             _context.SaveChanges();
         }
 
-        public void CreatePostTag(List<DiscussionPostTagRecords> discussionPostTagRecords)
+        public void CreatePostTag(List<DiscussionPostTagRecord> discussionPostTagRecords)
         {
             _context.DiscussionPostTags.AddRange(discussionPostTagRecords);
             _context.SaveChanges();

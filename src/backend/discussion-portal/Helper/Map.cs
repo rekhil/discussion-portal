@@ -39,9 +39,9 @@ namespace DiscussionPortal.Helper
                 CreatedOn = record.CreatedOn,
                 LastUpdatedOn = record.LastUpdatedOn,
                 LikeCount = likes?.Any() == true ? likes.Count() : 0,
-                LikedUsers = likes?.Any() == true ? likes.Select(x => x.User).Distinct().ToArray() : null,
+                LikedUsers = likes?.Any() == true ? likes.Select(x => x.UserName).Distinct().ToArray() : null,
                 DisLikeCount = dislikes?.Any() == true ? dislikes.Count() : 0,
-                DisLikedUsers = dislikes?.Any() == true ? dislikes.Select(x => x.User).Distinct().ToArray() : null,
+                DisLikedUsers = dislikes?.Any() == true ? dislikes.Select(x => x.UserName).Distinct().ToArray() : null,
                 ReplyCount = record.ReplyCount,
                 Views = record.Views,
                 Tags = record.Tags?.Select(x => x.Tag)?.ToArray()

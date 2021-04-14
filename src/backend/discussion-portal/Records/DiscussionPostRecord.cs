@@ -29,8 +29,8 @@ namespace DiscussionPortal.Records
 
         public int Views { get; set; }
 
-        public List<DiscussionPostTagRecords> Tags { get; set; }
+        public List<DiscussionPostTagRecord> Tags { get; set; }
 
-        public List<DiscussionPostLikeRecords> Likes { get; set; }
+        public List<DiscussionPostLikeRecord> Likes { get; set; }
     }
 }
