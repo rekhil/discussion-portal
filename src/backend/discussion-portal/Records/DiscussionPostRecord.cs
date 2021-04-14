@@ -1,14 +1,16 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DiscussionPortal.Records
 {
     public class DiscussionPostRecord
     {
         [Key]
-        public string PostId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long PostId { get; set; }
 
-        public string ParentPostId { get; set; }
+        public long? ParentPostId { get; set; }
 
         public string Subject { get; set; }
 

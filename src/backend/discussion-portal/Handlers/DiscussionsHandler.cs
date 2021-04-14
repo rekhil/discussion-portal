@@ -24,7 +24,7 @@ namespace DiscussionPortal.Handlers
             return discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
         }
 
-        public DiscussionPost GetTopicDetailsByTopicId(string topicId)
+        public DiscussionPost GetTopicDetailsByTopicId(long topicId)
         {
             var discussion = _dataAccessProvider.GetTopicDetailsByTopicId(topicId);
 
@@ -33,8 +33,6 @@ namespace DiscussionPortal.Handlers
 
         public ResponseModel CreatePost(DiscussionPost postDetails)
         {
-            postDetails.PostId = Guid.NewGuid().ToString();
-
             postDetails.CreatedOn = DateTime.Now;
 
             var record = Map.MapDiscussionPostToRecord(postDetails);
@@ -49,7 +47,7 @@ namespace DiscussionPortal.Handlers
             };
         }
 
-        public ResponseModel UpdatePost(string postId, DiscussionPost postDetails)
+        public ResponseModel UpdatePost(long postId, DiscussionPost postDetails)
         {
             postDetails.PostId = postId;
 
@@ -67,7 +65,7 @@ namespace DiscussionPortal.Handlers
             };
         }
 
-        public ResponseModel DeletePost(string postId)
+        public ResponseModel DeletePost(long postId)
         {
             _dataAccessProvider.DeletePost(postId);
 

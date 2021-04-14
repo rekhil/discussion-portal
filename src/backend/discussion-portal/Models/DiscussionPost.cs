@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace DiscussionPortal.Models
 {
     public class DiscussionPost
     {
-        [Key]
-        public string PostId { get; set; }
+        public long PostId { get; set; }
 
-        public string ParentPostId { get; set; }
+        public long? ParentPostId { get; set; }
 
         public string[] Tags { get; set; }
 

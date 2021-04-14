@@ -7,12 +7,12 @@ namespace DiscussionPortal.DataAccess
     {
         IEnumerable<DiscussionPostRecord> GetAllTopics();
 
-        DiscussionPostRecord GetTopicDetailsByTopicId(string topicId);
+        DiscussionPostRecord GetTopicDetailsByTopicId(long topicId);
 
         void CreatePost(DiscussionPostRecord postDetails);
 
         void UpdatePost(DiscussionPostRecord postDetails);
 
-        void DeletePost(string postId);
+        void DeletePost(long postId);
     }
 }
