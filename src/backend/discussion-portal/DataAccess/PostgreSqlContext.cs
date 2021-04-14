@@ -11,6 +11,8 @@ namespace DiscussionPortal.DataAccess
 
         public DbSet<DiscussionPostRecord> DiscussionPosts { get; set; }
 
+        public DbSet<UserDto> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

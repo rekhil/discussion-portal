@@ -14,5 +14,15 @@ namespace DiscussionPortal.DataAccess
         void UpdatePost(DiscussionPostRecord postDetails);
 
         void DeletePost(long postId);
+
+        IEnumerable<UserDto> SearchUser(string q);
+
+        UserDto FindUser(string userName);
+
+        void CreateUser(UserDto user);
+
+        void EditUser(UserDto user);
+
+        void DeleteUser(string userName);
     }
 }
