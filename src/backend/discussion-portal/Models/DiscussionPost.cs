@@ -23,6 +23,8 @@ namespace DiscussionPortal.Models
 
         public DateTime? LastUpdatedOn { get; set; }
 
+        public bool LikedByCurrentUser { get; set; }
+
         public int LikeCount { get; set; }
 
         public string[] LikedUsers { get; set; }
