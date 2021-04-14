@@ -51,6 +51,6 @@ Request :
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Delete exisintg post (Current user can only update post created by the same user, Selected post/reply and all replies under it will get deleted)
+Delete exisintg post (Current user can only edit post created by the same user, Selected post/reply and all replies under it will get deleted)
 
 DELETE: https://xenon-anvil-310308.appspot.com/api/discussions/1
