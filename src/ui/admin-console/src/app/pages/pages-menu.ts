@@ -11,6 +11,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Discussions',
     icon: 'book-open-outline',
     link: '/pages/discussions'
+  },  
+  {
+    title: 'Users',
+    icon: 'people-outline',
+    link: '/pages/users'
   },
   {
     title: 'Auth',

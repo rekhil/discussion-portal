@@ -8,16 +8,20 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { DiscussionsModule } from './discussions/discussions.module';
+import { UsersModule } from './users/users.module';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   imports: [
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
+    Ng2SmartTableModule,
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
-    DiscussionsModule
+    DiscussionsModule,
+    UsersModule
   ],
   declarations: [
     PagesComponent,

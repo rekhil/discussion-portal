@@ -7,6 +7,7 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 import { DiscussionsComponent } from './discussions/discussions/discussions.component';
 import { DetailsComponent as DiscussionDetailsComponent } from './discussions/details/details.component';
 import { AskQuestionComponent } from './discussions/ask-question/ask-question.component';
+import { UsersComponent } from './users/users/users.component';
 
 const routes: Routes = [{
   path: '',
@@ -27,6 +28,10 @@ const routes: Routes = [{
     {
       path: 'discussions/:id',
       component: DiscussionDetailsComponent
+    },
+    {
+      path: 'users',
+      component: UsersComponent
     },
     {
       path: '',
