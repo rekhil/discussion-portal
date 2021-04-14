@@ -16,6 +16,7 @@ namespace DiscussionPortal.DataAccess
 
         public IEnumerable<DiscussionPostRecord> GetAllTopics()
         {
+            return _context.DiscussionPosts.Where(x => x.IsTopic).Include("Tags").OrderByDescending(x => x.PostId).Include("Likes").ToList();
             return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Include("Tags").Include("Likes");
         }
 

@@ -66,7 +66,7 @@ export class DetailsComponent implements OnInit {
 
   replyQuestion() {
     console.log(this.reply, this.title);
-    this.createPost();
+    this.createPost();    
   }
 
   ngOnDestroy(): void {
