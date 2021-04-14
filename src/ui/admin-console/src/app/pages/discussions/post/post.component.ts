@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DiscussionService } from '../services/discussion.service';
+import { Editor, toHTML, toDoc } from 'ngx-editor';
 
 @Component({
   selector: 'ngx-post',
@@ -11,10 +12,14 @@ export class PostComponent implements OnInit {
   @Input() thread: any;
   @Input() parentPostId: number;
   showChildNodes: boolean;
+  editor: Editor;
+  title: string;
 
   constructor(private discussionService: DiscussionService) { }
 
   ngOnInit(): void {
+    console.log(this.thread);
+    
   }
 
   vote(like: boolean, threadId: any) {
@@ -24,5 +29,11 @@ export class PostComponent implements OnInit {
       postId: this.parentPostId
     }
     this.discussionService.updateVote(request);
+  }
+  replyQuestion() {
+    
+  }
+  toogle() {
+    this.editor = new Editor();
   }
 }

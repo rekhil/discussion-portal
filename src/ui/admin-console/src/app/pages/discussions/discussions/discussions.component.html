@@ -10,7 +10,7 @@
         *ngFor="let post of posts">
         <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
             <div class="vote-count">
-                {{post.likeCount - post.dislikeCount}} votes
+                {{post.likeCount - post.disLikeCount}} votes
             </div>
             <div class="ans-count">
                 {{post.replyCount}} replies
@@ -18,7 +18,9 @@
         </div>
         <div fxFlex="85%" class="content">
             <div class="title" (click)="goToDetails(post.postId)">{{post.subject}}</div>
-            <div class="description">{{post.postDescription}}</div>
+            <div class="description">
+                <div [innerHTML]="post.postDescription"></div>
+            </div>
             <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
                     <div class="tag" *ngFor="let tag of post.tags">
