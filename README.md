@@ -19,7 +19,7 @@ Request :
 {
    "subject":"Subject",
    "postDescription":"Description",
-   "Tags":[
+   "tags":[
       "tag1",
       "tag2"
    ],
@@ -43,7 +43,7 @@ Request :
 {
    "subject":"Subject",
    "postDescription":"Description",
-      "Tags":[
+   "tags":[
       "tag1",
       "tag2"
    ]
