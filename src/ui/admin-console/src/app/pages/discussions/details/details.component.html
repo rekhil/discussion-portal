@@ -2,7 +2,7 @@
     <div class="header">
         <div class="title">{{post.subject}}</div>
         <div class="user-info" fxLayout="row" fxLayoutAlign="space-between">
-            <div class="action-time">asked {{post.createdOn | date:'medium'}}</div>
+            <div class="action-time">Asked {{post.createdOn | date:'medium'}}</div>
             <div class="user-name">{{post.createdBy}}</div>
         </div>
     </div>
@@ -16,7 +16,7 @@
     </div>
     <div class="thread-wrapper">
         <div class="thread-count">{{post.replyPosts.length}} Replies</div>
-        <div *ngFor="let post of post.replyPosts">
+        <div class="post-section" *ngFor="let post of post.replyPosts">
             <ngx-post [parentPostId]="id" [thread]="post"></ngx-post>
         </div>
     </div>

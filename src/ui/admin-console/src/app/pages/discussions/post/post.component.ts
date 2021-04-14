@@ -10,6 +10,7 @@ export class PostComponent implements OnInit {
 
   @Input() thread: any;
   @Input() parentPostId: number;
+  showChildNodes: boolean;
 
   constructor(private discussionService: DiscussionService) { }
 

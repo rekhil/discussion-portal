@@ -50,4 +50,10 @@
             }
         }
     }
+    .post-section {
+        border-bottom: 1px solid #b1b1b1;
+    }
+    .post-section:last-of-type {
+        border-bottom: 0;
+    }
 }
