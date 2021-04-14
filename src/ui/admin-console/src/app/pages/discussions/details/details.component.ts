@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import { DiscussionService } from '../services/discussion.service';
 import { Editor, toHTML, toDoc } from 'ngx-editor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-details',
@@ -17,7 +18,8 @@ export class DetailsComponent implements OnInit {
   editor: Editor;
   reply;
 
-  constructor(private route: ActivatedRoute, private discussionService: DiscussionService) { }
+  constructor(private route: ActivatedRoute, private discussionService: DiscussionService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.editor = new Editor();
@@ -41,7 +43,10 @@ export class DetailsComponent implements OnInit {
       // createdOn: this.dateConverter(),
       // lastUpdatedOn: "2021-04-14 10:00:00"
     };
-    this.discussionService.createPost(request);
+    this.discussionService.createPost(request).subscribe(data => {
+      if (data) 
+      this.router.navigate(['/pages/discussions']);
+    });
     //this.postDescription = '';
   }
 
