@@ -80,6 +80,7 @@ DELETE: https://xenon-anvil-310308.appspot.com/api/discussions/1
 Like/Dislike Post (UpdatePostLikeStatus):
 
 POST: https://xenon-anvil-310308.appspot.com/api/discussions/UpdatePostLikeStatus
+
 Request:
 {
     "DiscussionPostId" : 2,
