@@ -12,6 +12,7 @@ GET : https://xenon-anvil-310308.appspot.com/api/discussions
 Create new post (topic/reply)
 
 POST : https://xenon-anvil-310308.appspot.com/api/discussions
+
 Request :
 {
    "subject":"Subject",
