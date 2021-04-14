@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,5 +32,7 @@ namespace DiscussionPortal.Records
         public int ReplyCount { get; set; }
 
         public int Views { get; set; }
+
+        public List<DiscussionPostTagRecords> Tags { get; set; }
     }
 }

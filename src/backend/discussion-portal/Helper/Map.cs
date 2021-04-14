@@ -1,5 +1,6 @@
 ﻿using DiscussionPortal.Models;
 using DiscussionPortal.Records;
+using System.Linq;
 
 namespace DiscussionPortal.Helper
 {
@@ -39,7 +40,8 @@ namespace DiscussionPortal.Helper
                 LikeCount = record.LikeCount,
                 DisLikeCount = record.DisLikeCount,
                 ReplyCount = record.ReplyCount,
-                Views = record.Views
+                Views = record.Views,
+                Tags = record.Tags?.Select(x => x.Tag)?.ToArray()
             };
         }
     }

@@ -1,4 +1,5 @@
 ﻿using DiscussionPortal.Records;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,11 +16,7 @@ namespace DiscussionPortal.DataAccess
 
         public IEnumerable<DiscussionPostRecord> GetAllTopics()
         {
-            return _context.DiscussionPosts.Where(x => x.IsTopic).ToList();
-            //load liked/unliked users
-            //load commented users
-            //load view count
-            //load tags
+            return _context.DiscussionPosts.Where(x => x.IsTopic).Include("Tags").ToList();
         }
 
         public DiscussionPostRecord GetTopicDetailsByTopicId(long topicId)

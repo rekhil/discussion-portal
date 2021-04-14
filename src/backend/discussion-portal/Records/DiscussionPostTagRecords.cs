@@ -12,5 +12,7 @@ namespace DiscussionPortal.Records
         public long DiscussionPostId { get; set; }
 
         public string Tag { get; set; }
+
+        public DiscussionPostRecord DiscussionPost { get; set; }
     }
 }

@@ -14,6 +14,10 @@ namespace DiscussionPortal.DataAccess
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<DiscussionPostTagRecords>()
+                .HasOne(p => p.DiscussionPost)
+                .WithMany(b => b.Tags)
+                .HasForeignKey(p => p.DiscussionPostId);
             base.OnModelCreating(builder);
         }
 

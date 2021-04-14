@@ -39,16 +39,12 @@ namespace DiscussionPortal.Handlers
 
                 var record = Map.MapDiscussionPostToRecord(postDetails);
 
-                _dataAccessProvider.CreatePost(record);
-
-                var postTags = postDetails.Tags?.Select(x => new DiscussionPostTagRecords
+                record.Tags = postDetails.Tags?.Select(x => new DiscussionPostTagRecords
                 {
-                    DiscussionPostId = record.PostId,
                     Tag = x
                 }).ToList();
 
-                if (postTags?.Any() == true)
-                    _dataAccessProvider.CreatePostTag(postTags);
+                _dataAccessProvider.CreatePost(record);
 
                 return new ResponseModel
                 {
