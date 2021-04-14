@@ -31,7 +31,8 @@ export class DetailsComponent implements OnInit {
         id: 11,
         subject: this.postDescription,
         postDescription: this.postDescription,
-        voteCount: 5,
+        likeCount: 0,
+        dislikeCount: 0,
         createdBy: "Code Owner",
         createdOn: "2021-04-14 10:00:00",
         lastUpdatedOn: "2021-04-14 10:00:00"
@@ -41,9 +42,9 @@ export class DetailsComponent implements OnInit {
     this.postDescription = '';
   }
 
-  vote(vote: number, threadId: any) {
+  vote(like: boolean, threadId: any) {
     const request = {
-      vote: vote,
+      like: like,
       threadId: threadId,
       id: this.id
     }

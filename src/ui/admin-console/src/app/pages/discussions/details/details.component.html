@@ -19,13 +19,13 @@
         <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="thread"
             *ngFor="let thread of post.replyPosts">
             <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
-                <div class="vote" (click)="vote(1, thread.id)">
+                <div class="vote" (click)="vote(true, thread.id)">
                     <nb-icon icon="arrow-up-outline" pack="eva"></nb-icon>
                 </div>
                 <div class="vote-count">
-                    {{thread.voteCount}} votes
+                    {{thread.likeCount - thread.dislikeCount}} votes
                 </div>
-                <div class="vote" (click)="vote(-1, thread.id)">
+                <div class="vote" (click)="vote(false, thread.id)">
                     <nb-icon icon="arrow-down-outline" pack="eva"></nb-icon>
                 </div>
             </div>

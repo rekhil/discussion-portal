@@ -43,7 +43,11 @@ export class DiscussionService {
       if (item.id == request.id) {
         item.replyPosts.forEach(e => {
           if (e.id == request.threadId) {
-            e.voteCount += request.vote;
+            if (request.like) {
+              e.likeCount += 1;
+            } else {
+              e.dislikeCount += 1;
+            }
           }
         })
       }
