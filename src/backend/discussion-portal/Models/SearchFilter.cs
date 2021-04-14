@@ -1,6 +1,6 @@
 ﻿namespace DiscussionPortal.Models
 {
-    public class TopicSearchFilter
+    public class SearchFilter
     {
         public string SearchText { get; set; }
 

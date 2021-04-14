@@ -25,7 +25,7 @@ namespace DiscussionPortal.Handlers
             return discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
         }
 
-        public TopicListSearchResult SearchTopics(TopicSearchFilter topicSearchFilter)
+        public TopicListSearchResult SearchTopics(SearchFilter topicSearchFilter)
         {
             var searchResult = new TopicListSearchResult
             {
@@ -69,7 +69,7 @@ namespace DiscussionPortal.Handlers
 
         private void SetReplyPosts(DiscussionPost discussionPost)
         {
-            var replyPosts = _dataAccessProvider.GetRepliesByparentId(discussionPost.PostId);
+            var replyPosts = _dataAccessProvider.GetRepliesByParentId(discussionPost.PostId);
 
             if (replyPosts?.Any() != true)
                 return;
