@@ -10,6 +10,7 @@ namespace DiscussionPortal.DataAccess
         }
 
         public DbSet<DiscussionPostRecord> DiscussionPosts { get; set; }
+        public DbSet<DiscussionPostTagRecords> DiscussionPostTags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

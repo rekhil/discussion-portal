@@ -15,12 +15,21 @@ namespace DiscussionPortal.DataAccess
 
         public IEnumerable<DiscussionPostRecord> GetAllTopics()
         {
-            return _context.DiscussionPosts.ToList();
+            return _context.DiscussionPosts.Where(x => x.IsTopic).ToList();
+            //load liked/unliked users
+            //load commented users
+            //load view count
+            //load tags
         }
 
         public DiscussionPostRecord GetTopicDetailsByTopicId(long topicId)
         {
             return _context.DiscussionPosts.FirstOrDefault(t => t.PostId == topicId);
+        }
+
+        public DiscussionPostRecord GetPostDetailsByPostId(long postId)
+        {
+            return _context.DiscussionPosts.FirstOrDefault(t => t.PostId == postId);
         }
 
         public void CreatePost(DiscussionPostRecord postDetails)
@@ -39,6 +48,12 @@ namespace DiscussionPortal.DataAccess
         {
             var entity = _context.DiscussionPosts.FirstOrDefault(t => t.PostId == postId);
             _context.DiscussionPosts.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public void CreatePostTag(List<DiscussionPostTagRecords> discussionPostTagRecords)
+        {
+            _context.DiscussionPostTags.AddRange(discussionPostTagRecords);
             _context.SaveChanges();
         }
     }

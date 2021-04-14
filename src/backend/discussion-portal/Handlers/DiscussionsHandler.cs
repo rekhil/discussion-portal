@@ -1,6 +1,7 @@
 ﻿using DiscussionPortal.DataAccess;
 using DiscussionPortal.Helper;
 using DiscussionPortal.Models;
+using DiscussionPortal.Records;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,9 +40,18 @@ namespace DiscussionPortal.Handlers
 
             _dataAccessProvider.CreatePost(record);
 
+            var postTags = postDetails.Tags?.Select(x => new DiscussionPostTagRecords
+            {
+                DiscussionPostId = record.PostId,
+                Tag = x
+            }).ToList();
+
+            if (postTags?.Any() == true)
+                _dataAccessProvider.CreatePostTag(postTags);
+
             return new ResponseModel
             {
-                Id = postDetails.PostId,
+                Id = record.PostId,
                 IsSuccess = true,
                 StatusCode = HttpStatusCode.OK
             };
@@ -49,17 +59,17 @@ namespace DiscussionPortal.Handlers
 
         public ResponseModel UpdatePost(long postId, DiscussionPost postDetails)
         {
-            postDetails.PostId = postId;
+            var existingRecord = _dataAccessProvider.GetPostDetailsByPostId(postId);
 
-            postDetails.LastUpdatedOn = DateTime.Now;
+            existingRecord.Subject = postDetails.Subject;
+            existingRecord.PostDescription = postDetails.PostDescription;
+            existingRecord.LastUpdatedOn = DateTime.Now;
 
-            var record = Map.MapDiscussionPostToRecord(postDetails);
-
-            _dataAccessProvider.UpdatePost(record);
+            _dataAccessProvider.UpdatePost(existingRecord);
 
             return new ResponseModel
             {
-                Id = postDetails.PostId,
+                Id = existingRecord.PostId,
                 IsSuccess = true,
                 StatusCode = HttpStatusCode.OK
             };
