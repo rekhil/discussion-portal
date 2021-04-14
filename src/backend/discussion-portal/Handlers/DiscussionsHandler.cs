@@ -29,7 +29,26 @@ namespace DiscussionPortal.Handlers
         {
             var discussion = _dataAccessProvider.GetTopicDetailsByTopicId(topicId);
 
-            return Map.MapRecordToDiscussionPost(discussion);
+            var post = Map.MapRecordToDiscussionPost(discussion);
+
+            SetReplyPosts(post);
+
+            return post;
+        }
+
+        private void SetReplyPosts(DiscussionPost discussionPost)
+        {
+            var replyPosts = _dataAccessProvider.GetRepliesByparentId(discussionPost.PostId);
+
+            if (replyPosts?.Any() != true)
+                return;
+
+            discussionPost.ReplyPosts = replyPosts.Select(x => Map.MapRecordToDiscussionPost(x)).ToList();
+
+            discussionPost.ReplyPosts.ForEach(x =>
+            {
+                SetReplyPosts(x);
+            });
         }
 
         public ResponseModel CreatePost(DiscussionPost postDetails)

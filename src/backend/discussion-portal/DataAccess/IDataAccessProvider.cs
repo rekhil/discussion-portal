@@ -9,6 +9,8 @@ namespace DiscussionPortal.DataAccess
 
         DiscussionPostRecord GetTopicDetailsByTopicId(long topicId);
 
+        IEnumerable<DiscussionPostRecord> GetRepliesByparentId(long parentPostId);
+
         DiscussionPostRecord GetPostDetailsByPostId(long postId);
 
         void CreatePost(DiscussionPostRecord postDetails);

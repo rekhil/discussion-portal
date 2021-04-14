@@ -16,12 +16,17 @@ namespace DiscussionPortal.DataAccess
 
         public IEnumerable<DiscussionPostRecord> GetAllTopics()
         {
-            return _context.DiscussionPosts.Where(x => x.IsTopic).Include("Tags").OrderByDescending(x => x.PostId).Include("Likes").ToList();
+            return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Include("Tags").Include("Likes");
         }
 
         public DiscussionPostRecord GetTopicDetailsByTopicId(long topicId)
         {
             return _context.DiscussionPosts.FirstOrDefault(t => t.PostId == topicId);
+        }
+
+        public IEnumerable<DiscussionPostRecord> GetRepliesByparentId(long parentPostId)
+        {
+            return _context.DiscussionPosts.Where(t => t.ParentPostId == parentPostId).Include("Likes");
         }
 
         public DiscussionPostRecord GetPostDetailsByPostId(long postId)
