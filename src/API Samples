@@ -19,3 +19,12 @@ Reposne:
 
 Notes :
 "isTopic" true for topic and false for replies
+
+
+
+
+
+
+Get All Topics
+
+GET : https://xenon-anvil-310308.appspot.com/api/discussions 
