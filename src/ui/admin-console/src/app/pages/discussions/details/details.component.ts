@@ -37,11 +37,12 @@ export class DetailsComponent implements OnInit {
       tags: [],
       isTopic: false,
       createdBy: "Code Owner",
+      parentPostId: this.postId
       // createdOn: this.dateConverter(),
       // lastUpdatedOn: "2021-04-14 10:00:00"
     };
-    this.discussionService.updatePost(request, this.postId);
-    this.postDescription = '';
+    this.discussionService.createPost(request);
+    //this.postDescription = '';
   }
 
   dateConverter() {

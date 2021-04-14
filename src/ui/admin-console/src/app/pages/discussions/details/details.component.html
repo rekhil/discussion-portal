@@ -6,7 +6,9 @@
             <div class="user-name">{{post.createdBy}}</div>
         </div>
     </div>
-    <div class="description">{{post.postDescription}}</div>
+    <div class="description">
+        <div [innerHTML]="post.postDescription"></div>
+    </div>
     <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
         <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
             <div class="tag" *ngFor="let tag of post.tags">
