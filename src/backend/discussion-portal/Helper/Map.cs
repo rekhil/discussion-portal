@@ -39,12 +39,34 @@ namespace DiscussionPortal.Helper
                 CreatedOn = record.CreatedOn,
                 LastUpdatedOn = record.LastUpdatedOn,
                 LikeCount = likes?.Any() == true ? likes.Count() : 0,
-                LikedUsers = likes?.Any() == true ? likes.Select(x => x.User).Distinct().ToArray() : null,
+                LikedUsers = likes?.Any() == true ? likes.Select(x => x.UserName).Distinct().ToArray() : null,
                 DisLikeCount = dislikes?.Any() == true ? dislikes.Count() : 0,
-                DisLikedUsers = dislikes?.Any() == true ? dislikes.Select(x => x.User).Distinct().ToArray() : null,
+                DisLikedUsers = dislikes?.Any() == true ? dislikes.Select(x => x.UserName).Distinct().ToArray() : null,
                 ReplyCount = record.ReplyCount,
                 Views = record.Views,
                 Tags = record.Tags?.Select(x => x.Tag)?.ToArray()
+            };
+        }
+
+        public static UserDto MapUserToRecord(this User user)
+        {
+            return new UserDto
+            {
+                UserName = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+        }
+
+        public static User MapRecordToUser(this UserDto userRecord)
+        {
+            return new User
+            {
+                UserName = userRecord.UserName,
+                FirstName = userRecord.FirstName,
+                LastName = userRecord.LastName,
+                Email = userRecord.Email
             };
         }
     }

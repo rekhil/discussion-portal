@@ -7,6 +7,10 @@ namespace DiscussionPortal.DataAccess
     {
         IEnumerable<DiscussionPostRecord> GetAllTopics();
 
+        int GetTotalTopicsCount();
+
+        IEnumerable<DiscussionPostRecord> SearchTopics(int pageNumber, int pageSize);
+
         DiscussionPostRecord GetTopicDetailsByTopicId(long topicId);
 
         IEnumerable<DiscussionPostRecord> GetRepliesByparentId(long parentPostId);
@@ -18,7 +22,24 @@ namespace DiscussionPortal.DataAccess
         void UpdatePost(DiscussionPostRecord postDetails);
 
         void DeletePost(long postId);
+      
+        void CreatePostTag(List<DiscussionPostTagRecord> discussionPostTagRecords);
+      
+        IEnumerable<UserDto> SearchUser(string q);
 
-        void CreatePostTag(List<DiscussionPostTagRecords> discussionPostTagRecords);
+        UserDto FindUser(string userName);
+
+        void CreateUser(UserDto user);
+
+        void EditUser(UserDto user);
+
+        void DeleteUser(string userName);
+
+        //Methods for DiscussionPostLikes
+        void CreateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike);
+        void UpdateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike);
+        void DeleteDiscussionPostLike(string userName, long discussionPostId);
+
+        DiscussionPostLikeRecord GetDiscussionPostLike(string userName, long discussionPostId);
     }
 }

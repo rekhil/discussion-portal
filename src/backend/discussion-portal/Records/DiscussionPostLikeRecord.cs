@@ -1,17 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DiscussionPortal.Records
 {
-    public class DiscussionPostLikeRecords
+    public class DiscussionPostLikeRecord
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long DiscussionPostLikeId { get; set; }
-
         public long DiscussionPostId { get; set; }
 
-        public string User { get; set; }
+        [Key]
+        public string UserName { get; set; }
 
         public bool IsLike { get; set; }
 

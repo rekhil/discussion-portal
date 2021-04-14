@@ -9,16 +9,31 @@ Datebase: PostgreSQL
 
 
 # API Details 
+
+# Discussions
+
+Search all topics
+
+POST: https://xenon-anvil-310308.appspot.com/api/discussions/search
+
+Request :
+{
+   "searchText":null,
+   "pageNumber":1,
+   "pageSize":20
+}
+
 ---------------------------------------------------------------------------------------------------------------------
+
 Get all topic list
 
-GET : https://xenon-anvil-310308.appspot.com/api/discussions
+GET: https://xenon-anvil-310308.appspot.com/api/discussions
 
 ---------------------------------------------------------------------------------------------------------------------
 
 Create new post (topic/reply)
 
-POST : https://xenon-anvil-310308.appspot.com/api/discussions
+POST: https://xenon-anvil-310308.appspot.com/api/discussions
 
 Request :
 {
@@ -36,7 +51,7 @@ Request :
 
 Get topic details by Id
 
-GET : https://xenon-anvil-310308.appspot.com/api/discussions/1
+GET: https://xenon-anvil-310308.appspot.com/api/discussions/1
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -59,3 +74,58 @@ Request :
 Delete exisintg post (Current user can only edit post created by the same user, Selected post/reply and all replies under it will get deleted)
 
 DELETE: https://xenon-anvil-310308.appspot.com/api/discussions/1
+
+---------------------------------------------------------------------------------------------------------------------
+
+Like/Dislike Post (UpdatePostLikeStatus):
+
+POST: https://xenon-anvil-310308.appspot.com/api/discussions/UpdatePostLikeStatus
+
+Request:
+{
+    "DiscussionPostId" : 2,
+    "UserName" : "benosushil",
+    "IsLike" : true
+}
+
+# User
+
+Get User By User Name. This can be used for log in also
+
+GET: https://xenon-anvil-310308.appspot.com/api/users/benosushil => here benosushil is user name
+
+---------------------------------------------------------------------------------------------------------------------
+
+Search User 
+
+POST: https://xenon-anvil-310308.appspot.com/api/users/search
+
+Request (just a string): "beno"
+
+---------------------------------------------------------------------------------------------------------------------
+
+Create User: 
+
+POST: https://xenon-anvil-310308.appspot.com/api/users
+
+Request : 
+{
+    "userName": "benosushil",
+    "firstName": "Benedict",
+    "lastName": "Kumar",
+    "email": "ben@ben.com"
+}
+
+---------------------------------------------------------------------------------------------------------------------
+
+Edit User:
+
+PUT: url and request are same as of create user except http verb
+
+---------------------------------------------------------------------------------------------------------------------
+
+Delete User: 
+
+DELETE: https://xenon-anvil-310308.appspot.com/api/users/ben . Here ben is user name
+
+
