@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DiscussionPortal.Records
 {
@@ -13,5 +11,7 @@ namespace DiscussionPortal.Records
         public string UserName { get; set; }
 
         public bool IsLike { get; set; }
+
+        public DiscussionPostRecord DiscussionPost { get; set; }
     }
 }

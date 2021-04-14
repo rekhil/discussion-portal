@@ -16,7 +16,7 @@ namespace DiscussionPortal.DataAccess
 
         public IEnumerable<DiscussionPostRecord> GetAllTopics()
         {
-            return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Include("Tags");
+            return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Include("Tags").Include("Likes");
         }
 
         public int GetTotalTopicsCount()
@@ -27,22 +27,22 @@ namespace DiscussionPortal.DataAccess
         public IEnumerable<DiscussionPostRecord> SearchTopics(int pageNumber, int pageSize)
         {
             return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Skip((pageNumber - 1) * pageSize)
-                 .Take(pageSize).Include("Tags");
+                 .Take(pageSize).Include("Tags").Include("Likes");
         }
 
         public DiscussionPostRecord GetTopicDetailsByTopicId(long topicId)
         {
-            return _context.DiscussionPosts.FirstOrDefault(t => t.PostId == topicId);
+            return _context.DiscussionPosts.Where(t => t.PostId == topicId).Include("Tags").Include("Likes").FirstOrDefault();
         }
 
         public IEnumerable<DiscussionPostRecord> GetRepliesByparentId(long parentPostId)
         {
-            return _context.DiscussionPosts.Where(t => t.ParentPostId == parentPostId);
+            return _context.DiscussionPosts.Where(t => t.ParentPostId == parentPostId).Include("Tags").Include("Likes");
         }
 
         public DiscussionPostRecord GetPostDetailsByPostId(long postId)
         {
-            return _context.DiscussionPosts.FirstOrDefault(t => t.PostId == postId);
+            return _context.DiscussionPosts.Where(t => t.PostId == postId).Include("Tags").Include("Likes").FirstOrDefault();
         }
 
         public void CreatePost(DiscussionPostRecord postDetails)
@@ -137,7 +137,7 @@ namespace DiscussionPortal.DataAccess
         //DiscussionPostLike: Get
         public DiscussionPostLikeRecord GetDiscussionPostLike(string userName, long discussionPostId)
         {
-            return _context.DiscussionPostLikes.FirstOrDefault(t => (t.DiscussionPostId == discussionPostId) && (t.UserName == userName) );
+            return _context.DiscussionPostLikes.FirstOrDefault(t => (t.DiscussionPostId == discussionPostId) && (t.UserName == userName));
         }
     }
 }
