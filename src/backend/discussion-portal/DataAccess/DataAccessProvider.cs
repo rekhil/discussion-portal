@@ -18,7 +18,7 @@ namespace DiscussionPortal.DataAccess
             return _context.DiscussionPosts.ToList();
         }
 
-        public DiscussionPostRecord GetTopicDetailsByTopicId(string topicId)
+        public DiscussionPostRecord GetTopicDetailsByTopicId(long topicId)
         {
             return _context.DiscussionPosts.FirstOrDefault(t => t.PostId == topicId);
         }
@@ -35,7 +35,7 @@ namespace DiscussionPortal.DataAccess
             _context.SaveChanges();
         }
 
-        public void DeletePost(string postId)
+        public void DeletePost(long postId)
         {
             var entity = _context.DiscussionPosts.FirstOrDefault(t => t.PostId == postId);
             _context.DiscussionPosts.Remove(entity);

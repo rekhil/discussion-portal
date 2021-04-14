@@ -7,12 +7,12 @@ namespace DiscussionPortal.Handlers
     {
         IEnumerable<DiscussionPost> GetAllTopics();
 
-        DiscussionPost GetTopicDetailsByTopicId(string topicId);
+        DiscussionPost GetTopicDetailsByTopicId(long topicId);
 
         ResponseModel CreatePost(DiscussionPost postDetails);
 
-        ResponseModel UpdatePost(string postId, DiscussionPost postDetails);
+        ResponseModel UpdatePost(long postId, DiscussionPost postDetails);
 
-        ResponseModel DeletePost(string postId);
+        ResponseModel DeletePost(long postId);
     }
 }
