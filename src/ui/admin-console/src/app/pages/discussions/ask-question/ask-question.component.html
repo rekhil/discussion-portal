@@ -1,1 +1,13 @@
-<p>ask-question works!</p>
+<nb-card>
+  <nb-card-body>
+    <div fxLayout="column" fxLayoutGap="20px">
+      <b>Title</b>
+      <input type="text" [(ngModel)]="title" nbInput fullWidth placeholder="Enter title" fieldSize="large" class="title-input">
+      <div class="NgxEditor__Wrapper">
+        <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+        <ngx-editor [editor]="editor" [(ngModel)]="html" [editable]="true" [placeholder]="'Type here...'"></ngx-editor>
+      </div>
+      <button nbButton status="primary" type="button" (click)="postQuestion()">Post Question</button>
+    </div>
+  </nb-card-body>
+</nb-card>
