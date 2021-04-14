@@ -29,13 +29,12 @@ export class DetailsComponent implements OnInit {
       id: this.id,
       answer: {
         id: 11,
-        title: this.answer,
-        description: this.answer,
+        subject: this.answer,
+        postDescription: this.answer,
         voteCount: 5,
-        userInfo: {
-          createdOn: " 1 min ago",
-          createdBy: "Code Owner"
-        }
+        createdBy: "Code Owner",
+        createdOn: "2021-04-14 10:00:00",
+        lastUpdatedOn: "2021-04-14 10:00:00"
       }
     }
     this.discussionService.postAnswer(request);

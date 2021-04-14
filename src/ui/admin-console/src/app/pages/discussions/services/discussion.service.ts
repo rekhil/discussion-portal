@@ -31,7 +31,7 @@ export class DiscussionService {
     const questions = [...this.questions.value]
     questions.forEach(item => {
       if (item.id == request.id) {
-        item.threads.push(request.answer)
+        item.replyPosts.push(request.answer)
       }
     });
     this.questions.next(questions);
@@ -41,7 +41,7 @@ export class DiscussionService {
     const questions = [...this.questions.value]
     questions.forEach(item => {
       if (item.id == request.id) {
-        item.threads.forEach(e => {
+        item.replyPosts.forEach(e => {
           if (e.id == request.threadId) {
             e.voteCount += request.vote;
           }

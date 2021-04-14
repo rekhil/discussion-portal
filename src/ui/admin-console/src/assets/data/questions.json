@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -10,47 +10,43 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 11,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 12,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 13,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     },
     {
         "id": 2,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -58,47 +54,43 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 14,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 15,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 16,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     },
     {
         "id": 3,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -106,47 +98,43 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 17,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 18,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 19,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     },
     {
         "id": 4,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -154,47 +142,43 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 20,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 21,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 22,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     },
     {
         "id": 5,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -202,47 +186,43 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 23,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 24,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 25,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     },
     {
         "id": 6,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -250,47 +230,43 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 26,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 27,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 28,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     },
     {
         "id": 7,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -298,47 +274,43 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 29,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 30,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 31,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     },
     {
         "id": 8,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -346,47 +318,43 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 32,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 33,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 34,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     },
     {
         "id": 9,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -394,47 +362,43 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 35,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 36,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 37,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     },
     {
         "id": 10,
-        "title": "NodeJS request with range does not work with HTML5 video",
-        "description": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
+        "subject": "NodeJS request with range does not work with HTML5 video",
+        "postDescription": "I have implemented a request using nodejs to serve video with range support, backend looks like this: import",
         "voteCount": 5,
         "ansCount": 1,
         "tags": [
@@ -442,40 +406,36 @@
             "JavaScript",
             "CSS"
         ],
-        "userInfo": {
-            "createdOn": " 1 min ago",
-            "createdBy": "Code Owner"
-        },
-        "threads": [
+        "createdBy": "Code Owner",
+        "createdOn": "2021-04-14 10:00:00",
+        "lastUpdatedOn": "2021-04-14 10:00:00",
+        "replyPosts": [
             {
                 "id": 38,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 39,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             },
             {
                 "id": 40,
-                "title": "Consider the following code where you declare a variable",
-                "description": "But, when you try to declare a reference type, something different happens. Take the following code",
+                "subject": "Consider the following code where you declare a variable",
+                "postDescription": "But, when you try to declare a reference type, something different happens. Take the following code",
                 "voteCount": 5,
-                "userInfo": {
-                    "createdOn": " 1 min ago",
-                    "createdBy": "Code Owner"
-                }
+                "createdBy": "Code Owner",
+                "createdOn": "2021-04-14 10:00:00",
+                "lastUpdatedOn": "2021-04-14 10:00:00"
             }
         ]
     }

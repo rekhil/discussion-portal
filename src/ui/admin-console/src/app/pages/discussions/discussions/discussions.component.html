@@ -17,8 +17,8 @@
             </div>
         </div>
         <div fxFlex="85%" class="content">
-            <div class="title" (click)="goToDetails(question.id)">{{question.title}}</div>
-            <div class="description">{{question.description}}</div>
+            <div class="title" (click)="goToDetails(question.id)">{{question.subject}}</div>
+            <div class="description">{{question.postDescription}}</div>
             <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
                     <div class="tag" *ngFor="let tag of question.tags">
@@ -26,8 +26,8 @@
                     </div>
                 </div>
                 <div class="user-info">
-                    <div class="action-time">asked {{question.userInfo.createdOn}}</div>
-                    <div class="user-name">{{question.userInfo.createdBy}}</div>
+                    <div class="action-time">asked {{question.createdOn | date:'medium'}}</div>
+                    <div class="user-name">{{question.createdBy}}</div>
                 </div>
             </div>
         </div>
