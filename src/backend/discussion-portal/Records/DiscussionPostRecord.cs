@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DiscussionPortal.Records
 {
     public class DiscussionPostRecord
     {
         [Key]
-        public string PostId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long PostId { get; set; }
 
-        public string ParentPostId { get; set; }
+        public long? ParentPostId { get; set; }
 
         public string Subject { get; set; }
 
@@ -22,12 +25,12 @@ namespace DiscussionPortal.Records
 
         public DateTime? LastUpdatedOn { get; set; }
 
-        public int LikeCount { get; set; }
-
-        public int DisLikeCount { get; set; }
-
         public int ReplyCount { get; set; }
 
         public int Views { get; set; }
+
+        public List<DiscussionPostTagRecords> Tags { get; set; }
+
+        public List<DiscussionPostLikeRecords> Likes { get; set; }
     }
 }

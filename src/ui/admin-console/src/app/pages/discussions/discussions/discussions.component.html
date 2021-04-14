@@ -13,11 +13,11 @@
                 {{post.likeCount - post.dislikeCount}} votes
             </div>
             <div class="ans-count">
-                {{post.ansCount}} answers
+                {{post.replyCount}} replies
             </div>
         </div>
         <div fxFlex="85%" class="content">
-            <div class="title" (click)="goToDetails(post.id)">{{post.subject}}</div>
+            <div class="title" (click)="goToDetails(post.postId)">{{post.subject}}</div>
             <div class="description">{{post.postDescription}}</div>
             <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">

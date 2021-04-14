@@ -10,7 +10,7 @@ import { Editor, toHTML, toDoc } from 'ngx-editor';
 })
 export class DetailsComponent implements OnInit {
 
-  id: any;
+  postId: any;
   post: any;
   postDescription: string;
   title: string;
@@ -22,8 +22,8 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.editor = new Editor();
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id = params.get('id');
-      this.discussionService.getQuestionById(this.id).subscribe(data => {
+      this.postId = params.get('postId');
+      this.discussionService.getQuestionById(this.postId).subscribe(data => {
         this.post = data[0];
       });
     });
@@ -31,15 +31,15 @@ export class DetailsComponent implements OnInit {
 
   createPost() {
     const request = {
-      id: this.id,
+      postId: this.postId,
       post: {
-        id: 11,
+        postId: 11,
         subject: this.title,
         postDescription: this.reply.content[0].content[0].text,
         likeCount: 0,
         dislikeCount: 0,
         createdBy: "Code Owner",
-        createdOn: this.DateConverter(),
+        createdOn: this.dateConverter(),
         lastUpdatedOn: "2021-04-14 10:00:00"
       }
     }
@@ -47,7 +47,8 @@ export class DetailsComponent implements OnInit {
     this.title = '';
     this.reply = '';
   }
-    DateConverter() {
+
+  dateConverter() {
     let now = new Date();
     let year = "" + now.getFullYear();
     let month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
@@ -57,11 +58,12 @@ export class DetailsComponent implements OnInit {
     let second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
     return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
   }
+
   vote(like: boolean, threadId: any) {
     const request = {
       like: like,
       threadId: threadId,
-      id: this.id
+      postId: this.postId
     }
     this.discussionService.updateVote(request);
   }
@@ -72,6 +74,7 @@ export class DetailsComponent implements OnInit {
     console.log(this.reply);
     
   }
+
   ngOnDestroy(): void {
     this.editor.destroy();
   }

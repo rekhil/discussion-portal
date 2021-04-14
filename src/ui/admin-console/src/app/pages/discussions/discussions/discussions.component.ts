@@ -19,8 +19,8 @@ export class DiscussionsComponent implements OnInit {
     })
   }
 
-  goToDetails(id: any) {
-    this.router.navigate([`/pages/discussions/${id}`]);
+  goToDetails(postId: any) {
+    this.router.navigate([`/pages/discussions/${postId}`]);
   }
 
   askQuestion() {

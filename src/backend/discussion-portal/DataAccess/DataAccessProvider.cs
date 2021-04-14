@@ -1,4 +1,5 @@
 ﻿using DiscussionPortal.Records;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,12 +16,17 @@ namespace DiscussionPortal.DataAccess
 
         public IEnumerable<DiscussionPostRecord> GetAllTopics()
         {
-            return _context.DiscussionPosts.ToList();
+            return _context.DiscussionPosts.Where(x => x.IsTopic).Include("Tags").OrderByDescending(x => x.PostId).Include("Likes").ToList();
         }
 
-        public DiscussionPostRecord GetTopicDetailsByTopicId(string topicId)
+        public DiscussionPostRecord GetTopicDetailsByTopicId(long topicId)
         {
             return _context.DiscussionPosts.FirstOrDefault(t => t.PostId == topicId);
+        }
+
+        public DiscussionPostRecord GetPostDetailsByPostId(long postId)
+        {
+            return _context.DiscussionPosts.FirstOrDefault(t => t.PostId == postId);
         }
 
         public void CreatePost(DiscussionPostRecord postDetails)
@@ -35,10 +41,16 @@ namespace DiscussionPortal.DataAccess
             _context.SaveChanges();
         }
 
-        public void DeletePost(string postId)
+        public void DeletePost(long postId)
         {
             var entity = _context.DiscussionPosts.FirstOrDefault(t => t.PostId == postId);
             _context.DiscussionPosts.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public void CreatePostTag(List<DiscussionPostTagRecords> discussionPostTagRecords)
+        {
+            _context.DiscussionPostTags.AddRange(discussionPostTagRecords);
             _context.SaveChanges();
         }
     }

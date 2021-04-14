@@ -23,7 +23,7 @@ namespace discussion_portal.Controllers
         }
 
         [HttpGet("{topicId}")]
-        public DiscussionPost Get(string topicId)
+        public DiscussionPost Get(long topicId)
         {
             return _discussionsHandler.GetTopicDetailsByTopicId(topicId);
         }
@@ -35,13 +35,13 @@ namespace discussion_portal.Controllers
         }
 
         [HttpPut("{postId}")]
-        public ResponseModel Put(string postId, [FromBody] DiscussionPost postDetails)
+        public ResponseModel Put(long postId, [FromBody] DiscussionPost postDetails)
         {
             return _discussionsHandler.UpdatePost(postId, postDetails);
         }
 
         [HttpDelete("{postId}")]
-        public ResponseModel Delete(string postId)
+        public ResponseModel Delete(long postId)
         {
             return _discussionsHandler.DeletePost(postId);
         }

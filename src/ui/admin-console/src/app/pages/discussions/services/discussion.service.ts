@@ -23,14 +23,14 @@ export class DiscussionService {
 
   getQuestionById(postId: any): Observable<any> {
     return this.posts$.pipe(map<any[], any>(posts => {
-      return posts.filter(item => item.id == postId)
+      return posts.filter(item => item.postId == postId)
     }))
   }
 
   createPost(request: any): void {
     const posts = [...this.posts.value]
     posts.forEach(item => {
-      if (item.id == request.id) {
+      if (item.postId == request.postId) {
         item.replyPosts.push(request.post)
       }
     });
@@ -40,9 +40,9 @@ export class DiscussionService {
   updateVote(request: any): void {
     const posts = [...this.posts.value]
     posts.forEach(item => {
-      if (item.id == request.id) {
+      if (item.postId == request.postId) {
         item.replyPosts.forEach(e => {
-          if (e.id == request.threadId) {
+          if (e.postId == request.threadId) {
             if (request.like) {
               e.likeCount += 1;
             } else {
