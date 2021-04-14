@@ -35,7 +35,7 @@ GET : https://xenon-anvil-310308.appspot.com/api/discussions/1
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Update existing post
+Update existing post (Current user can only update post created by the same user)
 
 PUT: https://xenon-anvil-310308.appspot.com/api/discussions/1
 
@@ -51,6 +51,6 @@ Request :
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Delete exisintg post (Selected post/reply and all replies under it will get deleted)
+Delete exisintg post (Current user can only update post created by the same user, Selected post/reply and all replies under it will get deleted)
 
 DELETE: https://xenon-anvil-310308.appspot.com/api/discussions/1
