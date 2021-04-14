@@ -25,6 +25,37 @@ namespace DiscussionPortal.Handlers
             return discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
         }
 
+        public TopicListSearchResult SearchTopics(SearchFilter topicSearchFilter)
+        {
+            var searchResult = new TopicListSearchResult
+            {
+                TotalItemCount = _dataAccessProvider.GetTotalTopicsCount()
+            };
+
+            if (topicSearchFilter.PageNumber.GetValueOrDefault() <= 0)
+                topicSearchFilter.PageNumber = 1;
+
+            if (topicSearchFilter.PageSize.GetValueOrDefault() <= 0)
+                topicSearchFilter.PageSize = 20;
+
+            var pageCount = searchResult.TotalItemCount / topicSearchFilter.PageSize;
+
+            searchResult.TotalPageCount = searchResult.TotalItemCount % topicSearchFilter.PageSize == 0 ? pageCount.Value : pageCount.Value + 1;
+
+            if (searchResult.TotalPageCount < topicSearchFilter.PageNumber)
+                topicSearchFilter.PageNumber = 1;
+
+            var discussionList = _dataAccessProvider.SearchTopics(topicSearchFilter.PageNumber.Value, topicSearchFilter.PageSize.Value);
+
+            searchResult.TopicList = discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
+
+            searchResult.PageSize = topicSearchFilter.PageSize.Value;
+
+            searchResult.CurrentPage = topicSearchFilter.PageNumber.Value;
+
+            return searchResult;
+        }
+
         public DiscussionPost GetTopicDetailsByTopicId(long topicId)
         {
             var discussion = _dataAccessProvider.GetTopicDetailsByTopicId(topicId);
@@ -38,7 +69,7 @@ namespace DiscussionPortal.Handlers
 
         private void SetReplyPosts(DiscussionPost discussionPost)
         {
-            var replyPosts = _dataAccessProvider.GetRepliesByparentId(discussionPost.PostId);
+            var replyPosts = _dataAccessProvider.GetRepliesByParentId(discussionPost.PostId);
 
             if (replyPosts?.Any() != true)
                 return;
@@ -133,6 +164,74 @@ namespace DiscussionPortal.Handlers
                 return new ResponseModel
                 {
                     Id = postId,
+                    IsSuccess = false,
+                    StatusCode = HttpStatusCode.InternalServerError,
+                    Error = ex.Message
+                };
+            }
+        }
+
+        //Used when a user likes/dislikes a post. Creates/Updates DiscussionPostLikes table
+        public ResponseModel UpdatePostLikeStatus(UpdatePostLikeStatusInputModel updatePostLikeStatusInputModel)
+        {
+            try
+            {
+                //Check if userName exists
+                var userCheck = _dataAccessProvider.FindUser(updatePostLikeStatusInputModel.UserName);
+                if (userCheck == null)
+                {
+                    throw new ArgumentException(string.Format("Username {0} does not exist in Db", updatePostLikeStatusInputModel.UserName));
+                }
+
+                //Check if DiscussionPostId exists
+                var discussionPostCheck = _dataAccessProvider.GetPostDetailsByPostId(updatePostLikeStatusInputModel.DiscussionPostId);
+                if(discussionPostCheck == null)
+                {
+                    throw new ArgumentException(string.Format("DiscussionPostId {0} does not exist in Db", updatePostLikeStatusInputModel.DiscussionPostId));
+                }
+
+                //Get DiscussionPostLike data
+                var discussionPostLike = _dataAccessProvider.GetDiscussionPostLike(updatePostLikeStatusInputModel.UserName, updatePostLikeStatusInputModel.DiscussionPostId);
+
+                if(discussionPostLike == null)
+                {
+                    //Add a row in DiscussionPostLikes table
+                    DiscussionPostLikeRecord newRecord = new DiscussionPostLikeRecord()
+                    {
+                        DiscussionPostId = updatePostLikeStatusInputModel.DiscussionPostId,
+                        UserName = updatePostLikeStatusInputModel.UserName,
+                        IsLike = updatePostLikeStatusInputModel.IsLike
+                    };
+
+                    try
+                    {
+                        _dataAccessProvider.CreateDiscussionPostLike(newRecord);
+                    }
+                    catch(Exception ex)
+                    {
+                        throw new ArgumentException("Error occurred while Creating DiscussionPostLike record", ex.Message);
+                    }
+                    
+                }
+                else
+                {
+                    //Update IsLike value for that DiscussionPostLike row
+                    discussionPostLike.IsLike = updatePostLikeStatusInputModel.IsLike;
+                    _dataAccessProvider.UpdateDiscussionPostLike(discussionPostLike);
+                }
+
+                return new ResponseModel
+                {
+                    Id = updatePostLikeStatusInputModel.DiscussionPostId,
+                    IsSuccess = true,
+                    StatusCode = HttpStatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseModel
+                {
+                    Id = updatePostLikeStatusInputModel.DiscussionPostId,
                     IsSuccess = false,
                     StatusCode = HttpStatusCode.InternalServerError,
                     Error = ex.Message

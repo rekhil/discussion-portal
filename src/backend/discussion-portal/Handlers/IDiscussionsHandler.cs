@@ -7,6 +7,8 @@ namespace DiscussionPortal.Handlers
     {
         IEnumerable<DiscussionPost> GetAllTopics();
 
+        TopicListSearchResult SearchTopics(SearchFilter topicSearchFilter);
+
         DiscussionPost GetTopicDetailsByTopicId(long topicId);
 
         ResponseModel CreatePost(DiscussionPost postDetails);
@@ -14,5 +16,7 @@ namespace DiscussionPortal.Handlers
         ResponseModel UpdatePost(long postId, DiscussionPost postDetails);
 
         ResponseModel DeletePost(long postId);
+
+        ResponseModel UpdatePostLikeStatus(UpdatePostLikeStatusInputModel updatePostLikeStatusInputModel);
     }
 }
