@@ -28,10 +28,8 @@ export class DiscussionService {
     }))
   }
 
-  createPost(request: any): void {
-    this.http.post(this.baseUrl + 'discussions', request).subscribe(data => {
-      this.searchPosts();
-    });
+  createPost(request: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'discussions', request);
   }
 
   updatePost(request: any, id: number) {
