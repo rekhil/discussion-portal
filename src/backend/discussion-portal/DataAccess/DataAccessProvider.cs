@@ -56,5 +56,33 @@ namespace DiscussionPortal.DataAccess
             _context.DiscussionPostTags.AddRange(discussionPostTagRecords);
             _context.SaveChanges();
         }
+
+        //DiscussionPostLike: Create
+        public void CreateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike)
+        {
+            _context.DiscussionPostLikes.Add(discussionPostLike);
+            _context.SaveChanges();
+        }
+
+        //DiscussionPostLike: Update
+        public void UpdateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike)
+        {
+            _context.DiscussionPostLikes.Update(discussionPostLike);
+            _context.SaveChanges();
+        }
+
+        //DiscussionPostLike: Delete
+        public void DeleteDiscussionPostLike(string userName, long discussionPostId)
+        {
+            var entity = _context.DiscussionPostLikes.FirstOrDefault(t => (t.DiscussionPostId == discussionPostId) && (t.UserName == userName));
+            _context.DiscussionPostLikes.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        //DiscussionPostLike: Get
+        public DiscussionPostLikeRecord GetDiscussionPostLike(string userName, long discussionPostId)
+        {
+            return _context.DiscussionPostLikes.FirstOrDefault(t => (t.DiscussionPostId == discussionPostId) && (t.UserName == userName) );
+        }
     }
 }

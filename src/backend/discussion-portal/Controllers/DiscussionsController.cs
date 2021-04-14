@@ -45,5 +45,12 @@ namespace discussion_portal.Controllers
         {
             return _discussionsHandler.DeletePost(postId);
         }
+
+        [HttpPost]
+        [Route("UpdatePostLikeStatus")]
+        public void UpdatePostLikeStatus([FromBody] UpdatePostLikeStatusInputModel updatePostLikeStatusInputModel)
+        {
+            _discussionsHandler.UpdatePostLikeStatus(updatePostLikeStatusInputModel);
+        }
     }
 }

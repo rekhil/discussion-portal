@@ -18,5 +18,12 @@ namespace DiscussionPortal.DataAccess
         void DeletePost(long postId);
 
         void CreatePostTag(List<DiscussionPostTagRecords> discussionPostTagRecords);
+
+        //Methods for DiscussionPostLikes
+        void CreateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike);
+        void UpdateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike);
+        void DeleteDiscussionPostLike(string userName, long discussionPostId);
+
+        DiscussionPostLikeRecord GetDiscussionPostLike(string userName, long discussionPostId);
     }
 }
