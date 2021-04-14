@@ -6,13 +6,13 @@ namespace discussion_portal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DicussionsController : ControllerBase
+    public class DiscussionsController : ControllerBase
     {
         [HttpGet]
         public ActionResult<IEnumerable<DiscussionPost>> Get()
         {
             return new List<DiscussionPost> {
-                new DiscussionPost{ Subject = "Test1", PostDescription = "Test Descripton1" },
+                new DiscussionPost{ Subject = "TestABC", PostDescription = "Test Descripton1" },
                 new DiscussionPost{ Subject = "Test2", PostDescription = "Test Descripton2" }
             };
         }
