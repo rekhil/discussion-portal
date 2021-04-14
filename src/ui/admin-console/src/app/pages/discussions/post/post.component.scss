@@ -1,0 +1,51 @@
+.post-wrapper {
+    padding-bottom: 15px;
+    .thread {
+        margin: 15px 0;
+        padding: 15px 0;
+        .vote-count {
+            font-size: 11px;
+            text-align: center;
+        }
+        .thread-content {
+            .thread-title {
+                color: #0077cc;
+                font-size: 16px;
+                font-weight: 400;
+                cursor: pointer;
+            }
+            .user-info {
+                .action-time {
+                    color: #848d95;
+                    font-size: 12px;
+                }
+                .user-name {
+                    color: #0077cc;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+    .vote nb-icon {
+        font-size: 3em;
+        cursor: pointer;
+    }
+    .replies-wrapper {
+        .replies {
+            margin-left: 20px;
+        }
+        .reply-btn {
+            background: none;
+            border: 0;
+            font-size: 12px;
+            color: #0077cc;
+            outline: none;
+        }
+    }
+    .post-section {
+        border-bottom: 1px solid #b1b1b1;
+    }
+    .post-section:last-of-type {
+        border-bottom: 0;
+    }
+}

@@ -19,6 +19,7 @@ import {
 import { DetailsComponent } from './details/details.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { NgxEditorModule } from 'ngx-editor';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NgxEditorModule } from 'ngx-editor';
     DiscussionsComponent,
     FilterComponent,
     DetailsComponent,
-    AskQuestionComponent
+    AskQuestionComponent,
+    PostComponent
   ],
   imports: [
     CommonModule,

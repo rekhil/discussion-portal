@@ -23,7 +23,19 @@
                 "dislikeCount": 3,
                 "createdBy": "Code Owner",
                 "createdOn": "2021-04-14 10:00:00",
-                "lastUpdatedOn": "2021-04-14 10:00:00"
+                "lastUpdatedOn": "2021-04-14 10:00:00",
+                "replyPosts": [
+                    {
+                        "id": 41,
+                        "subject": "Reply nested post",
+                        "postDescription": "Reply nested post",
+                        "likeCount": 5,
+                        "dislikeCount": 3,
+                        "createdBy": "Code Owner",
+                        "createdOn": "2021-04-14 10:00:00",
+                        "lastUpdatedOn": "2021-04-14 10:00:00"
+                    }
+                ]
             },
             {
                 "id": 12,
