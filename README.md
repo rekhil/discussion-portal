@@ -4,11 +4,12 @@ Discussion portals are key to speed-up the communication across communities of p
 This project was generated with Angular CLI version 8.0.2.
 
 # API Details 
-
+---------------------------------------------------------------------------------------------------------------------
 Get all topic list
 
 GET : https://xenon-anvil-310308.appspot.com/api/discussions
 
+---------------------------------------------------------------------------------------------------------------------
 
 Create new post (topic/reply)
 
@@ -22,11 +23,13 @@ Request :
    "createdBy":"rekhil"
 }
 
+---------------------------------------------------------------------------------------------------------------------
 
 Get topic details by Id
 
 GET : https://xenon-anvil-310308.appspot.com/api/discussions/1
 
+---------------------------------------------------------------------------------------------------------------------
 
 Update existing post
 
@@ -38,6 +41,7 @@ Request :
    "postDescription":"Description"
 }
 
+---------------------------------------------------------------------------------------------------------------------
 
 Delete exisintg post (Selected post/reply and all replies under it will get deleted)
 
