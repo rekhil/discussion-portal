@@ -47,5 +47,27 @@ namespace DiscussionPortal.Helper
                 Tags = record.Tags?.Select(x => x.Tag)?.ToArray()
             };
         }
+
+        public static UserDto MapUserToRecord(this User user)
+        {
+            return new UserDto
+            {
+                UserName = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+        }
+
+        public static User MapRecordToUser(this UserDto userRecord)
+        {
+            return new User
+            {
+                UserName = userRecord.UserName,
+                FirstName = userRecord.FirstName,
+                LastName = userRecord.LastName,
+                Email = userRecord.Email
+            };
+        }
     }
 }
