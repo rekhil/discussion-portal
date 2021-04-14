@@ -1,68 +1,68 @@
 export const users: any[] = [
     {
-      userID: 1,
-      name: 'Leanne Graham',
-      email: 'Sincere@april.biz',
-      status: 'ACTIVE'
+      userName: 'lGraham',
+      firstName: 'Leanne',
+      lastName: 'Graham',
+      email: 'Sincere@april.biz'
     },
     {
-      userID: 2,
-      name: 'Ervin Howell',
-      email: 'Shanna@melissa.tv',
-      status: 'ACTIVE'
+      userName: 'ervinHowell',
+      firstName: 'Ervin',
+      lastName: 'Howell',
+      email: 'Shanna@melissa.tv'
     },
     {
-      userID: 3,
-      name: 'Clementine Bauch',
-      email: 'Nathan@yesenia.net',
-      status: 'ACTIVE'
+      userName: 'cBau',
+      firstName: 'Clementine',
+      lastName: 'Bauch',
+      email: 'Nathan@yesenia.net'
     },
     {
-      userID: 4,
-      name: 'Patricia Lebsack',
-      email: 'Julianne.OConner@kory.org',
-      status: 'ACTIVE'
+      userName: 'PatriciaL',
+      firstName: 'Patricia',
+      lastName: 'Lebsack',
+      email: 'Julianne.OConner@kory.org'
     },
     {
-      userID: 5,
-      name: 'Chelsey Dietrich',
-      email: 'Lucio_Hettinger@annie.ca',
-      status: 'ACTIVE'
+      userName: 'ChelseyD',
+      firstName: 'Chelsey',
+      lastName: 'Dietrich',
+      email: 'Lucio_Hettinger@annie.ca'
     },
     {
-      userID: 6,
-      name: 'Mrs. Dennis Schulist',
-      email: 'Karley_Dach@jasper.info',
-      status: 'ACTIVE'
+      userName: 'DennisSc',
+      firstName: 'Dennis',
+      lastName: 'Schulist',
+      email: 'Karley_Dach@jasper.info'
     },
     {
-      userID: 7,
-      name: 'Kurtis Weissnat',
-      email: 'Telly.Hoeger@billy.biz',
-      status: 'ACTIVE'
+      userName: 'Kurt',
+      firstName: 'Kurtis',
+      lastName: 'Weissnat',
+      email: 'Telly.Hoeger@billy.biz'
     },
     {
-      userID: 8,
-      name: 'Nicholas Runolfsdottir V',
-      email: 'Sherwood@rosamond.me',
-      status: 'ACTIVE'
+      userName: 'nick',
+      firstName: 'Nicholas',
+      lastName: 'Runolfsdottir',
+      email: 'Sherwood@rosamond.me'
     },
     {
-      userID: 9,
-      name: 'Glenna Reichert',
-      email: 'Chaim_McDermott@dana.io',
-      status: 'ACTIVE'
+      userName: 'Glenna',
+      firstName: 'Glenna',
+      lastName: 'Reichert',
+      email: 'Chaim_McDermott@dana.io'
     },
     {
-      userID: 10,
-      name: 'Clementina DuBuque',
-      email: 'Rey.Padberg@karina.biz',
-      status: 'ACTIVE'
+      userName: 'ClementinaDu',
+      firstName: 'Clementina',
+      lastName: 'DuBuque',
+      email: 'Rey.Padberg@karina.biz'
     },
     {
-      userID: 11,
-      name: 'Nicholas DuBuque',
-      email: 'Rey.Padberg@rosamond.biz',
-      status: 'ACTIVE'
+      userName: 'Nicholas1',
+      firstName: 'Nicholas',
+      lastName: 'DuBuque',
+      email: 'Rey.Padberg@rosamond.biz'
     }
 ];
