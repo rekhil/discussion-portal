@@ -8,38 +8,38 @@ import { map } from 'rxjs/operators';
 })
 export class DiscussionService {
 
-  private questions = new BehaviorSubject<any>([]);
-  public questions$ = this.questions.asObservable();
+  private posts = new BehaviorSubject<any>([]);
+  public posts$ = this.posts.asObservable();
 
   constructor(private http: HttpClient) {
-    this.searchQuestions();
+    this.searchPosts();
   }
 
-  searchQuestions() {
-    this.http.get('assets/data/questions.json').subscribe(data => {
-      this.questions.next(data);
+  searchPosts() {
+    this.http.get('assets/data/posts.json').subscribe(data => {
+      this.posts.next(data);
     })
   }
 
-  getQuestionById(questionId: any): Observable<any> {
-    return this.questions$.pipe(map<any[], any>(questions => {
-      return questions.filter(item => item.id == questionId)
+  getQuestionById(postId: any): Observable<any> {
+    return this.posts$.pipe(map<any[], any>(posts => {
+      return posts.filter(item => item.id == postId)
     }))
   }
 
-  postAnswer(request: any): void {
-    const questions = [...this.questions.value]
-    questions.forEach(item => {
+  createPost(request: any): void {
+    const posts = [...this.posts.value]
+    posts.forEach(item => {
       if (item.id == request.id) {
-        item.replyPosts.push(request.answer)
+        item.replyPosts.push(request.post)
       }
     });
-    this.questions.next(questions);
+    this.posts.next(posts);
   }
 
   updateVote(request: any): void {
-    const questions = [...this.questions.value]
-    questions.forEach(item => {
+    const posts = [...this.posts.value]
+    posts.forEach(item => {
       if (item.id == request.id) {
         item.replyPosts.forEach(e => {
           if (e.id == request.threadId) {
@@ -48,6 +48,6 @@ export class DiscussionService {
         })
       }
     });
-    this.questions.next(questions);
+    this.posts.next(posts);
   }
 }

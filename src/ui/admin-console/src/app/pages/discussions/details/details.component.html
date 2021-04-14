@@ -1,23 +1,23 @@
-<div class="details-wrapper" *ngIf="question">
+<div class="details-wrapper" *ngIf="post">
     <div class="header">
-        <div class="title">{{question.subject}}</div>
+        <div class="title">{{post.subject}}</div>
         <div class="user-info" fxLayout="row" fxLayoutAlign="space-between">
-            <div class="action-time">asked {{question.createdOn | date:'medium'}}</div>
-            <div class="user-name">{{question.createdBy}}</div>
+            <div class="action-time">asked {{post.createdOn | date:'medium'}}</div>
+            <div class="user-name">{{post.createdBy}}</div>
         </div>
     </div>
-    <div class="description">{{question.postDescription}}</div>
+    <div class="description">{{post.postDescription}}</div>
     <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
         <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
-            <div class="tag" *ngFor="let tag of question.tags">
+            <div class="tag" *ngFor="let tag of post.tags">
                 {{tag}}
             </div>
         </div>
     </div>
     <div class="thread-wrapper">
-        <div class="thread-count">{{question.replyPosts.length}} Answers</div>
+        <div class="thread-count">{{post.replyPosts.length}} Replies</div>
         <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="thread"
-            *ngFor="let thread of question.replyPosts">
+            *ngFor="let thread of post.replyPosts">
             <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
                 <div class="vote" (click)="vote(1, thread.id)">
                     <nb-icon icon="arrow-up-outline" pack="eva"></nb-icon>
@@ -34,8 +34,8 @@
                 <div class="thread-description">{{thread.postDescription}}</div>
                 <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
                     <div class="user-info">
-                        <div class="action-time">answered {{thread.createdOn | date:'medium'}}</div>
-                        <div class="user-name">{{thread.createdBy}}</div>
+                        <div class="action-time">posted on {{thread.createdOn | date:'medium'}}</div>
+                        <div class="user-name">by {{thread.createdBy}}</div>
                     </div>
                 </div>
             </div>
@@ -44,10 +44,10 @@
     <div class="comment-section" fxLayout="column">
         <div class="comment-title">Your Answer</div>
         <div class="editor">
-            <textarea [(ngModel)]="answer"></textarea>
+            <textarea [(ngModel)]="postDescription"></textarea>
         </div>
         <div class="actions">
-            <button type="button" (click)="post()">Post Your Answer</button>
+            <button type="button" (click)="createPost()">Post Your Answer</button>
         </div>
     </div>
 </div>

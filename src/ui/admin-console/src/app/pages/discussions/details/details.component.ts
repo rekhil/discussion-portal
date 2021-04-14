@@ -10,8 +10,8 @@ import { DiscussionService } from '../services/discussion.service';
 export class DetailsComponent implements OnInit {
 
   id: any;
-  question: any;
-  answer: string;
+  post: any;
+  postDescription: string;
 
   constructor(private route: ActivatedRoute, private discussionService: DiscussionService) { }
 
@@ -19,26 +19,26 @@ export class DetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = params.get('id');
       this.discussionService.getQuestionById(this.id).subscribe(data => {
-        this.question = data[0];
+        this.post = data[0];
       });
     });
   }
 
-  post() {
+  createPost() {
     const request = {
       id: this.id,
-      answer: {
+      post: {
         id: 11,
-        subject: this.answer,
-        postDescription: this.answer,
+        subject: this.postDescription,
+        postDescription: this.postDescription,
         voteCount: 5,
         createdBy: "Code Owner",
         createdOn: "2021-04-14 10:00:00",
         lastUpdatedOn: "2021-04-14 10:00:00"
       }
     }
-    this.discussionService.postAnswer(request);
-    this.answer = '';
+    this.discussionService.createPost(request);
+    this.postDescription = '';
   }
 
   vote(vote: number, threadId: any) {

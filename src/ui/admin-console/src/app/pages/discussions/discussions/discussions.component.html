@@ -1,33 +1,33 @@
 <div class="disc-wrapper">
     <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="header-title">All Questions</div>
+        <div class="header-title">All Posts</div>
         <div class="header-actions">
             <button type="button" (click)="askQuestion()">Ask Question</button>
         </div>
     </div>
     <ngx-filter></ngx-filter>
     <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="question"
-        *ngFor="let question of questions">
+        *ngFor="let post of posts">
         <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
             <div class="vote-count">
-                {{question.voteCount}} votes
+                {{post.voteCount}} votes
             </div>
             <div class="ans-count">
-                {{question.ansCount}} answers
+                {{post.ansCount}} answers
             </div>
         </div>
         <div fxFlex="85%" class="content">
-            <div class="title" (click)="goToDetails(question.id)">{{question.subject}}</div>
-            <div class="description">{{question.postDescription}}</div>
+            <div class="title" (click)="goToDetails(post.id)">{{post.subject}}</div>
+            <div class="description">{{post.postDescription}}</div>
             <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
-                    <div class="tag" *ngFor="let tag of question.tags">
+                    <div class="tag" *ngFor="let tag of post.tags">
                         {{tag}}
                     </div>
                 </div>
                 <div class="user-info">
-                    <div class="action-time">asked {{question.createdOn | date:'medium'}}</div>
-                    <div class="user-name">{{question.createdBy}}</div>
+                    <div class="action-time">asked {{post.createdOn | date:'medium'}}</div>
+                    <div class="user-name">{{post.createdBy}}</div>
                 </div>
             </div>
         </div>

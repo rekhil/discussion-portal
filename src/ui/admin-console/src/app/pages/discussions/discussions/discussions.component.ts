@@ -9,13 +9,13 @@ import { DiscussionService } from '../services/discussion.service';
 })
 export class DiscussionsComponent implements OnInit {
 
-  public questions: any[];
+  public posts: any[];
 
   constructor(private discussionService: DiscussionService, private router: Router) { }
 
   ngOnInit(): void {
-    this.discussionService.questions$.subscribe(data => {
-      this.questions = data;
+    this.discussionService.posts$.subscribe(data => {
+      this.posts = data;
     })
   }
 

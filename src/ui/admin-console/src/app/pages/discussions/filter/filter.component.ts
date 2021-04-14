@@ -8,15 +8,15 @@ import { DiscussionService } from '../services/discussion.service';
 })
 export class FilterComponent implements OnInit {
 
-  public qnCount: number;
+  public postCount: number;
   public filterBy: any;
   public showSettings: boolean;
 
   constructor(private discussionService: DiscussionService) { }
 
   ngOnInit(): void {
-    this.discussionService.questions$.subscribe(data => {
-      this.qnCount = data.length;
+    this.discussionService.posts$.subscribe(data => {
+      this.postCount = data.length;
     })
   }
 
