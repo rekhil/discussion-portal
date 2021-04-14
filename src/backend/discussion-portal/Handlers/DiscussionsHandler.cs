@@ -69,7 +69,7 @@ namespace DiscussionPortal.Handlers
 
         private void SetReplyPosts(DiscussionPost discussionPost)
         {
-            var replyPosts = _dataAccessProvider.GetRepliesByparentId(discussionPost.PostId);
+            var replyPosts = _dataAccessProvider.GetRepliesByParentId(discussionPost.PostId);
 
             if (replyPosts?.Any() != true)
                 return;

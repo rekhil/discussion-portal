@@ -1,5 +1,6 @@
 ﻿using DiscussionPortal.Records;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,7 +36,7 @@ namespace DiscussionPortal.DataAccess
             return _context.DiscussionPosts.Where(t => t.PostId == topicId).Include("Tags").Include("Likes").FirstOrDefault();
         }
 
-        public IEnumerable<DiscussionPostRecord> GetRepliesByparentId(long parentPostId)
+        public IEnumerable<DiscussionPostRecord> GetRepliesByParentId(long parentPostId)
         {
             return _context.DiscussionPosts.Where(t => t.ParentPostId == parentPostId).Include("Tags").Include("Likes");
         }
@@ -48,7 +49,24 @@ namespace DiscussionPortal.DataAccess
         public void CreatePost(DiscussionPostRecord postDetails)
         {
             _context.DiscussionPosts.Add(postDetails);
+
+            IncreaseParentReplyCount(postDetails);
+
             _context.SaveChanges();
+        }
+
+        private void IncreaseParentReplyCount(DiscussionPostRecord post)
+        {
+            if (post.ParentPostId.GetValueOrDefault() > 0)
+            {
+                var parentPost = GetPostDetailsByPostId(post.ParentPostId.Value);
+
+                parentPost.ReplyCount += 1;
+
+                _context.DiscussionPosts.Update(parentPost);
+
+                IncreaseParentReplyCount(parentPost);
+            }
         }
 
         public void UpdatePost(DiscussionPostRecord postDetails)
@@ -60,8 +78,70 @@ namespace DiscussionPortal.DataAccess
         public void DeletePost(long postId)
         {
             var entity = _context.DiscussionPosts.FirstOrDefault(t => t.PostId == postId);
+
+            var parentEntities = new List<DiscussionPostRecord>();
+
+            PopulateParentList(entity, parentEntities);
+
+            RemoveRelations(postId);
+
             _context.DiscussionPosts.Remove(entity);
+
+            DecreaseReplyCount(parentEntities);
+
+            DeleteReplyPosts(entity, parentEntities);
+
             _context.SaveChanges();
+        }
+
+        private void PopulateParentList(DiscussionPostRecord entity, List<DiscussionPostRecord> parentEntities)
+        {
+            if (entity.ParentPostId.GetValueOrDefault() > 0)
+            {
+                var parent = GetPostDetailsByPostId(entity.ParentPostId.Value);
+
+                parentEntities.Add(parent);
+
+                PopulateParentList(parent, parentEntities);
+            }
+        }
+
+        private void DecreaseReplyCount(List<DiscussionPostRecord> parentEntities)
+        {
+            parentEntities.ForEach(x =>
+            {
+                x.ReplyCount -= 1;
+                _context.DiscussionPosts.Update(x);
+            });
+        }
+
+        private void RemoveRelations(long postId)
+        {
+            var tags = _context.DiscussionPostTags.Where(x => x.DiscussionPostId == postId);
+
+            foreach (var tag in tags)
+                _context.DiscussionPostTags.Remove(tag);
+
+            var likes = _context.DiscussionPostLikes.Where(x => x.DiscussionPostId == postId);
+
+            foreach (var like in likes)
+                _context.DiscussionPostLikes.Remove(like);
+        }
+
+        private void DeleteReplyPosts(DiscussionPostRecord postDetails, List<DiscussionPostRecord> parentEntities)
+        {
+            var children = _context.DiscussionPosts.Where(t => t.ParentPostId == postDetails.PostId).ToList();
+
+            if (children?.Any() != true)
+                return;
+
+            children.ForEach(x =>
+            {
+                RemoveRelations(x.PostId);
+                _context.DiscussionPosts.Remove(x);
+                DecreaseReplyCount(parentEntities);
+                DeleteReplyPosts(x, parentEntities);
+            });
         }
 
         public void CreatePostTag(List<DiscussionPostTagRecord> discussionPostTagRecords)
