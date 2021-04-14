@@ -10,13 +10,14 @@ export class DiscussionService {
 
   private posts = new BehaviorSubject<any>([]);
   public posts$ = this.posts.asObservable();
+  private baseUrl = 'https://xenon-anvil-310308.appspot.com/api/';
 
   constructor(private http: HttpClient) {
     this.searchPosts();
   }
 
   searchPosts() {
-    this.http.get('assets/data/posts.json').subscribe(data => {
+    this.http.get(this.baseUrl + 'discussions').subscribe(data => {
       this.posts.next(data);
     })
   }
@@ -28,13 +29,15 @@ export class DiscussionService {
   }
 
   createPost(request: any): void {
-    const posts = [...this.posts.value]
-    posts.forEach(item => {
-      if (item.postId == request.postId) {
-        item.replyPosts.push(request.post)
-      }
+    this.http.post(this.baseUrl + 'discussions', request).subscribe(data => {
+      this.searchPosts();
     });
-    this.posts.next(posts);
+  }
+
+  updatePost(request: any, id: number) {
+    this.http.put(this.baseUrl + 'discussions/' + id, request).subscribe(data => {
+      this.searchPosts();
+    })
   }
 
   updateVote(request: any): void {
@@ -46,7 +49,7 @@ export class DiscussionService {
             if (request.like) {
               e.likeCount += 1;
             } else {
-              e.dislikeCount += 1;
+              e.disLikeCount += 1;
             }
           }
         })

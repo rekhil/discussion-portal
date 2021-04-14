@@ -5,7 +5,7 @@
                 <nb-icon icon="arrow-up-outline" pack="eva"></nb-icon>
             </div>
             <div class="vote-count">
-                {{thread.likeCount - thread.dislikeCount}} votes
+                {{thread.likeCount - thread.disLikeCount}} votes
             </div>
             <div class="vote" (click)="vote(false, thread.postId)">
                 <nb-icon icon="arrow-down-outline" pack="eva"></nb-icon>
@@ -26,7 +26,7 @@
         <button class="reply-btn" type="button" (click)="showChildNodes = !showChildNodes">
             {{thread.replyPosts?.length}} Replies
         </button>
-        <div *ngIf="showChildNodes" class="replies">
+        <div *ngIf="showChildNodes && thread.replyPosts" class="replies">
             <div class="post-section" *ngFor="let post of thread.replyPosts">
                 <ngx-post [parentPostId]="thread.postId" [thread]="post"></ngx-post>
             </div>

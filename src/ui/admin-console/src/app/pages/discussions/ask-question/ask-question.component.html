@@ -7,14 +7,15 @@
       <b>Body</b>
       <div class="NgxEditor__Wrapper">
         <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
-        <ngx-editor [editor]="editor" [(ngModel)]="html" [editable]="true" [placeholder]="'Type here...'"></ngx-editor>
+        <ngx-editor [editor]="editor" [(ngModel)]="htmlContent" [editable]="true" [placeholder]="'Type here...'" [outputFormat]="'html'"></ngx-editor>
       </div>
       <b>Tags</b>
       <div>
         <nb-form-field>
           <nb-tag-list (tagRemove)="onTagRemove($event)">
             <nb-tag *ngFor="let tag of tags" [text]="tag" status="primary" removable appearance="outline"></nb-tag>
-            <input type="text" nbTagInput (tagAdd)="onTagAdd($event.value)" [focusInputOnValueChange]="false" [nbAutocomplete]="autocomplete" fullWidth>
+            <input type="text" nbTagInput (tagAdd)="onTagAdd($event.value)" [nbAutocomplete]="autocomplete" fullWidth
+            [disabled]="!title">
           </nb-tag-list>
         </nb-form-field>
         <nb-autocomplete #autocomplete (selectedChange)="onTagAdd($event)">

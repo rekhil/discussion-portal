@@ -31,19 +31,16 @@ export class DetailsComponent implements OnInit {
 
   createPost() {
     const request = {
-      postId: this.postId,
-      post: {
-        postId: 11,
-        subject: this.title,
-        postDescription: this.reply.content[0].content[0].text,
-        likeCount: 0,
-        dislikeCount: 0,
-        createdBy: "Code Owner",
-        createdOn: this.dateConverter(),
-        lastUpdatedOn: "2021-04-14 10:00:00"
-      }
-    }
-    this.discussionService.createPost(request);
+      // postId: this.postId,
+      subject: this.title,
+      postDescription: this.reply,
+      tags: [],
+      isTopic: false,
+      createdBy: "Code Owner",
+      // createdOn: this.dateConverter(),
+      // lastUpdatedOn: "2021-04-14 10:00:00"
+    };
+    this.discussionService.updatePost(request, this.postId);
     this.postDescription = '';
   }
 
@@ -68,7 +65,7 @@ export class DetailsComponent implements OnInit {
   }
 
   replyQuestion() {
-    console.log(this.reply.content[0].content[0].text, this.title);
+    console.log(this.reply, this.title);
     this.createPost();
   }
 
