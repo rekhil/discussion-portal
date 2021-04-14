@@ -11,9 +11,9 @@ namespace discussion_portal.Controllers
     {
         private readonly IDiscussionsHandler _discussionsHandler;
 
-        public DiscussionsController()
+        public DiscussionsController(IDiscussionsHandler discussionsHandler)
         {
-            _discussionsHandler = new DiscussionsHandler();
+            _discussionsHandler = discussionsHandler;
         }
 
         [HttpGet]
@@ -23,7 +23,7 @@ namespace discussion_portal.Controllers
         }
 
         [HttpGet("{topicId}")]
-        public DiscussionPost Get(int topicId)
+        public DiscussionPost Get(string topicId)
         {
             return _discussionsHandler.GetTopicDetailsByTopicId(topicId);
         }
@@ -35,13 +35,13 @@ namespace discussion_portal.Controllers
         }
 
         [HttpPut("{postId}")]
-        public ResponseModel Put(int postId, [FromBody] DiscussionPost postDetails)
+        public ResponseModel Put(string postId, [FromBody] DiscussionPost postDetails)
         {
             return _discussionsHandler.UpdatePost(postId, postDetails);
         }
 
         [HttpDelete("{postId}")]
-        public ResponseModel Delete(int postId)
+        public ResponseModel Delete(string postId)
         {
             return _discussionsHandler.DeletePost(postId);
         }

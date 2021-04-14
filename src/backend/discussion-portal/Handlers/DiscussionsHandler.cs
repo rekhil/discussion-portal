@@ -1,38 +1,78 @@
-﻿using DiscussionPortal.Models;
+﻿using DiscussionPortal.DataAccess;
+using DiscussionPortal.Helper;
+using DiscussionPortal.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 
 namespace DiscussionPortal.Handlers
 {
     public class DiscussionsHandler : IDiscussionsHandler
     {
-        public IEnumerable<DiscussionPost> GetAllTopics()
+        private readonly IDataAccessProvider _dataAccessProvider;
+
+        public DiscussionsHandler(IDataAccessProvider dataAccessProvider)
         {
-            return new List<DiscussionPost> {
-                new DiscussionPost{ Subject = "ABC", PostDescription = "Test Descripton1" },
-                new DiscussionPost{ Subject = "Test2", PostDescription = "Test Descripton2" }
-            };
+            _dataAccessProvider = dataAccessProvider;
         }
 
-        public DiscussionPost GetTopicDetailsByTopicId(int topicId)
+        public IEnumerable<DiscussionPost> GetAllTopics()
         {
-            return new DiscussionPost { Subject = "TestABC", PostDescription = "Test Descripton1" };
+            var discussionList = _dataAccessProvider.GetAllTopics();
+
+            return discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
+        }
+
+        public DiscussionPost GetTopicDetailsByTopicId(string topicId)
+        {
+            var discussion = _dataAccessProvider.GetTopicDetailsByTopicId(topicId);
+
+            return Map.MapRecordToDiscussionPost(discussion);
         }
 
         public ResponseModel CreatePost(DiscussionPost postDetails)
         {
-            return new ResponseModel { IsSuccess = true, Id = 1, StatusCode = HttpStatusCode.OK };
+            postDetails.PostId = Guid.NewGuid().ToString();
+
+            var record = Map.MapDiscussionPostToRecord(postDetails);
+
+            _dataAccessProvider.CreatePost(record);
+
+            return new ResponseModel
+            {
+                Id = postDetails.PostId,
+                IsSuccess = true,
+                StatusCode = HttpStatusCode.OK
+            };
         }
 
-        public ResponseModel UpdatePost(int postId, DiscussionPost postDetails)
+        public ResponseModel UpdatePost(string postId, DiscussionPost postDetails)
         {
-            return new ResponseModel { IsSuccess = true, Id = 1, StatusCode = HttpStatusCode.OK };
+            postDetails.PostId = postId;
+
+            var record = Map.MapDiscussionPostToRecord(postDetails);
+
+            _dataAccessProvider.UpdatePost(record);
+
+            return new ResponseModel
+            {
+                Id = postDetails.PostId,
+                IsSuccess = true,
+                StatusCode = HttpStatusCode.OK
+            };
         }
 
-        public ResponseModel DeletePost(int postId)
+        public ResponseModel DeletePost(string postId)
         {
-            return new ResponseModel { IsSuccess = true, Id = 1, StatusCode = HttpStatusCode.OK };
-        }
+            _dataAccessProvider.DeletePost(postId);
 
+            return new ResponseModel
+            {
+                Id = postId,
+                IsSuccess = true,
+                StatusCode = HttpStatusCode.OK
+            };
+        }
     }
 }
