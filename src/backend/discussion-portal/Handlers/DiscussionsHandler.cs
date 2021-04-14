@@ -38,52 +38,6 @@ namespace DiscussionPortal.Handlers
 
         private void SetReplyPosts(DiscussionPost discussionPost)
         {
-            try
-            {
-                postDetails.CreatedOn = DateTime.Now;
-
-                var record = Map.MapDiscussionPostToRecord(postDetails);
-
-                record.Tags = postDetails.Tags?.Select(x => new DiscussionPostTagRecords
-                {
-                    Tag = x
-                }).ToList();
-
-                _dataAccessProvider.CreatePost(record);
-
-                return new ResponseModel
-                {
-                    Id = record.PostId,
-                    IsSuccess = true,
-                    StatusCode = HttpStatusCode.OK
-                };
-            }
-            catch (Exception ex)
-            {
-                return new ResponseModel
-                {
-                    IsSuccess = false,
-                    StatusCode = HttpStatusCode.InternalServerError,
-                    Error = ex.Message
-                };
-            }
-        }
-
-        public ResponseModel UpdatePost(long postId, DiscussionPost postDetails)
-        {
-            try
-            {
-                var existingRecord = _dataAccessProvider.GetPostDetailsByPostId(postId);
-
-                existingRecord.Subject = postDetails.Subject;
-                existingRecord.PostDescription = postDetails.PostDescription;
-                existingRecord.LastUpdatedOn = DateTime.Now;
-
-                _dataAccessProvider.UpdatePost(existingRecord);
-
-                return new ResponseModel
-                {
-                    Id = existingRecord.PostId,
             var replyPosts = _dataAccessProvider.GetRepliesByparentId(discussionPost.PostId);
 
             if (replyPosts?.Any() != true)
@@ -123,7 +77,6 @@ namespace DiscussionPortal.Handlers
             {
                 return new ResponseModel
                 {
-                    Id = postId,
                     IsSuccess = false,
                     StatusCode = HttpStatusCode.InternalServerError,
                     Error = ex.Message
@@ -131,10 +84,6 @@ namespace DiscussionPortal.Handlers
             }
         }
 
-        public ResponseModel DeletePost(long postId)
-        {
-            try
-            {
         public ResponseModel UpdatePost(long postId, DiscussionPost postDetails)
         {
             try
