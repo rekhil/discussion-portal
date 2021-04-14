@@ -7,7 +7,7 @@ namespace DiscussionPortal.Handlers
     {
         IEnumerable<DiscussionPost> GetAllTopics();
 
-        TopicListSearchResult SearchTopics(TopicSearchFilter topicSearchFilter);
+        TopicListSearchResult SearchTopics(SearchFilter topicSearchFilter);
 
         DiscussionPost GetTopicDetailsByTopicId(long topicId);
 

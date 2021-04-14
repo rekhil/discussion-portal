@@ -25,7 +25,7 @@ namespace DiscussionPortal.Handlers
             return discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
         }
 
-        public TopicListSearchResult SearchTopics(TopicSearchFilter topicSearchFilter)
+        public TopicListSearchResult SearchTopics(SearchFilter topicSearchFilter)
         {
             var searchResult = new TopicListSearchResult
             {

@@ -23,7 +23,7 @@ namespace discussion_portal.Controllers
         }
 
         [HttpPost("{search}")]
-        public ActionResult<TopicListSearchResult> SearchTopics([FromBody] TopicSearchFilter topicSearchFilter)
+        public ActionResult<TopicListSearchResult> SearchTopics([FromBody] SearchFilter topicSearchFilter)
         {
             if (topicSearchFilter == null)
                 return BadRequest();

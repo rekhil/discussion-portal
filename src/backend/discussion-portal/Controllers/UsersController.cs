@@ -29,9 +29,9 @@ namespace DiscussionPortal.Controllers
 
         [HttpPost]
         [Route("search")]
-        public IEnumerable<User> Users([FromBody] string q)
+        public IEnumerable<User> SearchUsers([FromBody] SearchFilter q)
         {
-            return _usersHandler.SearchUser(q);
+            return _usersHandler.SearchUser(q.SearchText);
         }
 
         [HttpPost]
