@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DiscussionPortal.DataAccess;
+using DiscussionPortal.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace discussion_portal
 {
@@ -26,6 +22,14 @@ namespace discussion_portal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var sqlConnectionString = Configuration["PostgreSqlConnectionString"];
+
+            services.AddDbContext<PostgreSqlContext>(options => options.UseNpgsql(sqlConnectionString));
+
+            services.AddScoped<IDataAccessProvider, DataAccessProvider>();
+
+            services.AddScoped<IDiscussionsHandler, DiscussionsHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
