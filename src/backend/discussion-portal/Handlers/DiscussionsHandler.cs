@@ -21,6 +21,7 @@ namespace DiscussionPortal.Handlers
         public IEnumerable<DiscussionPost> GetAllTopics()
         {
             var discussionList = _dataAccessProvider.GetAllTopics();
+
             return discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
         }
 
@@ -28,7 +29,26 @@ namespace DiscussionPortal.Handlers
         {
             var discussion = _dataAccessProvider.GetTopicDetailsByTopicId(topicId);
 
-            return Map.MapRecordToDiscussionPost(discussion);
+            var post = Map.MapRecordToDiscussionPost(discussion);
+
+            SetReplyPosts(post);
+
+            return post;
+        }
+
+        private void SetReplyPosts(DiscussionPost discussionPost)
+        {
+            var replyPosts = _dataAccessProvider.GetRepliesByparentId(discussionPost.PostId);
+
+            if (replyPosts?.Any() != true)
+                return;
+
+            discussionPost.ReplyPosts = replyPosts.Select(x => Map.MapRecordToDiscussionPost(x)).ToList();
+
+            discussionPost.ReplyPosts.ForEach(x =>
+            {
+                SetReplyPosts(x);
+            });
         }
 
         public ResponseModel CreatePost(DiscussionPost postDetails)
@@ -39,16 +59,12 @@ namespace DiscussionPortal.Handlers
 
                 var record = Map.MapDiscussionPostToRecord(postDetails);
 
-                _dataAccessProvider.CreatePost(record);
-
-                var postTags = postDetails.Tags?.Select(x => new DiscussionPostTagRecords
+                record.Tags = postDetails.Tags?.Select(x => new DiscussionPostTagRecord
                 {
-                    DiscussionPostId = record.PostId,
                     Tag = x
                 }).ToList();
 
-                if (postTags?.Any() == true)
-                    _dataAccessProvider.CreatePostTag(postTags);
+                _dataAccessProvider.CreatePost(record);
 
                 return new ResponseModel
                 {

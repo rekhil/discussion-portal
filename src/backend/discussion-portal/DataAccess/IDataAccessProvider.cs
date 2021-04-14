@@ -9,6 +9,8 @@ namespace DiscussionPortal.DataAccess
 
         DiscussionPostRecord GetTopicDetailsByTopicId(long topicId);
 
+        IEnumerable<DiscussionPostRecord> GetRepliesByparentId(long parentPostId);
+
         DiscussionPostRecord GetPostDetailsByPostId(long postId);
 
         void CreatePost(DiscussionPostRecord postDetails);
@@ -16,6 +18,18 @@ namespace DiscussionPortal.DataAccess
         void UpdatePost(DiscussionPostRecord postDetails);
 
         void DeletePost(long postId);
+      
+        void CreatePostTag(List<DiscussionPostTagRecord> discussionPostTagRecords);
+      
+        IEnumerable<UserDto> SearchUser(string q);
+
+        UserDto FindUser(string userName);
+
+        void CreateUser(UserDto user);
+
+        void EditUser(UserDto user);
+
+        void DeleteUser(string userName);
 
         void CreatePostTag(List<DiscussionPostTagRecords> discussionPostTagRecords);
 

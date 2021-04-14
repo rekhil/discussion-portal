@@ -13,5 +13,7 @@ namespace DiscussionPortal.Records
         public string UserName { get; set; }
 
         public bool IsLike { get; set; }
+
+        public DiscussionPostRecord DiscussionPost { get; set; }
     }
 }
