@@ -10,9 +10,22 @@ namespace DiscussionPortal.DataAccess
         }
 
         public DbSet<DiscussionPostRecord> DiscussionPosts { get; set; }
+        public DbSet<DiscussionPostTagRecord> DiscussionPostTags { get; set; }
+
+        public DbSet<UserDto> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<DiscussionPostTagRecord>()
+                .HasOne(p => p.DiscussionPost)
+                .WithMany(b => b.Tags)
+                .HasForeignKey(p => p.DiscussionPostId);
+
+            //builder.Entity<DiscussionPostLikeRecord>()
+            //    .HasOne(p => p.DiscussionPost)
+            //    .WithMany(b => b.Likes)
+            //    .HasForeignKey(p => p.DiscussionPostId);
+
             base.OnModelCreating(builder);
         }
 
