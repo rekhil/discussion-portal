@@ -19,6 +19,10 @@ Request :
 {
    "subject":"Subject",
    "postDescription":"Description",
+   "Tags":[
+      "tag1",
+      "tag2"
+   ],
    "isTopic":true,
    "createdBy":"rekhil"
 }
@@ -38,7 +42,11 @@ PUT: https://xenon-anvil-310308.appspot.com/api/discussions/1
 Request :
 {
    "subject":"Subject",
-   "postDescription":"Description"
+   "postDescription":"Description",
+      "Tags":[
+      "tag1",
+      "tag2"
+   ]
 }
 
 ---------------------------------------------------------------------------------------------------------------------
