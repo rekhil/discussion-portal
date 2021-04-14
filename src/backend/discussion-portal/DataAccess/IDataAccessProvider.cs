@@ -31,8 +31,6 @@ namespace DiscussionPortal.DataAccess
 
         void DeleteUser(string userName);
 
-        void CreatePostTag(List<DiscussionPostTagRecords> discussionPostTagRecords);
-
         //Methods for DiscussionPostLikes
         void CreateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike);
         void UpdateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike);

@@ -145,6 +145,20 @@ namespace DiscussionPortal.Handlers
         {
             try
             {
+                //Check if userName exists
+                var userCheck = _dataAccessProvider.FindUser(updatePostLikeStatusInputModel.UserName);
+                if (userCheck == null)
+                {
+                    throw new ArgumentException(string.Format("Username {0} does not exist in Db", updatePostLikeStatusInputModel.UserName));
+                }
+
+                //Check if DiscussionPostId exists
+                var discussionPostCheck = _dataAccessProvider.GetPostDetailsByPostId(updatePostLikeStatusInputModel.DiscussionPostId);
+                if(discussionPostCheck == null)
+                {
+                    throw new ArgumentException(string.Format("DiscussionPostId {0} does not exist in Db", updatePostLikeStatusInputModel.DiscussionPostId));
+                }
+
                 //Get DiscussionPostLike data
                 var discussionPostLike = _dataAccessProvider.GetDiscussionPostLike(updatePostLikeStatusInputModel.UserName, updatePostLikeStatusInputModel.DiscussionPostId);
 
@@ -157,7 +171,16 @@ namespace DiscussionPortal.Handlers
                         UserName = updatePostLikeStatusInputModel.UserName,
                         IsLike = updatePostLikeStatusInputModel.IsLike
                     };
-                    _dataAccessProvider.CreateDiscussionPostLike(newRecord);
+
+                    try
+                    {
+                        _dataAccessProvider.CreateDiscussionPostLike(newRecord);
+                    }
+                    catch(Exception ex)
+                    {
+                        throw new ArgumentException("Error occurred while Creating DiscussionPostLike record", ex.Message);
+                    }
+                    
                 }
                 else
                 {
