@@ -116,3 +116,15 @@ PUT: url and request are same as of create user except http verb
 Delete User: 
 
 DELETE: https://xenon-anvil-310308.appspot.com/api/users/ben . Here ben is user name
+
+---------------------------------------------------------------------------------------------------------------------
+
+Like/Dislike Post (UpdatePostLikeStatus):
+
+POST: https://xenon-anvil-310308.appspot.com/api/discussions/UpdatePostLikeStatus
+Request:
+{
+    "DiscussionPostId" : 2,
+    "UserName" : "benosushil",
+    "IsLike" : true
+}
