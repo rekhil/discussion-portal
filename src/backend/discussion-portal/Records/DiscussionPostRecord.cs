@@ -25,14 +25,12 @@ namespace DiscussionPortal.Records
 
         public DateTime? LastUpdatedOn { get; set; }
 
-        public int LikeCount { get; set; }
-
-        public int DisLikeCount { get; set; }
-
         public int ReplyCount { get; set; }
 
         public int Views { get; set; }
 
         public List<DiscussionPostTagRecords> Tags { get; set; }
+
+        public List<DiscussionPostLikeRecords> Likes { get; set; }
     }
 }

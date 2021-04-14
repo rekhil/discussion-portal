@@ -21,6 +21,7 @@ namespace DiscussionPortal.Handlers
         public IEnumerable<DiscussionPost> GetAllTopics()
         {
             var discussionList = _dataAccessProvider.GetAllTopics();
+
             return discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
         }
 

@@ -18,8 +18,6 @@ namespace DiscussionPortal.Helper
                 CreatedBy = discussionPost.CreatedBy,
                 CreatedOn = discussionPost.CreatedOn,
                 LastUpdatedOn = discussionPost.LastUpdatedOn,
-                LikeCount = discussionPost.LikeCount,
-                DisLikeCount = discussionPost.DisLikeCount,
                 ReplyCount = discussionPost.ReplyCount,
                 Views = discussionPost.Views
             };
@@ -27,6 +25,9 @@ namespace DiscussionPortal.Helper
 
         public static DiscussionPost MapRecordToDiscussionPost(DiscussionPostRecord record)
         {
+            var likes = record.Likes?.Where(x => x.IsLike);
+            var dislikes = record.Likes?.Where(x => !x.IsLike);
+
             return new DiscussionPost
             {
                 PostId = record.PostId,
@@ -37,8 +38,10 @@ namespace DiscussionPortal.Helper
                 CreatedBy = record.CreatedBy,
                 CreatedOn = record.CreatedOn,
                 LastUpdatedOn = record.LastUpdatedOn,
-                LikeCount = record.LikeCount,
-                DisLikeCount = record.DisLikeCount,
+                LikeCount = likes?.Any() == true ? likes.Count() : 0,
+                LikedUsers = likes?.Any() == true ? likes.Select(x => x.User).Distinct().ToArray() : null,
+                DisLikeCount = dislikes?.Any() == true ? dislikes.Count() : 0,
+                DisLikedUsers = dislikes?.Any() == true ? dislikes.Select(x => x.User).Distinct().ToArray() : null,
                 ReplyCount = record.ReplyCount,
                 Views = record.Views,
                 Tags = record.Tags?.Select(x => x.Tag)?.ToArray()
