@@ -31,6 +31,6 @@ namespace DiscussionPortal.Records
 
         public List<DiscussionPostTagRecord> Tags { get; set; }
 
-        public List<DiscussionPostLikeRecord> Likes { get; set; }
+        //public List<DiscussionPostLikeRecord> Likes { get; set; }
     }
 }

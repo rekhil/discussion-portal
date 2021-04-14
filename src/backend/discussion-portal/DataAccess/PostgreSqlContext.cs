@@ -19,10 +19,10 @@ namespace DiscussionPortal.DataAccess
                 .WithMany(b => b.Tags)
                 .HasForeignKey(p => p.DiscussionPostId);
 
-            builder.Entity<DiscussionPostLikeRecord>()
-                .HasOne(p => p.DiscussionPost)
-                .WithMany(b => b.Likes)
-                .HasForeignKey(p => p.DiscussionPostId);
+            //builder.Entity<DiscussionPostLikeRecord>()
+            //    .HasOne(p => p.DiscussionPost)
+            //    .WithMany(b => b.Likes)
+            //    .HasForeignKey(p => p.DiscussionPostId);
 
             base.OnModelCreating(builder);
         }
