@@ -22,6 +22,15 @@ namespace discussion_portal.Controllers
             return _discussionsHandler.GetAllTopics();
         }
 
+        [HttpPost("{search}")]
+        public ActionResult<TopicListSearchResult> SearchTopics([FromBody] TopicSearchFilter topicSearchFilter)
+        {
+            if (topicSearchFilter == null)
+                return BadRequest();
+
+            return Ok(_discussionsHandler.SearchTopics(topicSearchFilter));
+        }
+
         [HttpGet("{topicId}")]
         public DiscussionPost Get(long topicId)
         {

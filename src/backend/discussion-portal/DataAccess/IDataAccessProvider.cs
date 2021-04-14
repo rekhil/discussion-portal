@@ -7,6 +7,10 @@ namespace DiscussionPortal.DataAccess
     {
         IEnumerable<DiscussionPostRecord> GetAllTopics();
 
+        int GetTotalTopicsCount();
+
+        IEnumerable<DiscussionPostRecord> SearchTopics(int pageNumber, int pageSize);
+
         DiscussionPostRecord GetTopicDetailsByTopicId(long topicId);
 
         IEnumerable<DiscussionPostRecord> GetRepliesByparentId(long parentPostId);

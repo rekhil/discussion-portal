@@ -19,6 +19,17 @@ namespace DiscussionPortal.DataAccess
             return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Include("Tags");
         }
 
+        public int GetTotalTopicsCount()
+        {
+            return _context.DiscussionPosts.Where(x => x.IsTopic).Count();
+        }
+
+        public IEnumerable<DiscussionPostRecord> SearchTopics(int pageNumber, int pageSize)
+        {
+            return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Skip((pageNumber - 1) * pageSize)
+                 .Take(pageSize).Include("Tags");
+        }
+
         public DiscussionPostRecord GetTopicDetailsByTopicId(long topicId)
         {
             return _context.DiscussionPosts.FirstOrDefault(t => t.PostId == topicId);
@@ -58,10 +69,10 @@ namespace DiscussionPortal.DataAccess
             _context.DiscussionPostTags.AddRange(discussionPostTagRecords);
             _context.SaveChanges();
         }
-        
+
         public IEnumerable<UserDto> SearchUser(string q)
         {
-            return _context.Users.Where(t => ( t.UserName.Contains(q) || t.FirstName.Contains(q) || t.LastName.Contains(q) || t.Email.Contains(q)) && t.IsActive == true);
+            return _context.Users.Where(t => (t.UserName.Contains(q) || t.FirstName.Contains(q) || t.LastName.Contains(q) || t.Email.Contains(q)) && t.IsActive == true);
         }
 
         public UserDto FindUser(string userName)

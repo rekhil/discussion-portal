@@ -7,6 +7,8 @@ namespace DiscussionPortal.Handlers
     {
         IEnumerable<DiscussionPost> GetAllTopics();
 
+        TopicListSearchResult SearchTopics(TopicSearchFilter topicSearchFilter);
+
         DiscussionPost GetTopicDetailsByTopicId(long topicId);
 
         ResponseModel CreatePost(DiscussionPost postDetails);

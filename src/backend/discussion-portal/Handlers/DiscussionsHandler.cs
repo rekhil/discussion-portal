@@ -25,6 +25,37 @@ namespace DiscussionPortal.Handlers
             return discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
         }
 
+        public TopicListSearchResult SearchTopics(TopicSearchFilter topicSearchFilter)
+        {
+            var searchResult = new TopicListSearchResult
+            {
+                TotalItemCount = _dataAccessProvider.GetTotalTopicsCount()
+            };
+
+            if (topicSearchFilter.PageNumber.GetValueOrDefault() <= 0)
+                topicSearchFilter.PageNumber = 1;
+
+            if (topicSearchFilter.PageSize.GetValueOrDefault() <= 0)
+                topicSearchFilter.PageSize = 20;
+
+            var pageCount = searchResult.TotalItemCount / topicSearchFilter.PageSize;
+
+            searchResult.TotalPageCount = searchResult.TotalItemCount % topicSearchFilter.PageSize == 0 ? pageCount.Value : pageCount.Value + 1;
+
+            if (searchResult.TotalPageCount < topicSearchFilter.PageNumber)
+                topicSearchFilter.PageNumber = 1;
+
+            var discussionList = _dataAccessProvider.SearchTopics(topicSearchFilter.PageNumber.Value, topicSearchFilter.PageSize.Value);
+
+            searchResult.TopicList = discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
+
+            searchResult.PageSize = topicSearchFilter.PageSize.Value;
+
+            searchResult.CurrentPage = topicSearchFilter.PageNumber.Value;
+
+            return searchResult;
+        }
+
         public DiscussionPost GetTopicDetailsByTopicId(long topicId)
         {
             var discussion = _dataAccessProvider.GetTopicDetailsByTopicId(topicId);
