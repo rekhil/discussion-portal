@@ -59,3 +59,28 @@ Request :
 Delete exisintg post (Current user can only edit post created by the same user, Selected post/reply and all replies under it will get deleted)
 
 DELETE: https://xenon-anvil-310308.appspot.com/api/discussions/1
+
+# User
+Get User By User Name. This can be used for log in also
+Get : https://xenon-anvil-310308.appspot.com/api/users/benosushil => here benosushil is user name
+
+Search User 
+Post : https://xenon-anvil-310308.appspot.com/api/users/search
+Request (just a string): 
+"beno"
+
+Create User: 
+Post : https://xenon-anvil-310308.appspot.com/api/users
+Request : 
+{
+    "userName": "benosushil",
+    "firstName": "Benedict",
+    "lastName": "Kumar",
+    "email": "ben@ben.com"
+}
+
+Edit User:
+Put : url and request are same as of create user except http verb
+
+Delete User: 
+Delete : https://xenon-anvil-310308.appspot.com/api/users/ben . Here ben is user name
