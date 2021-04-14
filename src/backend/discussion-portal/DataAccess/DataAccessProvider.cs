@@ -165,6 +165,9 @@ namespace DiscussionPortal.DataAccess
             var existingUser = _context.Users.FirstOrDefault(t => t.UserName == user.UserName);
             if (existingUser != null)
             {
+                existingUser.FirstName = user.FirstName;
+                existingUser.LastName = user.LastName;
+                existingUser.Email = user.Email;
                 existingUser.IsActive = true;
                 _context.Users.Update(existingUser);
             }
@@ -179,8 +182,12 @@ namespace DiscussionPortal.DataAccess
 
         public void EditUser(UserDto user)
         {
-            user.IsActive = true;
-            _context.Users.Update(user);
+            var existingUser = _context.Users.FirstOrDefault(t => t.UserName == user.UserName && t.IsActive == true);
+            existingUser.FirstName = user.FirstName;
+            existingUser.LastName = user.LastName;
+            existingUser.Email = user.Email;
+            existingUser.IsActive = true;
+            _context.Users.Update(existingUser);
             _context.SaveChanges();
         }
 
