@@ -1,4 +1,5 @@
-﻿using DiscussionPortal.Models;
+﻿using DiscussionPortal.Handlers;
+using DiscussionPortal.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -8,38 +9,41 @@ namespace discussion_portal.Controllers
     [ApiController]
     public class DiscussionsController : ControllerBase
     {
+        private readonly IDiscussionsHandler _discussionsHandler;
+
+        public DiscussionsController()
+        {
+            _discussionsHandler = new DiscussionsHandler();
+        }
+
         [HttpGet]
-        public ActionResult<IEnumerable<DiscussionPost>> Get()
+        public IEnumerable<DiscussionPost> Get()
         {
-            return new List<DiscussionPost> {
-                new DiscussionPost{ Subject = "TestABC", PostDescription = "Test Descripton1" },
-                new DiscussionPost{ Subject = "Test2", PostDescription = "Test Descripton2" }
-            };
+            return _discussionsHandler.GetAllTopics();
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("{topicId}")]
+        public DiscussionPost Get(int topicId)
         {
-            return "value";
+            return _discussionsHandler.GetTopicDetailsByTopicId(topicId);
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ResponseModel Post([FromBody] DiscussionPost postDetails)
         {
+            return _discussionsHandler.CreatePost(postDetails);
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{postId}")]
+        public ResponseModel Put(int postId, [FromBody] DiscussionPost postDetails)
         {
+            return _discussionsHandler.UpdatePost(postId, postDetails);
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{postId}")]
+        public ResponseModel Delete(int postId)
         {
+            return _discussionsHandler.DeletePost(postId);
         }
     }
 }
