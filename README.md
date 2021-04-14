@@ -26,3 +26,19 @@ Request :
 Get topic details by Id
 
 GET : https://xenon-anvil-310308.appspot.com/api/discussions/1
+
+
+Update existing post
+
+PUT: https://xenon-anvil-310308.appspot.com/api/discussions/1
+
+Request :
+{
+   "subject":"Subject",
+   "postDescription":"Description"
+}
+
+
+Delete exisintg post (Selected post/reply and all replies under it will get deleted)
+
+DELETE: https://xenon-anvil-310308.appspot.com/api/discussions/1
