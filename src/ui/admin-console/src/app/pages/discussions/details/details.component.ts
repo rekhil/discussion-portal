@@ -41,13 +41,4 @@ export class DetailsComponent implements OnInit {
     this.discussionService.createPost(request);
     this.postDescription = '';
   }
-
-  vote(like: boolean, threadId: any) {
-    const request = {
-      like: like,
-      threadId: threadId,
-      id: this.id
-    }
-    this.discussionService.updateVote(request);
-  }
 }
