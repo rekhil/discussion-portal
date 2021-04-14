@@ -14,5 +14,7 @@ namespace DiscussionPortal.Handlers
         ResponseModel UpdatePost(long postId, DiscussionPost postDetails);
 
         ResponseModel DeletePost(long postId);
+
+        ResponseModel UpdatePostLikeStatus(UpdatePostLikeStatusInputModel updatePostLikeStatusInputModel);
     }
 }

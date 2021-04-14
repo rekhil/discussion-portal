@@ -139,5 +139,73 @@ namespace DiscussionPortal.Handlers
                 };
             }
         }
+
+        //Used when a user likes/dislikes a post. Creates/Updates DiscussionPostLikes table
+        public ResponseModel UpdatePostLikeStatus(UpdatePostLikeStatusInputModel updatePostLikeStatusInputModel)
+        {
+            try
+            {
+                //Check if userName exists
+                var userCheck = _dataAccessProvider.FindUser(updatePostLikeStatusInputModel.UserName);
+                if (userCheck == null)
+                {
+                    throw new ArgumentException(string.Format("Username {0} does not exist in Db", updatePostLikeStatusInputModel.UserName));
+                }
+
+                //Check if DiscussionPostId exists
+                var discussionPostCheck = _dataAccessProvider.GetPostDetailsByPostId(updatePostLikeStatusInputModel.DiscussionPostId);
+                if(discussionPostCheck == null)
+                {
+                    throw new ArgumentException(string.Format("DiscussionPostId {0} does not exist in Db", updatePostLikeStatusInputModel.DiscussionPostId));
+                }
+
+                //Get DiscussionPostLike data
+                var discussionPostLike = _dataAccessProvider.GetDiscussionPostLike(updatePostLikeStatusInputModel.UserName, updatePostLikeStatusInputModel.DiscussionPostId);
+
+                if(discussionPostLike == null)
+                {
+                    //Add a row in DiscussionPostLikes table
+                    DiscussionPostLikeRecord newRecord = new DiscussionPostLikeRecord()
+                    {
+                        DiscussionPostId = updatePostLikeStatusInputModel.DiscussionPostId,
+                        UserName = updatePostLikeStatusInputModel.UserName,
+                        IsLike = updatePostLikeStatusInputModel.IsLike
+                    };
+
+                    try
+                    {
+                        _dataAccessProvider.CreateDiscussionPostLike(newRecord);
+                    }
+                    catch(Exception ex)
+                    {
+                        throw new ArgumentException("Error occurred while Creating DiscussionPostLike record", ex.Message);
+                    }
+                    
+                }
+                else
+                {
+                    //Update IsLike value for that DiscussionPostLike row
+                    discussionPostLike.IsLike = updatePostLikeStatusInputModel.IsLike;
+                    _dataAccessProvider.UpdateDiscussionPostLike(discussionPostLike);
+                }
+
+                return new ResponseModel
+                {
+                    Id = updatePostLikeStatusInputModel.DiscussionPostId,
+                    IsSuccess = true,
+                    StatusCode = HttpStatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseModel
+                {
+                    Id = updatePostLikeStatusInputModel.DiscussionPostId,
+                    IsSuccess = false,
+                    StatusCode = HttpStatusCode.InternalServerError,
+                    Error = ex.Message
+                };
+            }
+        }
     }
 }

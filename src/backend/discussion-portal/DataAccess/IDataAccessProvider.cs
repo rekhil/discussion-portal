@@ -30,5 +30,12 @@ namespace DiscussionPortal.DataAccess
         void EditUser(UserDto user);
 
         void DeleteUser(string userName);
+
+        //Methods for DiscussionPostLikes
+        void CreateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike);
+        void UpdateDiscussionPostLike(DiscussionPostLikeRecord discussionPostLike);
+        void DeleteDiscussionPostLike(string userName, long discussionPostId);
+
+        DiscussionPostLikeRecord GetDiscussionPostLike(string userName, long discussionPostId);
     }
 }
