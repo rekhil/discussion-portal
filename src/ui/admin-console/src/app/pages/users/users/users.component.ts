@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 import { users } from '../users-list';
-// import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @Component({
   selector: 'ngx-users',

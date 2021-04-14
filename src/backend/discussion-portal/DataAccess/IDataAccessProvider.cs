@@ -9,12 +9,18 @@ namespace DiscussionPortal.DataAccess
 
         DiscussionPostRecord GetTopicDetailsByTopicId(long topicId);
 
+        IEnumerable<DiscussionPostRecord> GetRepliesByparentId(long parentPostId);
+
+        DiscussionPostRecord GetPostDetailsByPostId(long postId);
+
         void CreatePost(DiscussionPostRecord postDetails);
 
         void UpdatePost(DiscussionPostRecord postDetails);
 
         void DeletePost(long postId);
-
+      
+        void CreatePostTag(List<DiscussionPostTagRecord> discussionPostTagRecords);
+      
         IEnumerable<UserDto> SearchUser(string q);
 
         UserDto FindUser(string userName);

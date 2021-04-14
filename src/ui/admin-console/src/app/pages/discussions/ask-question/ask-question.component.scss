@@ -1,6 +1,9 @@
 .NgxEditor__Wrapper {
-  height: calc(100vh - 250px);
+  height: calc(100vh - 330px);
 }
 .title-input {
   padding: 10px;
+}
+nb-tag-list {
+  padding: 10px 20px !important;
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,12 +25,12 @@ namespace DiscussionPortal.Records
 
         public DateTime? LastUpdatedOn { get; set; }
 
-        public int LikeCount { get; set; }
-
-        public int DisLikeCount { get; set; }
-
         public int ReplyCount { get; set; }
 
         public int Views { get; set; }
+
+        public List<DiscussionPostTagRecord> Tags { get; set; }
+
+        public List<DiscussionPostLikeRecord> Likes { get; set; }
     }
 }

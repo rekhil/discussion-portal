@@ -26,7 +26,7 @@ const routes: Routes = [{
       component: AskQuestionComponent
     },
     {
-      path: 'discussions/:id',
+      path: 'discussions/:postId',
       component: DiscussionDetailsComponent
     },
     {

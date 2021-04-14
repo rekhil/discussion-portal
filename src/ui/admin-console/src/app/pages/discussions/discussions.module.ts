@@ -14,7 +14,10 @@ import {
   NbRadioModule,
   NbSelectModule,
   NbListModule,
-  NbIconModule
+  NbIconModule,
+  NbTagModule,
+  NbAutocompleteModule,
+  NbFormFieldModule
 } from '@nebular/theme';
 import { DetailsComponent } from './details/details.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
@@ -45,6 +48,9 @@ import { PostComponent } from './post/post.component';
     NbSelectModule,
     NbListModule,
     NbIconModule,
+    NbTagModule,
+    NbFormFieldModule,
+    NbAutocompleteModule,
     NgxEditorModule
   ],
   schemas: [NO_ERRORS_SCHEMA]
