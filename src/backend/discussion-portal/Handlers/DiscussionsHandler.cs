@@ -35,6 +35,8 @@ namespace DiscussionPortal.Handlers
         {
             postDetails.PostId = Guid.NewGuid().ToString();
 
+            postDetails.CreatedOn = DateTime.Now;
+
             var record = Map.MapDiscussionPostToRecord(postDetails);
 
             _dataAccessProvider.CreatePost(record);
@@ -50,6 +52,8 @@ namespace DiscussionPortal.Handlers
         public ResponseModel UpdatePost(string postId, DiscussionPost postDetails)
         {
             postDetails.PostId = postId;
+
+            postDetails.LastUpdatedOn = DateTime.Now;
 
             var record = Map.MapDiscussionPostToRecord(postDetails);
 
