@@ -44,7 +44,8 @@ export class DetailsComponent implements OnInit {
       }
     }
     this.discussionService.createPost(request);
-    this.postDescription = '';
+    this.title = '';
+    this.reply = '';
   }
     DateConverter() {
     let now = new Date();
@@ -65,8 +66,11 @@ export class DetailsComponent implements OnInit {
     this.discussionService.updateVote(request);
   }
   replyQuestion(){
-    console.log(this.reply.content[0].content[0].text,this.title);
+    this.reply= toDoc(this.reply);
+    
     this.createPost();
+    console.log(this.reply);
+    
   }
   ngOnDestroy(): void {
     this.editor.destroy();

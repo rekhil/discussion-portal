@@ -22,14 +22,30 @@
             </div>
         </div>
     </div>
-    <div class="replies-wrapper" *ngIf="thread.replyPosts">
-        <button class="reply-btn" type="button" (click)="showChildNodes = !showChildNodes">
+    <div class="replies-wrapper" *ngIf="thread">
+        <button class="reply-btn" *ngIf="thread.replyPosts" type="button" (click)="showChildNodes = !showChildNodes;toogle()">
             {{thread.replyPosts?.length}} Replies
+        </button>
+        <button class="reply-btn" *ngIf="!thread.replyPosts" type="button" (click)="showChildNodes = !showChildNodes;toogle()">
+            Reply
         </button>
         <div *ngIf="showChildNodes" class="replies">
             <div class="post-section" *ngFor="let post of thread.replyPosts">
                 <ngx-post [parentPostId]="thread.id" [thread]="post"></ngx-post>
             </div>
+            <nb-card style="margin-top: 8px;">
+                <nb-card-body>
+                  <div fxLayout="column" fxLayoutGap="20px">
+                    <b>Title</b>
+                    <input type="text" [(ngModel)]="title" nbInput fullWidth placeholder="Enter title" fieldSize="large" class="title-input">
+                    <div class="NgxEditor__Wrapper">
+                      <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+                      <ngx-editor [editor]="editor" [(ngModel)]="reply" [editable]="true" [placeholder]="'Type here...'"></ngx-editor>
+                    </div>
+                    <button nbButton status="primary" type="button" (click)="replyQuestion()">Post your answer</button>
+                  </div>
+                </nb-card-body>
+              </nb-card>
         </div>
     </div>
 </div>
