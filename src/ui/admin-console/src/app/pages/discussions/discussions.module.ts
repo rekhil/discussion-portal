@@ -17,6 +17,7 @@ import {
   NbIconModule
 } from '@nebular/theme';
 import { DetailsComponent } from './details/details.component';
+import { AskQuestionComponent } from './ask-question/ask-question.component';
 
 
 
@@ -24,7 +25,8 @@ import { DetailsComponent } from './details/details.component';
   declarations: [
     DiscussionsComponent,
     FilterComponent,
-    DetailsComponent
+    DetailsComponent,
+    AskQuestionComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { DiscussionsComponent } from './discussions/discussions/discussions.component';
 import { DetailsComponent as DiscussionDetailsComponent } from './discussions/details/details.component';
+import { AskQuestionComponent } from './discussions/ask-question/ask-question.component';
 
 const routes: Routes = [{
   path: '',
@@ -18,6 +19,10 @@ const routes: Routes = [{
     {
       path: 'discussions',
       component: DiscussionsComponent
+    },
+    {
+      path: 'discussions/question/ask',
+      component: AskQuestionComponent
     },
     {
       path: 'discussions/:id',

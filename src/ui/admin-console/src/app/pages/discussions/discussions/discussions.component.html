@@ -1,4 +1,10 @@
 <div class="disc-wrapper">
+    <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="header-title">All Questions</div>
+        <div class="header-actions">
+            <button type="button" (click)="askQuestion()">Ask Question</button>
+        </div>
+    </div>
     <ngx-filter></ngx-filter>
     <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="question"
         *ngFor="let question of questions">

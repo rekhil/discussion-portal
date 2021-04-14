@@ -9,7 +9,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Discussions',
-    icon: 'home-outline',
+    icon: 'book-open-outline',
     link: '/pages/discussions'
   },
   {
