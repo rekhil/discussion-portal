@@ -26,7 +26,7 @@ namespace DiscussionPortal.DataAccess
 
         public IEnumerable<DiscussionPostRecord> GetRepliesByparentId(long parentPostId)
         {
-            return _context.DiscussionPosts.Where(t => t.ParentPostId == parentPostId).Include("Likes");
+            return _context.DiscussionPosts.Where(t => t.ParentPostId == parentPostId);
         }
 
         public DiscussionPostRecord GetPostDetailsByPostId(long postId)
