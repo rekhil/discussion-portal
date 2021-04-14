@@ -1,13 +1,13 @@
 <div class="post-wrapper">
     <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="thread">
         <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
-            <div class="vote" (click)="vote(true, thread.id)">
+            <div class="vote" (click)="vote(true, thread.postId)">
                 <nb-icon icon="arrow-up-outline" pack="eva"></nb-icon>
             </div>
             <div class="vote-count">
                 {{thread.likeCount - thread.dislikeCount}} votes
             </div>
-            <div class="vote" (click)="vote(false, thread.id)">
+            <div class="vote" (click)="vote(false, thread.postId)">
                 <nb-icon icon="arrow-down-outline" pack="eva"></nb-icon>
             </div>
         </div>
@@ -28,7 +28,7 @@
         </button>
         <div *ngIf="showChildNodes" class="replies">
             <div class="post-section" *ngFor="let post of thread.replyPosts">
-                <ngx-post [parentPostId]="thread.id" [thread]="post"></ngx-post>
+                <ngx-post [parentPostId]="thread.postId" [thread]="post"></ngx-post>
             </div>
         </div>
     </div>
