@@ -2,7 +2,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { DiscussionsComponent } from './discussions/discussions/discussions.component';
 import { DetailsComponent as DiscussionDetailsComponent } from './discussions/details/details.component';
@@ -18,7 +17,7 @@ const routes: Routes = [{
       component: DiscussionsComponent
     },
     {
-      path: 'discussions/question/ask',
+      path: 'discussions/post/new',
       component: AskQuestionComponent
     },
     {

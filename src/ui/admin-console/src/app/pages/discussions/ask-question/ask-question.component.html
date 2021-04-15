@@ -23,7 +23,8 @@
           <nb-option *ngFor="let option of options" [value]="option">{{ option }}</nb-option>
         </nb-autocomplete>
       </div>
-      <button nbButton status="primary" type="button" (click)="postQuestion()" [disabled]="!title || !htmlContent || !tags || tags.size == 0">Post Question</button>
+      <button nbButton status="primary" type="button" (click)="postQuestion()"
+        [disabled]="!title || !htmlContent || !tags || tags.size == 0">Submit</button>
     </div>
   </nb-card-body>
 </nb-card>

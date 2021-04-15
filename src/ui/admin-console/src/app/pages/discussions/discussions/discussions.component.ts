@@ -24,6 +24,6 @@ export class DiscussionsComponent implements OnInit {
   }
 
   askQuestion() {
-    this.router.navigate([`/pages/discussions/question/ask`]);
+    this.router.navigate([`/pages/discussions/post/new`]);
   }
 }
