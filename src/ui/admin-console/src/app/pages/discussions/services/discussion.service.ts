@@ -23,9 +23,7 @@ export class DiscussionService {
   }
 
   getQuestionById(postId: any): Observable<any> {
-    return this.posts$.pipe(map<any[], any>(posts => {
-      return posts.filter(item => item.postId == postId)
-    }))
+    return this.http.get<any>(this.baseUrl + `discussions/${postId}`);
   }
 
   createPost(request: any): Observable<any> {
