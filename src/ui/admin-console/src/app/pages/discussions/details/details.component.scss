@@ -33,6 +33,7 @@
     }
     .thread-wrapper {
         margin-top: 20px;
+        margin-bottom: 15px;
     }
     .comment-section {
         .editor textarea {
@@ -53,14 +54,14 @@
 }
 .title-input {
     padding: 10px;
-  }
-  .NgxEditor__Wrapper {
+}
+.NgxEditor__Wrapper {
     height: 250px;
-  }
-    .post-section {
-        border-bottom: 1px solid #b1b1b1;
-    }
-    .post-section:last-of-type {
-        border-bottom: 0;
-    }
+}
+.post-section {
+    border-bottom: 1px solid #b1b1b1;
+}
+.post-section:last-of-type {
+    border-bottom: 0;
+}
 
