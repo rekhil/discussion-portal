@@ -17,9 +17,7 @@ export class PostComponent implements OnInit {
 
   constructor(private discussionService: DiscussionService) { }
 
-  ngOnInit(): void {
-    console.log(this.thread);
-    
+  ngOnInit(): void {    
   }
 
   vote(like: boolean, threadId: any) {

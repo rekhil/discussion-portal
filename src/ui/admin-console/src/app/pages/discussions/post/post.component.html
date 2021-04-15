@@ -13,7 +13,9 @@
         </div>
         <div fxFlex="85%" class="thread-content">
             <div class="thread-title">{{thread.subject}}</div>
-            <div class="thread-description">{{thread.postDescription}}</div>
+            <div class="thread-description">
+                <div [innerHTML]="thread.postDescription"></div>
+            </div>
             <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="user-info">
                     <div class="action-time">Posted {{thread.createdOn | date:'medium'}}</div>

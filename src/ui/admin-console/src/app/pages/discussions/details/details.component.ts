@@ -14,7 +14,6 @@ export class DetailsComponent implements OnInit {
   postId: any;
   post: any;
   postDescription: string;
-  title: string;
   editor: Editor;
   reply;
 
@@ -32,12 +31,13 @@ export class DetailsComponent implements OnInit {
   getPostDetails(postId) {
     this.discussionService.getQuestionById(postId).subscribe(data => {
       this.post = data;
+      this.reply = '';
     });
   }
 
   createPost() {
     const request = {
-      subject: this.title,
+      subject: this.post.subject,
       postDescription: this.reply,
       tags: [],
       isTopic: false,
