@@ -25,40 +25,31 @@ export class DetailsComponent implements OnInit {
     this.editor = new Editor();
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.postId = params.get('postId');
-      this.discussionService.getQuestionById(this.postId).subscribe(data => {
-        this.post = data[0];
-      });
+      this.getPostDetails(this.postId);
+    });
+  }
+
+  getPostDetails(postId) {
+    this.discussionService.getQuestionById(postId).subscribe(data => {
+      this.post = data;
     });
   }
 
   createPost() {
     const request = {
-      // postId: this.postId,
       subject: this.title,
       postDescription: this.reply,
       tags: [],
       isTopic: false,
       createdBy: "Code Owner",
       parentPostId: this.postId
-      // createdOn: this.dateConverter(),
-      // lastUpdatedOn: "2021-04-14 10:00:00"
     };
-    this.discussionService.createPost(request).subscribe(data => {
-      if (data) 
-      this.router.navigate(['/pages/discussions']);
+    this.discussionService.createPost(request).subscribe(response => {
+      if (response.isSuccess) {
+        this.getPostDetails(this.postId);
+      }
     });
-    //this.postDescription = '';
-  }
-
-  dateConverter() {
-    let now = new Date();
-    let year = "" + now.getFullYear();
-    let month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
-    let day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
-    let hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
-    let minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
-    let second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
-    return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+    this.postDescription = '';
   }
 
   vote(like: boolean, threadId: any) {
@@ -71,8 +62,7 @@ export class DetailsComponent implements OnInit {
   }
 
   replyQuestion() {
-    console.log(this.reply, this.title);
-    this.createPost();    
+    this.createPost();
   }
 
   ngOnDestroy(): void {

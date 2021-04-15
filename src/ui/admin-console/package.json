@@ -53,6 +53,7 @@
     "chart.js": "2.7.1",
     "ckeditor": "4.7.3",
     "classlist.js": "1.1.20150312",
+    "community-portal": "file:../community-portal/dist/community-portal",
     "core-js": "2.5.1",
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.3",
