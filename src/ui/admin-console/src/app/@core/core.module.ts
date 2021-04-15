@@ -110,7 +110,11 @@ export const NB_CORE_PROVIDERS = [
         name: 'email',
         baseEndpoint: '',
         login: {
-          endpoint: '/api/auth/login',
+          endpoint: '/api/users/search',
+          redirect: {
+            success: '/pages/discussions', // welcome page path
+            failure: 'null', // stay on the same page
+          }
         },
         register: {
           endpoint: '/api/auth/register',
