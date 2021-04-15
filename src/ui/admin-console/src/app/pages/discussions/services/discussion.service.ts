@@ -37,20 +37,8 @@ export class DiscussionService {
   }
 
   updateVote(request: any): void {
-    const posts = [...this.posts.value]
-    posts.forEach(item => {
-      if (item.postId == request.postId) {
-        item.replyPosts.forEach(e => {
-          if (e.postId == request.threadId) {
-            if (request.like) {
-              e.likeCount += 1;
-            } else {
-              e.disLikeCount += 1;
-            }
-          }
-        })
-      }
+    this.http.post(this.baseUrl + 'discussions/updatePostLikeStatus', request).subscribe(response => {
+
     });
-    this.posts.next(posts);
   }
 }

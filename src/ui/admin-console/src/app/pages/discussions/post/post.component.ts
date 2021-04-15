@@ -25,9 +25,9 @@ export class PostComponent implements OnInit {
 
   vote(like: boolean, threadId: any) {
     const request = {
-      like: like,
-      threadId: threadId,
-      postId: this.parentPostId
+      isLike: like,
+      userName: 'Code Owner',
+      discussionPostId: threadId
     }
     this.discussionService.updateVote(request);
   }
