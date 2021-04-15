@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { DiscussionService } from '../services/discussion.service';
-import { Editor, toHTML, toDoc } from 'ngx-editor';
+import { Editor } from 'ngx-editor';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'ngx-post',
@@ -17,7 +18,7 @@ export class PostComponent implements OnInit {
   title: string;
   reply: string;
 
-  constructor(private discussionService: DiscussionService) { }
+  constructor(private discussionService: DiscussionService, @Inject(DOCUMENT) private _document: Document) { }
 
   ngOnInit(): void {
     this.editor = new Editor();
@@ -29,7 +30,11 @@ export class PostComponent implements OnInit {
       userName: 'Code Owner',
       discussionPostId: threadId
     }
-    this.discussionService.updateVote(request);
+    this.discussionService.updateVote(request).subscribe(response => {
+      if (response.isSuccess) {
+        this.refreshPage();
+      }
+    });
   }
 
   replyQuestion() {
@@ -43,7 +48,7 @@ export class PostComponent implements OnInit {
     };
     this.discussionService.createPost(request).subscribe(response => {
       if (response.isSuccess) {
-
+        this.refreshPage();
       }
     });
   }
@@ -51,5 +56,9 @@ export class PostComponent implements OnInit {
   toggle() {
     this.showChildNodes = !this.showChildNodes;
     this.editor = new Editor();
+  }
+
+  refreshPage() {
+    this._document.defaultView.location.reload();
   }
 }

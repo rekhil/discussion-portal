@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import { DiscussionService } from '../services/discussion.service';
-import { Editor, toHTML, toDoc } from 'ngx-editor';
-import { Router } from '@angular/router';
+import { Editor } from 'ngx-editor';
 
 @Component({
   selector: 'ngx-details',
@@ -17,8 +16,9 @@ export class DetailsComponent implements OnInit {
   editor: Editor;
   reply;
 
-  constructor(private route: ActivatedRoute, private discussionService: DiscussionService,
-    private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private discussionService: DiscussionService) { }
 
   ngOnInit(): void {
     this.editor = new Editor();
@@ -50,15 +50,6 @@ export class DetailsComponent implements OnInit {
       }
     });
     this.postDescription = '';
-  }
-
-  vote(like: boolean, threadId: any) {
-    const request = {
-      isLike: like,
-      userName: 'Code Owner',
-      discussionPostId: threadId
-    }
-    this.discussionService.updateVote(request);
   }
 
   ngOnDestroy(): void {

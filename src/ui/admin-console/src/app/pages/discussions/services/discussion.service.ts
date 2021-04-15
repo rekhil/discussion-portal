@@ -36,9 +36,7 @@ export class DiscussionService {
     })
   }
 
-  updateVote(request: any): void {
-    this.http.post(this.baseUrl + 'discussions/updatePostLikeStatus', request).subscribe(response => {
-
-    });
+  updateVote(request: any): Observable<any> {
+    return this.http.post(this.baseUrl + 'discussions/updatePostLikeStatus', request);
   }
 }
