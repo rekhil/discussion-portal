@@ -25,26 +25,34 @@
         </div>
     </div>
     <div class="replies-wrapper" *ngIf="thread">
-        <button class="reply-btn" *ngIf="thread.replyPosts" type="button" (click)="showChildNodes = !showChildNodes;toogle()">
-            {{thread.replyPosts?.length}} Replies
+        <button class="reply-btn" type="button" (click)="toggle()">
+            {{thread.replyPosts? (
+            (thread.replyPosts.length == 1)? '1 Reply' : thread.replyPosts.length+' Replies'
+            ): '0 Replies'}}
         </button>
+        <button class="reply-btn" type="button" (click)="showEditor = !showEditor">Add a comment</button>
         <div *ngIf="showChildNodes && thread.replyPosts" class="replies">
             <div class="post-section" *ngFor="let post of thread.replyPosts">
                 <ngx-post [parentPostId]="thread.postId" [thread]="post"></ngx-post>
             </div>
+        </div>
+        <div *ngIf="showEditor" class="editor-wrapper">
             <nb-card style="margin-top: 8px;">
                 <nb-card-body>
-                  <div fxLayout="column" fxLayoutGap="20px">
-                    <b>Title</b>
-                    <input type="text" [(ngModel)]="title" nbInput fullWidth placeholder="Enter title" fieldSize="large" class="title-input">
-                    <div class="NgxEditor__Wrapper">
-                      <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
-                      <ngx-editor [editor]="editor" [(ngModel)]="reply" [editable]="true" [placeholder]="'Type here...'"></ngx-editor>
+                    <div fxLayout="column" fxLayoutGap="20px">
+                        <b>Title</b>
+                        <input type="text" [(ngModel)]="title" nbInput fullWidth placeholder="Enter title"
+                            fieldSize="large" class="title-input">
+                        <div class="NgxEditor__Wrapper">
+                            <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+                            <ngx-editor [editor]="editor" [(ngModel)]="reply" [editable]="true"
+                                [placeholder]="'Type here...'" [outputFormat]="'html'"></ngx-editor>
+                        </div>
+                        <button nbButton status="primary" type="button" (click)="replyQuestion()">Post your
+                            answer</button>
                     </div>
-                    <button nbButton status="primary" type="button" (click)="replyQuestion()">Post your answer</button>
-                  </div>
                 </nb-card-body>
-              </nb-card>
+            </nb-card>
         </div>
     </div>
 </div>

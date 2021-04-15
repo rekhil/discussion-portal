@@ -61,10 +61,6 @@ export class DetailsComponent implements OnInit {
     this.discussionService.updateVote(request);
   }
 
-  replyQuestion() {
-    this.createPost();
-  }
-
   ngOnDestroy(): void {
     this.editor.destroy();
   }

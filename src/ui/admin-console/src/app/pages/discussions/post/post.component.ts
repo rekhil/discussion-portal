@@ -12,12 +12,15 @@ export class PostComponent implements OnInit {
   @Input() thread: any;
   @Input() parentPostId: number;
   showChildNodes: boolean;
+  showEditor: boolean;
   editor: Editor;
   title: string;
+  reply: string;
 
   constructor(private discussionService: DiscussionService) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    this.editor = new Editor();
   }
 
   vote(like: boolean, threadId: any) {
@@ -28,10 +31,25 @@ export class PostComponent implements OnInit {
     }
     this.discussionService.updateVote(request);
   }
+
   replyQuestion() {
-    
+    const request = {
+      subject: this.title,
+      postDescription: this.reply,
+      tags: [],
+      isTopic: false,
+      createdBy: "Code Owner",
+      parentPostId: this.thread.postId
+    };
+    this.discussionService.createPost(request).subscribe(response => {
+      if (response.isSuccess) {
+
+      }
+    });
   }
-  toogle() {
+
+  toggle() {
+    this.showChildNodes = !this.showChildNodes;
     this.editor = new Editor();
   }
 }
