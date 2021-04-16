@@ -23,6 +23,7 @@ import { DetailsComponent } from './details/details.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { PostComponent } from './post/post.component';
+import { CommunityModule } from 'ngx-community';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { PostComponent } from './post/post.component';
     NbTagModule,
     NbFormFieldModule,
     NbAutocompleteModule,
-    NgxEditorModule
+    NgxEditorModule,
+    CommunityModule
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
