@@ -1,1 +1,1 @@
-export const tags = ['general', 'technology', 'science', 'history'];
+export const tags = ['General', 'Technology', 'Science', 'History'];

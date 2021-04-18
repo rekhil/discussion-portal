@@ -13,7 +13,7 @@
                 {{post.likeCount - post.disLikeCount}} votes
             </div>
             <div class="ans-count">
-                {{post.replyCount}} replies
+                {{post.replyCount}} {{post.replyCount > 1 ? 'replies' : 'reply'}}
             </div>
         </div>
         <div fxFlex="85%" class="content">

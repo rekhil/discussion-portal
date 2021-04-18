@@ -11,13 +11,12 @@
       color: white;
       border-radius: 5px;
       border: 1px solid transparent;
-      padding: 5px;
+      padding: 10px;
+      font-size: 14px;
     }
   }
   .question {
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #b1b1b1;
+    padding: 15px 0;
   }
   .vote-count {
     font-size: 11px;
@@ -32,10 +31,11 @@
     text-align: center;
   }
   .content {
+    padding: 0 20px;
     .title {
       color: #0077cc;
       font-size: 16px;
-      font-weight: 400;
+      font-weight: 500;
       cursor: pointer;
     }
     .user-info {
@@ -60,6 +60,7 @@
         border-radius: 3px;
         padding: 5px;
         font-size: 11px;
+        text-transform: capitalize;
       }
     }
   }

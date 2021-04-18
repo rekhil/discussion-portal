@@ -24,7 +24,7 @@
     </div>
     <ng-container *ngIf="post.replyPosts">
       <div class="post-section" *ngFor="let post of post.replyPosts">
-        <ngx-post [parentPostId]="postId" [thread]="post"></ngx-post>
+        <app-post [parentPostId]="postId" [thread]="post"></app-post>
       </div>
     </ng-container>
   </div>
