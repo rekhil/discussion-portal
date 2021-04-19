@@ -1,0 +1,30 @@
+<div class="filter-wrapper">
+  <div class="filter-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="totalCount">
+      {{postCount}} Posts
+    </div>
+    <div class="filter-btn">
+      <button type="button" fxLayout="row" fxLayoutAlign="center center" (click)="showSettings=!showSettings">
+        <mat-icon>settings</mat-icon> Filter
+      </button>
+    </div>
+  </div>
+  <div *ngIf="showSettings" class="filter-body">
+    <div class="filterBy" fxLayout="column" fxLayoutGap="10px">
+      <div class="section-title">Filter by</div>
+      <div class="section">
+        <mat-radio-group [(ngModel)]="filterBy" name="filterBy" fxLayout="column" fxLayoutGap="10px">
+          <mat-radio-button value="unanswered">
+              Unanswered
+          </mat-radio-button>
+          <mat-radio-button value="active">
+              Active
+          </mat-radio-button>
+          <mat-radio-button value="newest">
+              Newest
+          </mat-radio-button>
+      </mat-radio-group>
+      </div>
+    </div>
+  </div>
+</div>

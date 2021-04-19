@@ -1,0 +1,39 @@
+<mat-card>
+  <div>
+    <div fxLayout="column" fxLayoutGap="15px">
+      <b>Title</b>
+      <mat-form-field appearance="outline" class="full-width">
+        <input type="text" [(ngModel)]="title" matInput fullWidth placeholder="Enter title">
+      </mat-form-field>
+      <b>Body</b>
+      <div class="NgxEditor__Wrapper">
+        <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+        <ngx-editor [editor]="editor" [(ngModel)]="htmlContent" [placeholder]="'Type here...'" [editable]="true"
+          [outputFormat]="'html'"></ngx-editor>
+      </div>
+      <b>Tags</b>
+      <div>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Enter atleast one tag</mat-label>
+          <mat-chip-list #tagList aria-label="Tag selection">
+            <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+              (removed)="onTagRemove(tag)">
+              {{tag}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Tag" #tagInput [formControl]="tagCtrl" [matAutocomplete]="auto"
+              [matChipInputFor]="tagList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+              {{tag}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="postQuestion()"
+        [disabled]="!title || !htmlContent || !tags || tags.length == 0">Submit</button>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,43 @@
+<div class="disc-wrapper">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="header-title">All Posts</div>
+    <div class="header-actions">
+      <button type="button" (click)="askQuestion()">Create New Post</button>
+    </div>
+  </div>
+  <app-filter></app-filter>
+  <mat-divider></mat-divider>
+  <mat-paginator [length]="posts.length" #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+  <mat-divider></mat-divider>
+  <div fxLayout="column" fxLayoutAlign="center stretch" *ngFor="let post of obs | async">
+    <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="question">
+      <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
+        <div class="vote-count">
+          {{post.likeCount - post.disLikeCount}} {{(post.likeCount - post.disLikeCount) == 1 ? 'vote' : 'votes'}}
+        </div>
+        <div class="ans-count">
+          {{post.replyCount}} {{post.replyCount == 1 ? 'reply' : 'replies'}}
+        </div>
+      </div>
+      <div fxFlex="90%" class="content" fxLayout="column" fxLayoutGap="5px">
+        <div class="title" (click)="goToDetails(post.postId)">{{post.subject}}</div>
+        <div class="description">
+          <div [innerHTML]="post.postDescription"></div>
+        </div>
+        <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
+            <div class="tag" *ngFor="let tag of post.tags">
+              {{tag}}
+            </div>
+          </div>
+          <div class="user-info">
+            <div class="action-time">Asked {{post.createdOn | date:'medium'}}</div>
+            <div class="user-name">{{post.createdBy}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</div>

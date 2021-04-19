@@ -1,0 +1,57 @@
+<mat-divider></mat-divider>
+<div class="post-wrapper">
+  <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="thread">
+    <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
+      <div class="vote" (click)="vote(true, thread.postId)">
+        <mat-icon class="up-vote">play_arrow</mat-icon>
+      </div>
+      <div class="vote-count">
+        {{thread.likeCount - thread.disLikeCount}} votes
+      </div>
+      <div class="vote" (click)="vote(false, thread.postId)">
+        <mat-icon class="down-vote">play_arrow</mat-icon>
+      </div>
+    </div>
+    <div fxFlex="85%" class="thread-content">
+      <div class="thread-title">{{thread.subject}}</div>
+      <div class="thread-description">
+        <div [innerHTML]="thread.postDescription"></div>
+      </div>
+      <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="user-info">
+          <div class="action-time">Posted {{thread.createdOn | date:'medium'}}</div>
+          <div class="user-name">{{thread.createdBy}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="replies-wrapper" *ngIf="thread">
+    <button class="reply-btn" type="button" (click)="toggle()">
+      {{thread.replyPosts? (
+      (thread.replyPosts.length == 1)? '1 Reply' : thread.replyPosts.length+' Replies'
+      ): '0 Replies'}}
+    </button>
+    <button class="reply-btn" type="button" (click)="showEditor = !showEditor">Add a comment</button>
+    <div *ngIf="showChildNodes && thread.replyPosts" class="replies">
+      <div class="post-section" *ngFor="let post of thread.replyPosts">
+        <app-post [parentPostId]="thread.postId" [thread]="post"></app-post>
+      </div>
+    </div>
+    <div *ngIf="showEditor" class="editor-wrapper">
+      <mat-card style="margin-top: 8px;">
+        <mat-card-body>
+          <div fxLayout="column" fxLayoutGap="20px">
+            <div class="NgxEditor__Wrapper">
+              <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+              <ngx-editor [editor]="editor" [(ngModel)]="reply" [editable]="true" [placeholder]="'Type here...'"
+                [outputFormat]="'html'"></ngx-editor>
+            </div>
+            <button mat-raised-button color="primary" type="button" (click)="replyQuestion()" [disabled]="!reply">
+              Post your comment
+            </button>
+          </div>
+        </mat-card-body>
+      </mat-card>
+    </div>
+  </div>
+</div>
