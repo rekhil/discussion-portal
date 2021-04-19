@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div fxLayout="column" fxLayoutAlign="center center" class="login-wrapper">
+  <mat-card class="login-card">
+    <mat-card-header class="title">
+      <mat-card-title>Sign In</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div [formGroup]="loginForm" fxLayout="column" fxLayoutGap="20px">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Enter username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Enter password" type="password" formControlName="password">
+        </mat-form-field>
+        <div class="error">{{errorMessage}}</div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="actions">
+        <button mat-raised-button color="primary" class="full-width" (click)="login()"
+          [disabled]="!enableLogin && !loginForm.valid">Sign In</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

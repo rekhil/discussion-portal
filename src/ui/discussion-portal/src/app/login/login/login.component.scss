@@ -1,0 +1,17 @@
+.login-wrapper {
+  height: 100vh;
+  .title {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  .login-card {
+    width: 500px;
+  }
+  .actions {
+    margin: 0 8px 15px 8px;
+  }
+  .error {
+    color: #f44336;
+  }
+}

@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Config } from 'src/app/shared/config';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DiscussionService {
-
   private posts = new BehaviorSubject<any>([]);
   public posts$ = this.posts.asObservable();
-  private baseUrl = 'https://xenon-anvil-310308.appspot.com/api/';
+  private baseUrl = Config.apiBaseUrl;
 
   constructor(private http: HttpClient) {
     this.searchPosts();
   }
 
   searchPosts() {
-    this.http.get(this.baseUrl + 'discussions').subscribe(data => {
+    this.http.get(this.baseUrl + 'discussions').subscribe((data) => {
       this.posts.next(data);
-    })
+    });
   }
 
   getQuestionById(postId: any): Observable<any> {
@@ -30,12 +30,17 @@ export class DiscussionService {
   }
 
   updatePost(request: any, id: number) {
-    this.http.put(this.baseUrl + 'discussions/' + id, request).subscribe(data => {
-      this.searchPosts();
-    })
+    this.http
+      .put(this.baseUrl + 'discussions/' + id, request)
+      .subscribe((data) => {
+        this.searchPosts();
+      });
   }
 
   updateVote(request: any): Observable<any> {
-    return this.http.post(this.baseUrl + 'discussions/updatePostLikeStatus', request);
+    return this.http.post(
+      this.baseUrl + 'discussions/updatePostLikeStatus',
+      request
+    );
   }
 }
