@@ -1,0 +1,45 @@
+<div class="details-wrapper" *ngIf="post">
+  <div class="header">
+    <div class="title">{{post.subject}}</div>
+    <div class="user-info" fxLayout="row" fxLayoutAlign="space-between">
+      <div class="action-time">Asked {{post.createdOn | date:'medium'}}</div>
+      <div class="user-name">{{post.createdBy}}</div>
+    </div>
+  </div>
+  <div class="description">
+    <div [innerHTML]="post.postDescription"></div>
+  </div>
+  <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="tag-group" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
+      <div class="tag" *ngFor="let tag of post.tags">
+        {{tag}}
+      </div>
+    </div>
+  </div>
+  <div class="thread-wrapper">
+    <p class="thread-count">
+      {{post.replyPosts? (
+      (post.replyPosts.length == 1)? '1 Reply' : post.replyPosts.length+' Replies'
+      ): '0 Replies'}}
+    </p>
+    <ng-container *ngIf="post.replyPosts">
+      <div class="post-section" *ngFor="let post of post.replyPosts">
+        <app-post [parentPostId]="postId" [thread]="post"></app-post>
+      </div>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </div>
+  <mat-card>
+    <div>
+      <div fxLayout="column" fxLayoutGap="20px">
+        <div class="NgxEditor__Wrapper">
+          <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+          <ngx-editor [editor]="editor" [(ngModel)]="reply" [editable]="true" [placeholder]="'Type here...'"
+            [outputFormat]="'html'">
+          </ngx-editor>
+        </div>
+        <button mat-raised-button color="primary" (click)="createPost()" [disabled]="!reply">Post your comment</button>
+      </div>
+    </div>
+  </mat-card>
+</div>

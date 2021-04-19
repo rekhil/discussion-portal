@@ -1,0 +1,31 @@
+.filter-wrapper {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  .filter-btn {
+    button {
+      color: #39739d;
+      background-color: #e1ecf4;
+      border-color: #39739d;
+      font-size: 14px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      mat-icon {
+        margin-right: 5px;
+      }
+    }
+  }
+  .filter-body {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #eff0f1;
+    border: 1px solid #d6d9dc;
+    border-radius: 5px;
+    ::ng-deep nb-radio .text {
+      font-size: 11px;
+    }
+  }
+  .totalCount {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
