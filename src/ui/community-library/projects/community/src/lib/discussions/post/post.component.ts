@@ -16,11 +16,14 @@ export class PostComponent implements OnInit {
   editor: Editor;
   title: string;
   reply: string;
+  private _document?: Document;
 
   constructor(
     private discussionService: DiscussionService,
-    @Inject(DOCUMENT) private _document: Document
-  ) {}
+    @Inject(DOCUMENT) private document: any
+  ) {
+    this._document = document as Document;
+  }
 
   ngOnInit(): void {
     this.editor = new Editor();

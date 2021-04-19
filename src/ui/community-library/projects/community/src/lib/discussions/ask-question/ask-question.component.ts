@@ -34,8 +34,8 @@ export class AskQuestionComponent implements OnInit {
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
 
-  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  @ViewChild('tagInput', { static: true }) tagInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto', { static: true }) matAutocomplete: MatAutocomplete;
 
   constructor(
     private discussionService: DiscussionService,
@@ -66,6 +66,7 @@ export class AskQuestionComponent implements OnInit {
     });
   }
 
+  onTagRemove(x: any) { }
   // onTagRemove(tagToRemove: NbTagComponent): void {
   //   this.tags.delete(tagToRemove.text);
   //   this.options.push(tagToRemove.text);
