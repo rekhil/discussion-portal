@@ -1,14 +1,15 @@
+<mat-divider></mat-divider>
 <div class="post-wrapper">
   <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="thread">
     <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
       <div class="vote" (click)="vote(true, thread.postId)">
-        <!-- <mat-icon>play_arrow</mat-icon> -->
+        <mat-icon class="up-vote">play_arrow</mat-icon>
       </div>
       <div class="vote-count">
         {{thread.likeCount - thread.disLikeCount}} votes
       </div>
       <div class="vote" (click)="vote(false, thread.postId)">
-        <!-- <mat-icon>play_arrow</mat-icon> -->
+        <mat-icon class="down-vote">play_arrow</mat-icon>
       </div>
     </div>
     <div fxFlex="85%" class="thread-content">
@@ -40,15 +41,12 @@
       <mat-card style="margin-top: 8px;">
         <mat-card-body>
           <div fxLayout="column" fxLayoutGap="20px">
-            <b>Title</b>
-            <input type="text" [(ngModel)]="title" nbInput fullWidth placeholder="Enter title" fieldSize="large"
-              class="title-input">
             <div class="NgxEditor__Wrapper">
               <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
               <ngx-editor [editor]="editor" [(ngModel)]="reply" [editable]="true" [placeholder]="'Type here...'"
                 [outputFormat]="'html'"></ngx-editor>
             </div>
-            <button nbButton status="primary" type="button" (click)="replyQuestion()">
+            <button mat-raised-button color="primary" type="button" (click)="replyQuestion()" [disabled]="!reply">
               Post your comment
             </button>
           </div>

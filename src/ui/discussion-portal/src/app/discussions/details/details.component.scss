@@ -6,6 +6,7 @@
       color: #3c4146;
       font-size: 20px;
       margin-bottom: 10px;
+      font-weight: 500;
     }
   }
   .user-info {
@@ -58,9 +59,6 @@
 }
 .NgxEditor__Wrapper {
   height: 250px;
-}
-.post-section {
-  border-bottom: 1px solid #b1b1b1;
 }
 .post-section:last-of-type {
   border-bottom: 0;

@@ -17,15 +17,16 @@
     </div>
   </div>
   <div class="thread-wrapper">
-    <div class="thread-count">
+    <p class="thread-count">
       {{post.replyPosts? (
       (post.replyPosts.length == 1)? '1 Reply' : post.replyPosts.length+' Replies'
       ): '0 Replies'}}
-    </div>
+    </p>
     <ng-container *ngIf="post.replyPosts">
       <div class="post-section" *ngFor="let post of post.replyPosts">
         <app-post [parentPostId]="postId" [thread]="post"></app-post>
       </div>
+      <mat-divider></mat-divider>
     </ng-container>
   </div>
   <mat-card>
