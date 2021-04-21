@@ -15,7 +15,7 @@
           <mat-label>Enter atleast one tag</mat-label>
           <mat-chip-list #tagList aria-label="Tag selection">
             <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
-              (removed)="onTagRemove(tag)">
+              (removed)="remove(tag)">
               {{tag}}
               <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
