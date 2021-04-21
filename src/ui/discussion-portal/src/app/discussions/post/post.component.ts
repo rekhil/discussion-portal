@@ -1,6 +1,5 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { Editor } from 'ngx-editor';
 import { DiscussionService } from '../services/discussion.service';
 
 @Component({
@@ -13,7 +12,6 @@ export class PostComponent implements OnInit {
   @Input() parentPostId: number;
   showChildNodes: boolean;
   showEditor: boolean;
-  editor: Editor;
   title: string;
   reply: string;
 
@@ -22,9 +20,7 @@ export class PostComponent implements OnInit {
     @Inject(DOCUMENT) private _document: Document
   ) {}
 
-  ngOnInit(): void {
-    this.editor = new Editor();
-  }
+  ngOnInit(): void {}
 
   vote(like: boolean, threadId: any) {
     const request = {
@@ -57,7 +53,6 @@ export class PostComponent implements OnInit {
 
   toggle() {
     this.showChildNodes = !this.showChildNodes;
-    this.editor = new Editor();
   }
 
   refreshPage() {

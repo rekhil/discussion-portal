@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Editor } from 'ngx-editor';
 import { DiscussionService } from '../services/discussion.service';
 
 @Component({
@@ -12,7 +11,6 @@ export class DetailsComponent implements OnInit {
   postId: any;
   post: any;
   postDescription: string;
-  editor: Editor;
   reply;
 
   constructor(
@@ -21,7 +19,6 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.editor = new Editor();
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.postId = params.get('postId');
       this.getPostDetails(this.postId);
@@ -52,7 +49,5 @@ export class DetailsComponent implements OnInit {
     this.postDescription = '';
   }
 
-  ngOnDestroy(): void {
-    this.editor.destroy();
-  }
+  ngOnDestroy(): void {}
 }

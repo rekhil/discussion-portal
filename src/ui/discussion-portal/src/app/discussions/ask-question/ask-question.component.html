@@ -6,10 +6,8 @@
         <input type="text" [(ngModel)]="title" matInput fullWidth placeholder="Enter title">
       </mat-form-field>
       <b>Body</b>
-      <div class="NgxEditor__Wrapper">
-        <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
-        <ngx-editor [editor]="editor" [(ngModel)]="htmlContent" [placeholder]="'Type here...'" [editable]="true"
-          [outputFormat]="'html'"></ngx-editor>
+      <div>
+        <angular-editor [placeholder]="'Type here...'" [(ngModel)]="htmlContent"></angular-editor>
       </div>
       <b>Tags</b>
       <div>

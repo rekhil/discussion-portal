@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-import { Editor } from 'ngx-editor';
 import { tags } from '../models/tags';
 import { DiscussionService } from '../services/discussion.service';
 
@@ -21,7 +20,6 @@ import { DiscussionService } from '../services/discussion.service';
 })
 export class AskQuestionComponent implements OnInit {
   title: string;
-  editor: Editor;
   htmlContent: any;
 
   tags = [];
@@ -49,9 +47,7 @@ export class AskQuestionComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.editor = new Editor();
-  }
+  ngOnInit(): void {}
 
   postQuestion() {
     const request = {
@@ -65,19 +61,6 @@ export class AskQuestionComponent implements OnInit {
       this.router.navigate(['/discussions']);
     });
   }
-
-  // onTagRemove(tagToRemove: NbTagComponent): void {
-  //   this.tags.delete(tagToRemove.text);
-  //   this.options.push(tagToRemove.text);
-  // }
-
-  // onTagAdd(value: string): void {
-  //   if (value) {
-  //     this.tags.add(value);
-  //     this.options = this.options.filter(o => o !== value);
-  //   }
-  //   this.tagInput.nativeElement.value = '';
-  // }
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -118,8 +101,5 @@ export class AskQuestionComponent implements OnInit {
     );
   }
 
-  // make sure to destory the editor
-  ngOnDestroy(): void {
-    this.editor.destroy();
-  }
+  ngOnDestroy(): void {}
 }
