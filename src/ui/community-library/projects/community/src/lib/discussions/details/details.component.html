@@ -32,11 +32,8 @@
   <mat-card>
     <div>
       <div fxLayout="column" fxLayoutGap="20px">
-        <div class="NgxEditor__Wrapper">
-          <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
-          <ngx-editor [editor]="editor" [(ngModel)]="reply" [editable]="true" [placeholder]="'Type here...'"
-            [outputFormat]="'html'">
-          </ngx-editor>
+        <div>
+          <angular-editor [placeholder]="'Type here...'" [(ngModel)]="reply"></angular-editor>
         </div>
         <button mat-raised-button color="primary" (click)="createPost()" [disabled]="!reply">Post your comment</button>
       </div>

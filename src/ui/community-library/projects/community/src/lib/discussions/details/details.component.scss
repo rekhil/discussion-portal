@@ -57,8 +57,11 @@
 .title-input {
   padding: 10px;
 }
-.NgxEditor__Wrapper {
-  height: 250px;
+angular-editor
+  > .angular-editor
+  > .angular-editor-wrapper
+  > .angular-editor-textarea {
+  min-height: 200px !important;
 }
 .post-section:last-of-type {
   border-bottom: 0;

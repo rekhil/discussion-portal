@@ -40,10 +40,12 @@
     border-bottom: 0;
   }
 }
-.NgxEditor__Wrapper {
-  height: 250px;
+angular-editor
+  > .angular-editor
+  > .angular-editor-wrapper
+  > .angular-editor-textarea {
+  min-height: 200px !important;
 }
-
 .title-input {
   padding: 10px;
 }

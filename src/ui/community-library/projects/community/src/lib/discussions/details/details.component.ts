@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Editor } from 'ngx-editor';
-import { DiscussionService } from '../services/discussion.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, ParamMap } from "@angular/router";
+import { DiscussionService } from "../services/discussion.service";
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss'],
+  selector: "app-details",
+  templateUrl: "./details.component.html",
+  styleUrls: ["./details.component.scss"],
 })
 export class DetailsComponent implements OnInit {
   postId: any;
   post: any;
   postDescription: string;
-  editor: Editor;
+  // editor: Editor;
   reply;
 
   constructor(
@@ -21,9 +20,8 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.editor = new Editor();
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.postId = params.get('postId');
+      this.postId = params.get("postId");
       this.getPostDetails(this.postId);
     });
   }
@@ -31,7 +29,7 @@ export class DetailsComponent implements OnInit {
   getPostDetails(postId) {
     this.discussionService.getQuestionById(postId).subscribe((data) => {
       this.post = data;
-      this.reply = '';
+      this.reply = "";
     });
   }
 
@@ -41,7 +39,7 @@ export class DetailsComponent implements OnInit {
       postDescription: this.reply,
       tags: [],
       isTopic: false,
-      createdBy: 'Code Owner',
+      createdBy: "Code Owner",
       parentPostId: this.postId,
     };
     this.discussionService.createPost(request).subscribe((response) => {
@@ -49,10 +47,8 @@ export class DetailsComponent implements OnInit {
         this.getPostDetails(this.postId);
       }
     });
-    this.postDescription = '';
+    this.postDescription = "";
   }
 
-  ngOnDestroy(): void {
-    this.editor.destroy();
-  }
+  ngOnDestroy(): void {}
 }

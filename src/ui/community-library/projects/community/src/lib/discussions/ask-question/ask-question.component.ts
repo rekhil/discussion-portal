@@ -1,27 +1,25 @@
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import {
   MatAutocomplete,
   MatAutocompleteSelectedEvent,
-} from '@angular/material/autocomplete';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+} from "@angular/material/autocomplete";
+import { MatChipInputEvent } from "@angular/material/chips";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { map, startWith } from "rxjs/operators";
 
-import { Editor } from 'ngx-editor';
-import { tags } from '../models/tags';
-import { DiscussionService } from '../services/discussion.service';
+import { tags } from "../models/tags";
+import { DiscussionService } from "../services/discussion.service";
 
 @Component({
-  selector: 'app-ask-question',
-  templateUrl: './ask-question.component.html',
-  styleUrls: ['./ask-question.component.scss'],
+  selector: "app-ask-question",
+  templateUrl: "./ask-question.component.html",
+  styleUrls: ["./ask-question.component.scss"],
 })
 export class AskQuestionComponent implements OnInit {
   title: string;
-  editor: Editor;
   htmlContent: any;
 
   tags = [];
@@ -34,8 +32,9 @@ export class AskQuestionComponent implements OnInit {
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
 
-  @ViewChild('tagInput', { static: true }) tagInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto', { static: true }) matAutocomplete: MatAutocomplete;
+  @ViewChild("tagInput", { static: true })
+  tagInput: ElementRef<HTMLInputElement>;
+  @ViewChild("auto", { static: true }) matAutocomplete: MatAutocomplete;
 
   constructor(
     private discussionService: DiscussionService,
@@ -49,9 +48,7 @@ export class AskQuestionComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.editor = new Editor();
-  }
+  ngOnInit(): void {}
 
   postQuestion() {
     const request = {
@@ -59,39 +56,25 @@ export class AskQuestionComponent implements OnInit {
       postDescription: this.htmlContent,
       tags: Array.from(this.tags.values()),
       isTopic: true,
-      createdBy: 'Code Owner',
+      createdBy: "Code Owner",
     };
     this.discussionService.createPost(request).subscribe((data) => {
-      this.router.navigate(['/discussions']);
+      this.router.navigate(["/discussions"]);
     });
   }
-
-  onTagRemove(x: any) { }
-  // onTagRemove(tagToRemove: NbTagComponent): void {
-  //   this.tags.delete(tagToRemove.text);
-  //   this.options.push(tagToRemove.text);
-  // }
-
-  // onTagAdd(value: string): void {
-  //   if (value) {
-  //     this.tags.add(value);
-  //     this.options = this.options.filter(o => o !== value);
-  //   }
-  //   this.tagInput.nativeElement.value = '';
-  // }
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
     // Add tag
-    if ((value || '').trim()) {
+    if ((value || "").trim()) {
       this.tags.push(value.trim());
     }
 
     // Reset the input value
     if (input) {
-      input.value = '';
+      input.value = "";
     }
 
     this.tagCtrl.setValue(null);
@@ -107,7 +90,7 @@ export class AskQuestionComponent implements OnInit {
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
-    this.tagInput.nativeElement.value = '';
+    this.tagInput.nativeElement.value = "";
     this.tagCtrl.setValue(null);
   }
 
@@ -121,6 +104,6 @@ export class AskQuestionComponent implements OnInit {
 
   // make sure to destory the editor
   ngOnDestroy(): void {
-    this.editor.destroy();
+    // this.editor.destroy();
   }
 }

@@ -1,3 +1,6 @@
-.NgxEditor__Wrapper {
-  height: calc(100vh - 330px);
+angular-editor
+  > .angular-editor
+  > .angular-editor-wrapper
+  > .angular-editor-textarea {
+  min-height: 200px !important;
 }

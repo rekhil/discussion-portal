@@ -1,19 +1,17 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { Editor } from 'ngx-editor';
-import { DiscussionService } from '../services/discussion.service';
+import { DOCUMENT } from "@angular/common";
+import { Component, Inject, Input, OnInit } from "@angular/core";
+import { DiscussionService } from "../services/discussion.service";
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss'],
+  selector: "app-post",
+  templateUrl: "./post.component.html",
+  styleUrls: ["./post.component.scss"],
 })
 export class PostComponent implements OnInit {
   @Input() thread: any;
   @Input() parentPostId: number;
   showChildNodes: boolean;
   showEditor: boolean;
-  editor: Editor;
   title: string;
   reply: string;
   private _document?: Document;
@@ -25,14 +23,12 @@ export class PostComponent implements OnInit {
     this._document = document as Document;
   }
 
-  ngOnInit(): void {
-    this.editor = new Editor();
-  }
+  ngOnInit(): void {}
 
   vote(like: boolean, threadId: any) {
     const request = {
       isLike: like,
-      userName: 'Code Owner',
+      userName: "Code Owner",
       discussionPostId: threadId,
     };
     this.discussionService.updateVote(request).subscribe((response) => {
@@ -48,7 +44,7 @@ export class PostComponent implements OnInit {
       postDescription: this.reply,
       tags: [],
       isTopic: false,
-      createdBy: 'Code Owner',
+      createdBy: "Code Owner",
       parentPostId: this.thread.postId,
     };
     this.discussionService.createPost(request).subscribe((response) => {
@@ -60,7 +56,6 @@ export class PostComponent implements OnInit {
 
   toggle() {
     this.showChildNodes = !this.showChildNodes;
-    this.editor = new Editor();
   }
 
   refreshPage() {
