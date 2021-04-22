@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Config } from "community/lib/shared/config";
+import { Config } from "../../shared/config";
 import { Observable } from "rxjs";
 
 @Injectable({
