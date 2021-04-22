@@ -15,6 +15,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'discussion-wrapper',
+    loadChildren: () =>
+      import('./discussion-wrapper/discussion-wrapper.module').then(
+        (m) => m.DiscussionWrapperModule
+      ),
+  },
+  {
     path: 'users',
     loadChildren: () =>
       import('./users/users.module').then((m) => m.UsersModule),
