@@ -12,6 +12,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSelectModule } from '@angular/material/select';
 
 const materialModules = [
   MatAutocompleteModule,
@@ -25,6 +26,7 @@ const materialModules = [
   MatTableModule,
   MatPaginatorModule,
   MatDividerModule,
+  MatSelectModule,
 ];
 
 @NgModule({

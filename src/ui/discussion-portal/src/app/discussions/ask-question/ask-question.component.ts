@@ -9,8 +9,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { Config } from 'src/app/shared/config';
 
-import { tags } from '../models/tags';
 import { DiscussionService } from '../services/discussion.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class AskQuestionComponent implements OnInit {
   htmlContent: any;
 
   tags = [];
-  options = tags;
+  options = Config.tags;
 
   visible = true;
   selectable = true;

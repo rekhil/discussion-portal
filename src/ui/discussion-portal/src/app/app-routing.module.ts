@@ -22,6 +22,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'users-wrapper',
+    loadChildren: () =>
+      import('./users-wrapper/users-wrapper.module').then(
+        (m) => m.UsersWrapperModule
+      ),
+  },
+  {
     path: 'users',
     loadChildren: () =>
       import('./users/users.module').then((m) => m.UsersModule),

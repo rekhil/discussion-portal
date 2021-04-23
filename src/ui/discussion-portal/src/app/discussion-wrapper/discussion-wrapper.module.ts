@@ -6,9 +6,7 @@ import { DiscussionsModule } from 'ngx-community';
 import { DiscussionsTestComponent } from './discussions-test/discussions-test.component';
 
 @NgModule({
-  declarations: [
-    DiscussionsTestComponent
-  ],
+  declarations: [DiscussionsTestComponent],
   imports: [CommonModule, DiscussionsModule, DiscussionWrapperRoutingModule],
 })
 export class DiscussionWrapperModule {}

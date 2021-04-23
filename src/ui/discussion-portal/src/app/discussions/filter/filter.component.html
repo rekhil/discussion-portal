@@ -1,30 +1,19 @@
-<div class="filter-wrapper">
-  <div class="filter-header" fxLayout="row" fxLayoutAlign="space-between center">
-    <div class="totalCount">
-      {{postCount}} Posts
-    </div>
-    <div class="filter-btn">
-      <button type="button" fxLayout="row" fxLayoutAlign="center center" (click)="showSettings=!showSettings">
-        <mat-icon>settings</mat-icon> Filter
-      </button>
-    </div>
-  </div>
-  <div *ngIf="showSettings" class="filter-body">
-    <div class="filterBy" fxLayout="column" fxLayoutGap="10px">
-      <div class="section-title">Filter by</div>
-      <div class="section">
-        <mat-radio-group [(ngModel)]="filterBy" name="filterBy" fxLayout="column" fxLayoutGap="10px">
-          <mat-radio-button value="unanswered">
-              Unanswered
-          </mat-radio-button>
-          <mat-radio-button value="active">
-              Active
-          </mat-radio-button>
-          <mat-radio-button value="newest">
-              Newest
-          </mat-radio-button>
-      </mat-radio-group>
-      </div>
-    </div>
+<div fxLayout="row" fxLayoutGap="30px" class="filter-wrapper">
+  <mat-form-field appearance="fill">
+    <mat-label>All tags</mat-label>
+    <mat-select [(ngModel)]="selectedTags" multiple>
+      <mat-select-trigger>
+        {{selectedTags ? selectedTags[0] : ''}}
+        <span *ngIf="selectedTags.length > 1" class="example-additional-selection">
+          (+{{selectedTags.length - 1}} {{selectedTags?.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let tag of tags" [value]="tag">{{tag}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div fxLayout="row" fxLayoutGap="5px" class="options">
+    <a class="option-link" (click)="sortByLatest()" [ngClass]="{'active': selectedOption == 1}">Latest</a>
+    <a class="option-link" (click)="topPosts()" [ngClass]="{'active': selectedOption == 2}">Top</a>
+    <a class="option-link" (click)="showByCategory()" [ngClass]="{'active': selectedOption == 3}">Categories</a>
   </div>
 </div>

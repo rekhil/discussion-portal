@@ -1,0 +1,27 @@
+.layout-wrapper {
+  .menu-wrapper {
+    padding: 30px 20px;
+    background: linear-gradient(-90deg, #ff4081, #3f51b5), #fff;
+    color: white;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    .menu-link {
+      font-size: 16px;
+    }
+    .home-link {
+      font-size: 24px;
+      letter-spacing: 0.8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .active {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  .component-outlet {
+    padding: 20px 30px;
+  }
+}
