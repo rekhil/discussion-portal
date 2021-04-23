@@ -14,6 +14,7 @@ import { PostComponent } from './post/post.component';
 import { FilterComponent } from './filter/filter.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CustomMaterialModule } from '../shared/custom-material.module';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CustomMaterialModule } from '../shared/custom-material.module';
     DetailsComponent,
     PostComponent,
     FilterComponent,
+    CategoriesComponent,
   ],
   imports: [
     CommonModule,

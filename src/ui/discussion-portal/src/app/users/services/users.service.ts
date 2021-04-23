@@ -7,7 +7,7 @@ import { Config } from 'src/app/shared/config';
   providedIn: 'root',
 })
 export class UsersService {
-  private baseUrl = Config.apiBaseUrl;
+  private baseUrl = Config.apiBaseUrl + 'users/';
 
   constructor(private http: HttpClient) {}
 

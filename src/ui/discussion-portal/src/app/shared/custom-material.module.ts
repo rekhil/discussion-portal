@@ -13,6 +13,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const materialModules = [
   MatAutocompleteModule,
@@ -25,8 +27,10 @@ const materialModules = [
   MatChipsModule,
   MatTableModule,
   MatPaginatorModule,
+  MatSortModule,
   MatDividerModule,
   MatSelectModule,
+  MatDialogModule,
 ];
 
 @NgModule({

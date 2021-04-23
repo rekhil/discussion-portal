@@ -1,8 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UsersService } from '../services/users.service';
+import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
+import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 
 @Component({
   selector: 'app-users',
@@ -10,48 +14,33 @@ import { UsersService } from '../services/users.service';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'email'];
+  displayedColumns: string[] = [
+    'userName',
+    'firstName',
+    'lastName',
+    'email',
+    'edit',
+    'delete',
+  ];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private dialog: MatDialog) {}
 
   ngOnInit() {
-    this.usersService.searchUser('').subscribe(
-      (users) => {
-        // Assign the data to the data source for the table to render
-        this.dataSource = new MatTableDataSource(users);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      () => {
-        const users = [
-          {
-            id: 1,
-            name: 'testset',
-            email: 'sfdsfsd',
-          },
-          {
-            id: 2,
-            name: 'atestset',
-            email: 'a1sfdsfsd',
-          },
-          {
-            id: 3,
-            name: 'btestset',
-            email: 'b1sfdsfsd',
-          },
-        ];
-        this.dataSource = new MatTableDataSource(users);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      }
-    );
+    this.fetchUsers();
   }
 
-  ngAfterViewInit() {}
+  fetchUsers() {
+    this.usersService.searchUser('').subscribe((users) => {
+      // Assign the data to the data source for the table to render
+      this.dataSource = new MatTableDataSource(users);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -60,5 +49,49 @@ export class UsersComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  createUser() {
+    this.dialog
+      .open(CreateUserDialogComponent, {
+        width: '500px',
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.fetchUsers();
+        }
+      });
+  }
+
+  editUser(user) {
+    this.dialog
+      .open(EditUserDialogComponent, {
+        data: user,
+        width: '500px',
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.fetchUsers();
+        }
+      });
+  }
+
+  deleteUser(user) {
+    this.dialog
+      .open(DeleteConfirmationDialogComponent, {
+        width: '500px',
+        disableClose: true,
+        autoFocus: false,
+      })
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.usersService.deleteUser(user.userName).subscribe();
+        }
+      });
   }
 }

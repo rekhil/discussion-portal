@@ -12,8 +12,8 @@
     </mat-select>
   </mat-form-field>
   <div fxLayout="row" fxLayoutGap="5px" class="options">
-    <a class="option-link" (click)="sortByLatest()" [ngClass]="{'active': selectedOption == 1}">Latest</a>
-    <a class="option-link" (click)="topPosts()" [ngClass]="{'active': selectedOption == 2}">Top</a>
-    <a class="option-link" (click)="showByCategory()" [ngClass]="{'active': selectedOption == 3}">Categories</a>
+    <a class="option-link" (click)="setOption(1)" [ngClass]="{'active': selectedOption == 1}">Latest</a>
+    <a class="option-link" (click)="setOption(2)" [ngClass]="{'active': selectedOption == 2}">Top</a>
+    <a class="option-link" (click)="setOption(3)" [ngClass]="{'active': selectedOption == 3}">Categories</a>
   </div>
 </div>
