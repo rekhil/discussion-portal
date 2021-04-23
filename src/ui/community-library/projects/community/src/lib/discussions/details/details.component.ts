@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { DiscussionService } from "../services/discussion.service";
@@ -11,12 +12,12 @@ export class DetailsComponent implements OnInit {
   postId: any;
   post: any;
   postDescription: string;
-  // editor: Editor;
   reply;
 
   constructor(
     private route: ActivatedRoute,
-    private discussionService: DiscussionService
+    private discussionService: DiscussionService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +49,10 @@ export class DetailsComponent implements OnInit {
       }
     });
     this.postDescription = "";
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   ngOnDestroy(): void {}

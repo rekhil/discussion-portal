@@ -1,18 +1,9 @@
 .disc-wrapper {
-  padding: 20px;
   .header {
     margin-bottom: 20px;
     .header-title {
       font-size: 20px;
       font-weight: 600;
-    }
-    .header-actions button {
-      background-color: #0095ff;
-      color: white;
-      border-radius: 5px;
-      border: 1px solid transparent;
-      padding: 10px;
-      font-size: 14px;
     }
   }
   .question {
@@ -62,6 +53,21 @@
         font-size: 11px;
         text-transform: capitalize;
       }
+    }
+  }
+  .column-headers {
+    color: grey;
+    font-size: 16px;
+    padding: 17px 0;
+  }
+  .post-details {
+    cursor: pointer;
+    padding: 15px 0;
+    .title {
+      font-size: 18px;
+    }
+    .tag {
+      font-size: 12px;
     }
   }
 }
