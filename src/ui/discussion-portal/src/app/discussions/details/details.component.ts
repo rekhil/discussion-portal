@@ -40,7 +40,7 @@ export class DetailsComponent implements OnInit {
       postDescription: this.reply,
       tags: [],
       isTopic: false,
-      createdBy: 'Code Owner',
+      createdBy: 'stg',
       parentPostId: this.postId,
     };
     this.discussionService.createPost(request).subscribe((response) => {
@@ -53,6 +53,19 @@ export class DetailsComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  vote(like: boolean, threadId: any) {
+    const request = {
+      isLike: like,
+      userName: 'stg',
+      discussionPostId: threadId,
+    };
+    this.discussionService.updateVote(request).subscribe((response) => {
+      if (response.isSuccess) {
+        this.getPostDetails(this.postId);
+      }
+    });
   }
 
   ngOnDestroy(): void {}

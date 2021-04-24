@@ -25,7 +25,7 @@ export class PostComponent implements OnInit {
   vote(like: boolean, threadId: any) {
     const request = {
       isLike: like,
-      userName: 'Code Owner',
+      userName: 'stg',
       discussionPostId: threadId,
     };
     this.discussionService.updateVote(request).subscribe((response) => {
@@ -41,7 +41,7 @@ export class PostComponent implements OnInit {
       postDescription: this.reply,
       tags: [],
       isTopic: false,
-      createdBy: 'Code Owner',
+      createdBy: 'stg',
       parentPostId: this.thread.postId,
     };
     this.discussionService.createPost(request).subscribe((response) => {

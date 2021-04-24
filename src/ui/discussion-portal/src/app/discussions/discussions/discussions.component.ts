@@ -42,6 +42,15 @@ export class DiscussionsComponent implements OnInit, OnDestroy {
 
   setSelectedOptionFilter($event) {
     this.selectedOption = $event;
+    // sort option - Top
+    if (this.selectedOption === 2) {
+      this.posts = this.posts.sort((post1, post2) => {
+        return post1.likeCount - post1.disLikeCount >
+          post2.likeCount - post2.disLikeCount
+          ? 1
+          : -1;
+      });
+    }
   }
 
   goToDetails(postId: any) {

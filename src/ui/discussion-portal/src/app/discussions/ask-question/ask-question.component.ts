@@ -55,7 +55,7 @@ export class AskQuestionComponent implements OnInit {
       postDescription: this.htmlContent,
       tags: Array.from(this.tags.values()),
       isTopic: true,
-      createdBy: 'Code Owner',
+      createdBy: 'stg',
     };
     this.discussionService.createPost(request).subscribe((data) => {
       this.router.navigate(['/discussions']);

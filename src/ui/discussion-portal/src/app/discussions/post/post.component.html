@@ -6,7 +6,7 @@
         <mat-icon class="up-vote">play_arrow</mat-icon>
       </div>
       <div class="vote-count">
-        {{thread.likeCount - thread.disLikeCount}} votes
+        {{thread.likeCount - thread.disLikeCount}} {{thread.likeCount - thread.disLikeCount == 1 ? 'vote' : 'votes'}}
       </div>
       <div class="vote" (click)="vote(false, thread.postId)">
         <mat-icon class="down-vote">play_arrow</mat-icon>
@@ -17,9 +17,9 @@
       <div class="thread-description">
         <div [innerHTML]="thread.postDescription"></div>
       </div>
-      <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="bottom" fxLayout="row" fxLayoutGap="5px">
         <div class="user-info">
-          <div class="action-time">Posted {{thread.createdOn | date:'medium'}}</div>
+          <div class="action-time">Posted {{thread.createdOn | date:'medium'}} by</div>
           <div class="user-name">{{thread.createdBy}}</div>
         </div>
       </div>
