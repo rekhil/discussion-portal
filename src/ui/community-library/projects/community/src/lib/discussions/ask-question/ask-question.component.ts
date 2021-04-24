@@ -9,8 +9,8 @@ import { MatChipInputEvent } from "@angular/material/chips";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
+import { Config } from "../../shared/config";
 
-import { tags } from "../models/tags";
 import { DiscussionService } from "../services/discussion.service";
 
 @Component({
@@ -23,7 +23,7 @@ export class AskQuestionComponent implements OnInit {
   htmlContent: any;
 
   tags = [];
-  options = tags;
+  options = Config.tags;
 
   visible = true;
   selectable = true;
@@ -56,7 +56,7 @@ export class AskQuestionComponent implements OnInit {
       postDescription: this.htmlContent,
       tags: Array.from(this.tags.values()),
       isTopic: true,
-      createdBy: "Code Owner",
+      createdBy: "stg",
     };
     this.discussionService.createPost(request).subscribe((data) => {
       this.router.navigate(["/discussions"]);
@@ -102,8 +102,5 @@ export class AskQuestionComponent implements OnInit {
     );
   }
 
-  // make sure to destory the editor
-  ngOnDestroy(): void {
-    // this.editor.destroy();
-  }
+  ngOnDestroy(): void {}
 }

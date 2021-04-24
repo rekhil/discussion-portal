@@ -16,6 +16,7 @@
     .user-name {
       color: #0077cc;
       font-size: 13px;
+      font-weight: 500;
     }
   }
   .tag-group {
@@ -49,4 +50,59 @@
 }
 .post-section:last-of-type {
   border-bottom: 0;
+}
+.vote {
+  height: 34px;
+  width: 34px;
+  cursor: pointer;
+}
+
+.up-vote {
+  transform: rotate(270deg);
+}
+
+.down-vote {
+  transform: rotate(90deg);
+}
+
+.up-vote,
+.down-vote {
+  font-size: 34px;
+  height: 34px;
+  width: 34px;
+  color: #b1b1b1;
+}
+.thread-count {
+  font-size: 15px;
+  font-weight: 500;
+}
+.tag-technology {
+  color: #cc0000;
+}
+.tag-science {
+  color: green;
+}
+.tag-general {
+  color: blue;
+}
+.tag-history {
+  color: violet;
+}
+.tag-untagged {
+  color: #ab9364;
+}
+.tag-section-technology {
+  border-left: solid 5px #cc0000;
+}
+.tag-section-science {
+  border-left: solid 5px green;
+}
+.tag-section-general {
+  border-left: solid 5px blue;
+}
+.tag-section-history {
+  border-left: solid 5px violet;
+}
+.tag-section-untagged {
+  border-left: solid 5px #ab9364;
 }

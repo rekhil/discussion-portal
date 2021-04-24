@@ -19,6 +19,7 @@ import { Observable } from "rxjs";
 export class DiscussionsComponent implements OnInit, OnDestroy {
   public posts: any[];
   dataSource: MatTableDataSource<any>;
+  selectedOption: number;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   obs: Observable<any>;
@@ -37,6 +38,19 @@ export class DiscussionsComponent implements OnInit, OnDestroy {
       this.obs = this.dataSource.connect();
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  setSelectedOptionFilter($event) {
+    this.selectedOption = $event;
+    // sort option - Top
+    if (this.selectedOption === 2) {
+      this.posts = this.posts.sort((post1, post2) => {
+        return post1.likeCount - post1.disLikeCount >
+          post2.likeCount - post2.disLikeCount
+          ? 1
+          : -1;
+      });
+    }
   }
 
   goToDetails(postId: any) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Config } from "../../shared/config";
 import { DiscussionService } from "../services/discussion.service";
 
@@ -11,7 +11,8 @@ export class FilterComponent implements OnInit {
   public postCount: number;
   public tags: Array<string> = Config.allTags;
   public selectedTags = [];
-  public selectedOption = 0; // 1,2,3.. in order of display
+  @Input() selectedOption = 0; // 1,2,3.. in order of display
+  @Output() setSelectedOptionFilter = new EventEmitter();
 
   constructor(private discussionService: DiscussionService) {}
 
@@ -22,15 +23,8 @@ export class FilterComponent implements OnInit {
     });
   }
 
-  sortByLatest() {
-    this.selectedOption = this.selectedOption === 1 ? 0 : 1;
-  }
-
-  topPosts() {
-    this.selectedOption = this.selectedOption === 2 ? 0 : 2;
-  }
-
-  showByCategory() {
-    this.selectedOption = this.selectedOption === 3 ? 0 : 3;
+  setOption(option) {
+    this.selectedOption = this.selectedOption === option ? 0 : option;
+    this.setSelectedOptionFilter.emit(this.selectedOption);
   }
 }

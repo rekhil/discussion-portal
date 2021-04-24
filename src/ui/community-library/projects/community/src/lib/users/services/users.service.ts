@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class UsersService {
-  private baseUrl = Config.apiBaseUrl;
+  private baseUrl = Config.apiBaseUrl + "users/";
 
   constructor(private http: HttpClient) {}
 
