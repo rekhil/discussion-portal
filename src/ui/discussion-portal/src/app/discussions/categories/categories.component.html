@@ -6,8 +6,8 @@
 <div fxLayout="column" fxLayoutAlign="center" *ngFor="let category of postsByCategory">
   <div fxLayout="row" fxLayoutAlign="center center" class="section tag-section-{{category.tag | lowercase}}">
     <div fxFlex="85%" fxLayout="column" fxLayoutGap="10px">
+      <div class="tag">{{category.tag}}</div>
       <ng-container *ngIf="category.posts.length > 0; else emptyMsg">
-        <div class="tag">{{category.tag}}</div>
         <div class="title"> {{category.posts[0]?.subject}} </div>
         <div [innerHTML]="category.posts[0]?.postDescription"> </div>
       </ng-container>

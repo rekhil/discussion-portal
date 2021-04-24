@@ -20,6 +20,8 @@ export class CategoriesComponent implements OnInit {
       tags.forEach((tag) => {
         const matchingPosts = this.posts.filter(
           (post) =>
+            (tag == 'Untagged' && !post.tags) ||
+            (tag == 'Untagged' && post.tags.length === 0) ||
             post.tags.indexOf(tag) > -1 ||
             post.tags.indexOf(tag.toLowerCase()) > -1
         );

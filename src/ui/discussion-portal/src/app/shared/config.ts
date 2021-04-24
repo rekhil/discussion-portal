@@ -3,11 +3,11 @@ export class Config {
   public static menuItems = [
     {
       name: 'Discussions',
-      link: ['/discussions'],
+      link: ['/discussion-wrapper'],
     },
     {
       name: 'Users',
-      link: ['/users'],
+      link: ['/users-wrapper'],
     },
   ];
   public static tags = ['General', 'Technology', 'Science', 'History'];
