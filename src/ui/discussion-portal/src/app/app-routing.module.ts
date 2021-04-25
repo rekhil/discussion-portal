@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -12,32 +13,34 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
   },
-  // {
-  //   path: 'discussions',
-  //   loadChildren: () =>
-  //     import('./discussions/discussions.module').then(
-  //       (m) => m.DiscussionsModule
-  //     ),
-  // },
   {
     path: 'discussions',
     loadChildren: () =>
-      import('./discussion-wrapper/discussion-wrapper.module').then(
-        (m) => m.DiscussionWrapperModule
+      import('./discussions/discussions.module').then(
+        (m) => m.DiscussionsModule
       ),
+    canActivate: [AuthGuardService],
   },
-  {
-    path: 'users',
-    loadChildren: () =>
-      import('./users-wrapper/users-wrapper.module').then(
-        (m) => m.UsersWrapperModule
-      ),
-  },
+  // {
+  //   path: 'discussions',
+  //   loadChildren: () =>
+  //     import('./discussion-wrapper/discussion-wrapper.module').then(
+  //       (m) => m.DiscussionWrapperModule
+  //     ),
+  // },
   // {
   //   path: 'users',
   //   loadChildren: () =>
-  //     import('./users/users.module').then((m) => m.UsersModule),
+  //     import('./users-wrapper/users-wrapper.module').then(
+  //       (m) => m.UsersWrapperModule
+  //     ),
   // },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./users/users.module').then((m) => m.UsersModule),
+    canActivate: [AuthGuardService],
+  },
   {
     path: '**',
     redirectTo: 'discussions',
