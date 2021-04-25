@@ -26,7 +26,9 @@
           </div>
           <div class="tag-group" fxLayout="row" fxLayoutGap="20px">
             <div class="tag" fxLayout="row" fxLayoutAlign="start center" *ngFor="let tag of post.tags">
-              <mat-icon class="tag-{{tag | lowercase}}">stop</mat-icon>
+              <span class="tag-{{tag | lowercase}}">
+                <mat-icon>stop</mat-icon>
+              </span>
               <span>{{tag | titlecase}}</span>
             </div>
           </div>

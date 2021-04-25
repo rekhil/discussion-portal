@@ -23,6 +23,10 @@ import { CreateUserDialogComponent } from './users/create-user-dialog/create-use
     CustomMaterialModule,
     UsersRoutingModule,
   ],
-  entryComponents: [EditUserDialogComponent, DeleteConfirmationDialogComponent],
+  entryComponents: [
+    EditUserDialogComponent,
+    DeleteConfirmationDialogComponent,
+    CreateUserDialogComponent,
+  ],
 })
 export class UsersModule {}

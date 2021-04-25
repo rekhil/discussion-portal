@@ -90,7 +90,9 @@ export class UsersComponent implements OnInit {
       .afterClosed()
       .subscribe((response) => {
         if (response) {
-          this.usersService.deleteUser(user.userName).subscribe();
+          this.usersService.deleteUser(user.userName).subscribe((response) => {
+            this.fetchUsers();
+          });
         }
       });
   }
