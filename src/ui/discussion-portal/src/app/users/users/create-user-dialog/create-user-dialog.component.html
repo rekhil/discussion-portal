@@ -23,6 +23,37 @@
       <input matInput formControlName="email" required>
       <mat-error>Enter valid email</mat-error>
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dob">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" required>
+      <mat-error>Enter valid phone</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" required>
+      <mat-error>Enter valid address</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Skills</mat-label>
+      <mat-select formControlName="skills" multiple>
+        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Job Title</mat-label>
+      <input matInput formControlName="jobTitle" required>
+      <mat-error>Enter job title</mat-error>
+    </mat-form-field>
+    <mat-radio-group aria-label="Select a gender" formControlName='gender'>
+      <mat-radio-button class="radio-label" value="male"> Male</mat-radio-button>
+      <mat-radio-button class="radio-label" style="margin-left: 15px;" value="female">Female </mat-radio-button>
+    </mat-radio-group>
     <button mat-raised-button color="primary" (click)="saveUserDetails()" [disabled]="!userForm.valid"> Create User
     </button>
   </div>
