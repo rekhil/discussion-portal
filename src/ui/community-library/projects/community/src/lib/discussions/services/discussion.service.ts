@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Config } from '../../shared/config';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -30,12 +29,8 @@ export class DiscussionService {
     return this.http.post<any>(this.baseUrl + 'discussions', request);
   }
 
-  updatePost(request: any, id: number) {
-    this.http
-      .put(this.baseUrl + 'discussions/' + id, request)
-      .subscribe((data) => {
-        this.searchPosts();
-      });
+  updatePost(request: any, id: number): Observable<any> {
+    return this.http.put(this.baseUrl + 'discussions/' + id, request);
   }
 
   updateVote(request: any): Observable<any> {

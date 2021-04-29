@@ -22,6 +22,12 @@
           color: #0077cc;
           font-size: 13px;
         }
+        .edit-link {
+          color: #0077cc;
+          text-decoration: underline;
+          margin-left: 5px;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -39,13 +45,14 @@
   .post-section:last-of-type {
     border-bottom: 0;
   }
+  angular-editor
+    > .angular-editor
+    > .angular-editor-wrapper
+    > .angular-editor-textarea {
+    min-height: 100px !important;
+  }
 }
-angular-editor
-  > .angular-editor
-  > .angular-editor-wrapper
-  > .angular-editor-textarea {
-  min-height: 200px !important;
-}
+
 .title-input {
   padding: 10px;
 }
@@ -70,4 +77,8 @@ angular-editor
   height: 34px;
   width: 34px;
   color: #b1b1b1;
+}
+
+.user-voted {
+  color: slategrey;
 }

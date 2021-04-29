@@ -39,13 +39,15 @@ export class DetailsComponent implements OnInit {
       (data) => {
         this.post = data;
         this.likedByCurrentUser =
-          this.post.likedUsers?.findIndex(
-            (user) => user === this.currentUser.userName
-          ) > -1;
+          (this.post.likedUsers) ?
+            (this.post.likedUsers.findIndex(
+              (user) => user === this.currentUser.userName
+            ) > -1) : false;
         this.dislikedByCurrentUser =
-          this.post.disLikedUsers?.findIndex(
-            (user) => user === this.currentUser.userName
-          ) > -1;
+          (this.post.disLikedUsers) ?
+            (this.post.disLikedUsers.findIndex(
+              (user) => user === this.currentUser.userName
+            ) > -1) : false;
         this.reply = '';
         this.showLoader = false;
       },

@@ -10,15 +10,15 @@
   <mat-divider></mat-divider>
   <!-- Default view - Discussions list starts -->
   <ng-container *ngIf="selectedOption != 3; else discussionsByCategory">
-    <div fxLayout="row" class="column-headers">
+    <div fxLayout="row" fxLayoutGap="10px" class="column-headers">
       <div fxFlex="70%"> Topics </div>
-      <div fxFlex="10%"> Replies </div>
-      <div fxFlex="10%"> Votes </div>
+      <div fxFlex="10%" class="align-center"> Replies </div>
+      <div fxFlex="10%" class="align-center"> Votes </div>
       <div fxFlex="10%"> Author </div>
     </div>
     <mat-divider></mat-divider>
     <div fxLayout="column" fxLayoutAlign="center stretch" *ngFor="let post of obs | async">
-      <div fxLayout="row">
+      <div fxLayout="row" fxLayoutGap="10px">
         <div fxFlex="70%" fxLayout="column" fxLayoutGap="10px" (click)="goToDetails(post.postId)" class="post-details">
           <div class="title">{{post.subject}}</div>
           <div class="description">
@@ -33,8 +33,9 @@
             </div>
           </div>
         </div>
-        <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center"> {{post.replyCount}} </div>
-        <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center"> {{post.likeCount - post.disLikeCount}} </div>
+        <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center" class="align-center"> {{post.replyCount}} </div>
+        <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center" class="align-center"> {{post.likeCount -
+          post.disLikeCount}} </div>
         <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center"> {{post.createdBy}} </div>
       </div>
       <mat-divider></mat-divider>

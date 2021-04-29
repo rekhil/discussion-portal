@@ -21,7 +21,7 @@ export class DiscussionsComponent implements OnInit, OnDestroy {
   dataSource: MatTableDataSource<any>;
   selectedOption: number;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   obs: Observable<any>;
 
   constructor(
