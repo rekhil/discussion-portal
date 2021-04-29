@@ -25,10 +25,66 @@ namespace DiscussionPortal.DataAccess
             return _context.DiscussionPosts.Where(x => x.IsTopic).Count();
         }
 
+        //Used to get count topics with tag filtering
+        public int GetTotalTopicsCountWithTags(List<string> searchTags)
+        {
+            List<DiscussionPostRecord> filteredDiscussionPosts = new List<DiscussionPostRecord>();
+
+            //Get the full list of data
+            var discussionPosts = _context.DiscussionPosts.Where(x => x.IsTopic).Include("Tags").ToList();
+
+            //Return Tagged count are chosen
+            if (searchTags != null && searchTags.Any())
+            {
+                foreach (var discussionPost in discussionPosts)
+                {
+                    var tagList = discussionPost.Tags.Select(x => x.Tag).ToList();
+                    if (tagList.Any(x => searchTags.Contains(x)))
+                    {
+                        filteredDiscussionPosts.Add(discussionPost);
+                    }
+                }
+
+                return filteredDiscussionPosts.Count;
+            }
+            else //Else return full count
+            {
+                return discussionPosts.Count;
+            }
+        }
+
         public IEnumerable<DiscussionPostRecord> SearchTopics(int pageNumber, int pageSize)
         {
             return _context.DiscussionPosts.Where(x => x.IsTopic).OrderByDescending(x => x.PostId).Skip((pageNumber - 1) * pageSize)
                  .Take(pageSize).Include("Tags").Include("Likes");
+        }
+
+        //Used to get topics with tag filtering and pagination
+        public IEnumerable<DiscussionPostRecord> SearchTopicsWithTags(int pageNumber, int pageSize, List<string> searchTags)
+        {
+            List<DiscussionPostRecord> filteredDiscussionPosts = new List<DiscussionPostRecord>();
+
+            //Get the full list of data
+            var discussionPosts = _context.DiscussionPosts.Where(x => x.IsTopic).Include("Tags").Include("Likes").ToList();
+
+            //Filter them based on tags if Tags are chosen
+            if (searchTags != null && searchTags.Any())
+            {
+                foreach (var discussionPost in discussionPosts)
+                {
+                    var tagList = discussionPost.Tags.Select(x => x.Tag).ToList();
+                    if (tagList.Any(x => searchTags.Contains(x)))
+                    {
+                        filteredDiscussionPosts.Add(discussionPost);
+                    }
+                }
+
+                return filteredDiscussionPosts.OrderByDescending(x => x.PostId).Skip((pageNumber - 1) * pageSize).Take(pageSize);
+            }
+            else //Else return without tag filtering
+            {
+                return discussionPosts.OrderByDescending(x => x.PostId).Skip((pageNumber - 1) * pageSize).Take(pageSize);
+            }
         }
 
         public DiscussionPostRecord GetTopicDetailsByTopicId(long topicId)

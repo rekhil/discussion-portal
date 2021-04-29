@@ -29,7 +29,7 @@ namespace DiscussionPortal.Handlers
         {
             var searchResult = new TopicListSearchResult
             {
-                TotalItemCount = _dataAccessProvider.GetTotalTopicsCount()
+                TotalItemCount = _dataAccessProvider.GetTotalTopicsCountWithTags(topicSearchFilter.Tags)
             };
 
             if (topicSearchFilter.PageNumber.GetValueOrDefault() <= 0)
@@ -45,8 +45,8 @@ namespace DiscussionPortal.Handlers
             if (searchResult.TotalPageCount < topicSearchFilter.PageNumber)
                 topicSearchFilter.PageNumber = 1;
 
-            var discussionList = _dataAccessProvider.SearchTopics(topicSearchFilter.PageNumber.Value, topicSearchFilter.PageSize.Value);
-
+            var discussionList = _dataAccessProvider.SearchTopicsWithTags(topicSearchFilter.PageNumber.Value, topicSearchFilter.PageSize.Value, topicSearchFilter.Tags);
+            
             searchResult.TopicList = discussionList.Select(x => Map.MapRecordToDiscussionPost(x));
 
             searchResult.PageSize = topicSearchFilter.PageSize.Value;
