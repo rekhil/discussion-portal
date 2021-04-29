@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class AuthService {
   private isUserAuthenticated: boolean;
   private authState = new Subject<boolean>();
+  public username: string;
 
   constructor() { }
 
