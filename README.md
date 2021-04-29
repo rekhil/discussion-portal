@@ -7,6 +7,12 @@ API: .Net Core 2.1
 
 Datebase: PostgreSQL 
 
+Angular package published in: https://www.npmjs.com/package/ngx-community
+
+Deployed using Google Cloud Platform
+
+Deployed URL: https://discussion-portal-ui-311719.df.r.appspot.com/
+
 
 # API Details 
 
