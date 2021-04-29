@@ -1,13 +1,10 @@
-import { DOCUMENT } from '@angular/common';
 import {
   Component,
   EventEmitter,
-  Inject,
   Input,
   OnInit,
   Output,
 } from '@angular/core';
-import { AuthService } from 'src/app/auth/auth.service';
 import { DiscussionService } from '../services/discussion.service';
 
 @Component({
@@ -25,34 +22,33 @@ export class PostComponent implements OnInit {
   reply: string;
   likedByCurrentUser: boolean;
   dislikedByCurrentUser: boolean;
-  currentUser: string;
+  currentUser: any;
   editable: boolean;
   openEdit: boolean;
   editedReply: string;
 
   constructor(
-    private discussionService: DiscussionService,
-    private authService: AuthService
-  ) {}
+    private discussionService: DiscussionService
+  ) { }
 
   ngOnInit(): void {
-    this.currentUser = this.authService.username;
-    this.editable = this.currentUser === this.thread.createdBy;
+    this.currentUser = JSON.parse(window.localStorage.getItem('discussion@profile'));
+    this.editable = this.currentUser.userName === this.thread.createdBy;
     this.editedReply = this.editable ? this.thread.postDescription : '';
     this.likedByCurrentUser =
-      this.thread.likedUsers?.findIndex((user) => user === this.currentUser) >
+      this.thread.likedUsers?.findIndex((user) => user === this.currentUser.userName) >
       -1;
     this.dislikedByCurrentUser =
       this.thread.disLikedUsers?.findIndex(
-        (user) => user === this.currentUser
+        (user) => user === this.currentUser.userName
       ) > -1;
   }
 
   vote(like: boolean, threadId: any) {
     const request = {
       isLike: like,
-      userName: 'stg',
-      discussionPostId: threadId,
+      userName: this.currentUser.userName,
+      discussionPostId: threadId
     };
     this.discussionService.updateVote(request).subscribe((response) => {
       if (response.isSuccess) {
@@ -67,7 +63,7 @@ export class PostComponent implements OnInit {
       postDescription: this.reply,
       tags: [],
       isTopic: false,
-      createdBy: this.authService.username,
+      createdBy: this.currentUser.userName,
       parentPostId: this.thread.postId,
     };
     this.discussionService.createPost(request).subscribe((response) => {
@@ -84,7 +80,7 @@ export class PostComponent implements OnInit {
       postDescription: this.editedReply,
       tags: [],
       isTopic: false,
-      createdBy: this.authService.username,
+      createdBy: this.currentUser.userName,
       parentPostId: this.thread.postId,
     };
     this.discussionService.createPost(request).subscribe((response) => {

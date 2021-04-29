@@ -17,7 +17,6 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { AuthService } from 'src/app/auth/auth.service';
 import { Config } from 'src/app/shared/config';
 
 import { DiscussionService } from '../services/discussion.service';
@@ -35,7 +34,6 @@ export class AskQuestionComponent implements OnInit {
 
   tags = [];
   options = Config.tags;
-
   visible = true;
   selectable = true;
   removable = true;
@@ -49,9 +47,8 @@ export class AskQuestionComponent implements OnInit {
 
   constructor(
     private discussionService: DiscussionService,
-    private router: Router,
-    private authService: AuthService
-  ) {}
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     if (this.currentTags) {
@@ -69,12 +66,13 @@ export class AskQuestionComponent implements OnInit {
   }
 
   postQuestion() {
+    const loggedInUser = JSON.parse(window.localStorage.getItem('discussion@profile'));
     const request = {
       subject: this.title,
       postDescription: this.htmlContent,
       tags: Array.from(this.tags.values()),
       isTopic: true,
-      createdBy: this.authService.username,
+      createdBy: loggedInUser.userName,
     };
     if (this.isEdit) {
       this.updatePost.emit(request);
@@ -129,5 +127,5 @@ export class AskQuestionComponent implements OnInit {
     this.updatePost.emit();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void { }
 }

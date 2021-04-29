@@ -1,11 +1,6 @@
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
-import { Config } from 'src/app/shared/config';
 import { DiscussionService } from '../services/discussion.service';
 
 @Component({
@@ -20,19 +15,18 @@ export class DetailsComponent implements OnInit {
   reply;
   likedByCurrentUser: boolean;
   dislikedByCurrentUser: boolean;
-  currentUser: string;
+  currentUser: any;
   showLoader: boolean;
   topicEdit: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private discussionService: DiscussionService,
-    public authService: AuthService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    // this.currentUser = this.authService.username;
+    this.currentUser = JSON.parse(window.localStorage.getItem('discussion@profile'));
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.postId = params.get('postId');
       this.getPostDetails();
@@ -46,11 +40,11 @@ export class DetailsComponent implements OnInit {
         this.post = data;
         this.likedByCurrentUser =
           this.post.likedUsers?.findIndex(
-            (user) => user === this.authService.username
+            (user) => user === this.currentUser.userName
           ) > -1;
         this.dislikedByCurrentUser =
           this.post.disLikedUsers?.findIndex(
-            (user) => user === this.authService.username
+            (user) => user === this.currentUser.userName
           ) > -1;
         this.reply = '';
         this.showLoader = false;
@@ -67,7 +61,7 @@ export class DetailsComponent implements OnInit {
       postDescription: this.reply,
       tags: [],
       isTopic: false,
-      createdBy: this.authService.username,
+      createdBy: this.currentUser.userName,
       parentPostId: this.postId,
     };
     this.discussionService.createPost(request).subscribe((response) => {
@@ -85,7 +79,7 @@ export class DetailsComponent implements OnInit {
   vote(like: boolean, threadId: any) {
     const request = {
       isLike: like,
-      userName: 'stg',
+      userName: this.currentUser.userName,
       discussionPostId: threadId,
     };
     this.discussionService.updateVote(request).subscribe((response) => {
@@ -116,5 +110,5 @@ export class DetailsComponent implements OnInit {
     this.topicEdit = false;
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void { }
 }
