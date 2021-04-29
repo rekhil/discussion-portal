@@ -29,9 +29,10 @@ export class DiscussionsComponent implements OnInit, OnDestroy {
     private discussionService: DiscussionService,
     private router: Router,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    this.discussionService.searchPosts();
     this.discussionService.posts$.subscribe((data) => {
       this.posts = data;
       this.sourceData = data;
@@ -64,8 +65,8 @@ export class DiscussionsComponent implements OnInit, OnDestroy {
           ? 1
           : post1.likeCount - post1.disLikeCount >
             post2.likeCount - post2.disLikeCount
-          ? -1
-          : 0;
+            ? -1
+            : 0;
       });
       this.reconnectTableSource();
     }

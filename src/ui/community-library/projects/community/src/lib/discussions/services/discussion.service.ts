@@ -11,9 +11,7 @@ export class DiscussionService {
   public posts$ = this.posts.asObservable();
   private baseUrl = Config.apiBaseUrl;
 
-  constructor(private http: HttpClient) {
-    this.searchPosts();
-  }
+  constructor(private http: HttpClient) { }
 
   searchPosts() {
     this.http.get(this.baseUrl + 'discussions').subscribe((data) => {
