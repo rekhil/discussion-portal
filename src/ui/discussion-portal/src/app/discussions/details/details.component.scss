@@ -72,7 +72,13 @@
   width: 34px;
   color: #b1b1b1;
 }
+.user-voted {
+  color: slategrey;
+}
 .thread-count {
   font-size: 15px;
   font-weight: 500;
+}
+.spinner {
+  height: 200px;
 }
