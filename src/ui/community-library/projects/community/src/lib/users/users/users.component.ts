@@ -3,7 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
-import { CreateUserDialogComponent } from "../create-user-dialog/create-user-dialog.component";
+import { CreateUserDialogComponent } from "../../utility/create-user-dialog/create-user-dialog.component";
 import { DeleteConfirmationDialogComponent } from "../delete-confirmation-dialog/delete-confirmation-dialog.component";
 import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.component";
 import { UsersService } from "../services/users.service";
@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  constructor(private usersService: UsersService, private dialog: MatDialog) {}
+  constructor(private usersService: UsersService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.fetchUsers();

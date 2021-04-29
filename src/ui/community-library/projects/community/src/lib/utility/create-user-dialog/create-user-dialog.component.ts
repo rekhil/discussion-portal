@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { UsersService } from "../services/users.service";
+import { MatDialogRef } from "@angular/material/dialog";
+import { UsersService } from "../../users/services/users.service";
 
 @Component({
   selector: "app-create-user-dialog",
@@ -15,7 +15,7 @@ export class CreateUserDialogComponent implements OnInit {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CreateUserDialogComponent>,
     private usersService: UsersService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userForm = this.createForm();

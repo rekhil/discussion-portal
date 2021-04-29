@@ -5,6 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login/login.component';
 import { CustomMaterialModule } from '../shared/custom-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UtilityModule } from 'ngx-community';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     CustomMaterialModule,
     LoginRoutingModule,
+    UtilityModule
   ],
 })
-export class LoginModule {}
+export class LoginModule { }

@@ -1,5 +1,5 @@
 <div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between">
-  Create User
+  New User
   <mat-icon (click)="closeDialog()">close</mat-icon>
 </div>
 <div mat-dialog-content>
@@ -23,7 +23,7 @@
       <input matInput formControlName="email" required>
       <mat-error>Enter valid email</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="saveUserDetails()" [disabled]="!userForm.valid"> Create User
+    <button mat-raised-button color="primary" (click)="saveUserDetails()" [disabled]="!userForm.valid"> Submit
     </button>
   </div>
 </div>

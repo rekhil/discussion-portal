@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { LoginService } from '../services/login.service';
+import { CreateUserDialogComponent } from "ngx-community";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +32,15 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
+    this.dialog
+      .open(CreateUserDialogComponent, {
+        width: "500px",
+        disableClose: true,
+      })
+      .afterClosed()
+      .subscribe((response) => {
 
+      });
   }
 
   login() {
