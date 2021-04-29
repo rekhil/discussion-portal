@@ -36,10 +36,10 @@ export class PostComponent implements OnInit {
     this.editable = this.currentUser.userName === this.thread.createdBy;
     this.editedReply = this.editable ? this.thread.postDescription : '';
     this.likedByCurrentUser =
-      this.thread.likedUsers?.findIndex((user) => user === this.currentUser.userName) >
+      this.thread.likedUsers.findIndex((user) => user === this.currentUser.userName) >
       -1;
     this.dislikedByCurrentUser =
-      this.thread.disLikedUsers?.findIndex(
+      this.thread.disLikedUsers.findIndex(
         (user) => user === this.currentUser.userName
       ) > -1;
   }

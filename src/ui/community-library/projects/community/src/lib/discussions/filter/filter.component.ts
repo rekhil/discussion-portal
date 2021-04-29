@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Config } from 'src/app/shared/config';
+import { Config } from '../../shared/config';
 import { DiscussionService } from '../services/discussion.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class FilterComponent implements OnInit {
   @Input() selectedOption = 0; // 1,2,3.. in order of display
   @Output() setSelectedOptionFilter = new EventEmitter();
 
-  constructor(private discussionService: DiscussionService) {}
+  constructor(private discussionService: DiscussionService) { }
 
   ngOnInit(): void {
     this.selectedTags = this.tags;

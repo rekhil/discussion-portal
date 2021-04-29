@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Config } from 'src/app/shared/config';
+import { Config } from '../../shared/config';
 import { DiscussionService } from '../services/discussion.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class CategoriesComponent implements OnInit {
   public posts: any[];
   postsByCategory = [];
 
-  constructor(private discussionService: DiscussionService) {}
+  constructor(private discussionService: DiscussionService) { }
 
   ngOnInit(): void {
     this.discussionService.posts$.subscribe((data) => {
