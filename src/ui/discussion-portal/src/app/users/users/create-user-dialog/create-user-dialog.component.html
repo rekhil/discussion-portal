@@ -24,19 +24,19 @@
       <mat-error>Enter valid email</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Choose a date</mat-label>
+      <mat-label>Date of birth</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="dob">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Phone</mat-label>
-      <input matInput formControlName="phone" required>
+      <input matInput formControlName="phone">
       <mat-error>Enter valid phone</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Address</mat-label>
-      <input matInput formControlName="address" required>
+      <input matInput formControlName="address">
       <mat-error>Enter valid address</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -47,7 +47,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Job Title</mat-label>
-      <input matInput formControlName="jobTitle" required>
+      <input matInput formControlName="jobTitle">
       <mat-error>Enter job title</mat-error>
     </mat-form-field>
     <mat-radio-group aria-label="Select a gender" formControlName='gender'>
