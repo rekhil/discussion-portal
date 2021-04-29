@@ -1,0 +1,15 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between">
+  Delete User
+  <mat-icon (click)="closeDialog()">close</mat-icon>
+</div>
+<div mat-dialog-content>
+  <div fxLayout="column" fxLayoutGap="30px">
+    <div>
+      Are you sure you want to delete the user?
+    </div>
+    <div fxLayout='row' fxLayoutAlign="space-between">
+      <button mat-raised-button (click)="closeDialog()">No</button>
+      <button mat-raised-button color="primary" (click)="closeDialog(true)">Yes</button>
+    </div>
+  </div>
+</div>

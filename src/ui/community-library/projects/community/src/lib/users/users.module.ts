@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { EditUserDialogComponent } from "./edit-user-dialog/edit-user-dialog.component";
 import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
 import { DeleteConfirmationDialogComponent } from "./delete-confirmation-dialog/delete-confirmation-dialog.component";
-
+import { MatDatepickerModule } from "@angular/material/datepicker";
 @NgModule({
   declarations: [
     UsersComponent,
@@ -22,6 +22,7 @@ import { DeleteConfirmationDialogComponent } from "./delete-confirmation-dialog/
     ReactiveFormsModule,
     CustomMaterialModule,
     UsersRoutingModule,
+    MatDatepickerModule,
   ],
   entryComponents: [
     EditUserDialogComponent,
