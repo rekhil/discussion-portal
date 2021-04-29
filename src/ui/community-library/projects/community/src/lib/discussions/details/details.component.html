@@ -1,61 +1,76 @@
-<div class="details-wrapper" *ngIf="post">
-  <div fxLayout="row">
-    <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center">
-      <div class="vote" (click)="vote(true, post.postId)">
-        <mat-icon class="up-vote">play_arrow</mat-icon>
-      </div>
-      <div class="vote-count">
-        {{post.likeCount - post.disLikeCount}} {{post.likeCount - post.disLikeCount == 1 ? 'vote' : 'votes'}}
-      </div>
-      <div class="vote" (click)="vote(false, post.postId)">
-        <mat-icon class="down-vote">play_arrow</mat-icon>
-      </div>
+<div fxLayout="row" fxLayoutAlign="center center" class="spinner" *ngIf="showLoader; else details">
+  <mat-spinner></mat-spinner>
+</div>
+<ng-template #details>
+  <div class="details-wrapper" *ngIf="post">
+    <div fxLayout="row" fxLayoutAlign="end" *ngIf="post.createdBy == currentUser.userName && !topicEdit">
+      <button mat-raised-button color="primary" (click)="editTopic()"> Edit Topic </button>
     </div>
-    <div fxFlex="85%" fxLayout="column">
-      <div class="header" fxLayout="column">
-        <div class="title">{{post.subject}}</div>
-        <div class="user-info" fxLayout="row" fxLayoutGap="5px">
-          <div class="action-time">Asked {{post.createdOn | date:'medium'}} by</div>
-          <div class="user-name">{{post.createdBy}}</div>
+    <div fxLayout="row" *ngIf="!topicEdit; else editTemplate">
+      <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center">
+        <div class="vote" (click)="vote(true, post.postId)">
+          <mat-icon class="up-vote" [ngClass]="{'user-voted': likedByCurrentUser}">play_arrow</mat-icon>
+        </div>
+        <div class="vote-count">
+          {{post.likeCount - post.disLikeCount}} {{post.likeCount - post.disLikeCount == 1 ? 'vote' : 'votes'}}
+        </div>
+        <div class="vote" (click)="vote(false, post.postId)">
+          <mat-icon class="down-vote" [ngClass]="{'user-voted': dislikedByCurrentUser}">play_arrow</mat-icon>
         </div>
       </div>
-      <div class="description">
-        <div [innerHTML]="post.postDescription"></div>
-      </div>
-      <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="tag-group" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center">
-          <div class="tag" fxLayout="row" fxLayoutAlign="start center" *ngFor="let tag of post.tags">
-            <span class="tag-{{tag | lowercase}}">
-              <mat-icon>stop</mat-icon>
-            </span>
-            <span>{{tag | titlecase}}</span>
+      <div fxFlex="85%" fxLayout="column">
+        <div class="header" fxLayout="column">
+          <div class="title">{{post.subject}}</div>
+          <div class="user-info" fxLayout="row" fxLayoutGap="5px">
+            <div class="action-time">Asked {{post.createdOn | date:'medium'}} by</div>
+            <div class="user-name">{{post.createdBy}}</div>
+          </div>
+        </div>
+        <div class="description">
+          <div [innerHTML]="post.postDescription"></div>
+        </div>
+        <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="tag-group" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center">
+            <div class="tag" fxLayout="row" fxLayoutAlign="start center" *ngFor="let tag of post.tags">
+              <span class="tag-{{tag | lowercase}}">
+                <mat-icon>stop</mat-icon>
+              </span>
+              <span>{{tag | titlecase}}</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="thread-wrapper">
-    <p class="thread-count">
-      {{post.replyPosts? (
-      (post.replyPosts.length == 1)? '1 Reply' : post.replyPosts.length+' Replies'
-      ): '0 Replies'}}
-    </p>
-    <ng-container *ngIf="post.replyPosts">
-      <div class="post-section" *ngFor="let post of post.replyPosts">
-        <app-post [parentPostId]="postId" [thread]="post"></app-post>
-      </div>
-      <mat-divider></mat-divider>
-    </ng-container>
-  </div>
-  <mat-card>
-    <div>
-      <div fxLayout="column" fxLayoutGap="20px">
-        <div>
-          <angular-editor [placeholder]="'Type here...'" [(ngModel)]="reply"></angular-editor>
+    <div class="thread-wrapper">
+      <p class="thread-count">
+        {{post.replyPosts? (
+        (post.replyPosts.length == 1)? '1 Reply' : post.replyPosts.length+' Replies'
+        ): '0 Replies'}}
+      </p>
+      <ng-container *ngIf="post.replyPosts">
+        <div class="post-section" *ngFor="let post of post.replyPosts">
+          <app-post [parentPostId]="postId" [thread]="post" (refreshDetails)="getPostDetails()"></app-post>
         </div>
-        <button mat-raised-button color="primary" (click)="createPost()" [disabled]="!reply">Post your
-          comment</button>
-      </div>
+        <mat-divider></mat-divider>
+      </ng-container>
     </div>
-  </mat-card>
-</div>
+    <mat-card>
+      <div>
+        <div fxLayout="column" fxLayoutGap="20px">
+          <div>
+            <angular-editor [placeholder]="'Type here...'" [(ngModel)]="reply"></angular-editor>
+          </div>
+          <button mat-raised-button color="primary" (click)="createPost()" [disabled]="!reply">Post your
+            comment</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</ng-template>
+
+<!-- Edit topic template -->
+<ng-template #editTemplate>
+  <app-ask-question [title]="post.subject" [htmlContent]="post.postDescription" [currentTags]="post.tags"
+    (updatePost)="updatePost($event)">
+  </app-ask-question>
+</ng-template>

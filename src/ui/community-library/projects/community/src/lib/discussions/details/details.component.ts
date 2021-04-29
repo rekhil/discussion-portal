@@ -1,37 +1,58 @@
-import { Location } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, ParamMap } from "@angular/router";
-import { DiscussionService } from "../services/discussion.service";
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { DiscussionService } from '../services/discussion.service';
 
 @Component({
-  selector: "app-details",
-  templateUrl: "./details.component.html",
-  styleUrls: ["./details.component.scss"],
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
   postId: any;
   post: any;
   postDescription: string;
   reply;
+  likedByCurrentUser: boolean;
+  dislikedByCurrentUser: boolean;
+  currentUser: any;
+  showLoader: boolean;
+  topicEdit: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private discussionService: DiscussionService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(window.localStorage.getItem('discussion@profile'));
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.postId = params.get("postId");
-      this.getPostDetails(this.postId);
+      this.postId = params.get('postId');
+      this.getPostDetails();
     });
   }
 
-  getPostDetails(postId) {
-    this.discussionService.getQuestionById(postId).subscribe((data) => {
-      this.post = data;
-      this.reply = "";
-    });
+  getPostDetails() {
+    this.showLoader = true;
+    this.discussionService.getQuestionById(this.postId).subscribe(
+      (data) => {
+        this.post = data;
+        this.likedByCurrentUser =
+          this.post.likedUsers?.findIndex(
+            (user) => user === this.currentUser.userName
+          ) > -1;
+        this.dislikedByCurrentUser =
+          this.post.disLikedUsers?.findIndex(
+            (user) => user === this.currentUser.userName
+          ) > -1;
+        this.reply = '';
+        this.showLoader = false;
+      },
+      () => {
+        this.showLoader = false;
+      }
+    );
   }
 
   createPost() {
@@ -40,15 +61,15 @@ export class DetailsComponent implements OnInit {
       postDescription: this.reply,
       tags: [],
       isTopic: false,
-      createdBy: "stg",
+      createdBy: this.currentUser.userName,
       parentPostId: this.postId,
     };
     this.discussionService.createPost(request).subscribe((response) => {
       if (response.isSuccess) {
-        this.getPostDetails(this.postId);
+        this.getPostDetails();
       }
     });
-    this.postDescription = "";
+    this.postDescription = '';
   }
 
   goBack() {
@@ -58,15 +79,36 @@ export class DetailsComponent implements OnInit {
   vote(like: boolean, threadId: any) {
     const request = {
       isLike: like,
-      userName: "stg",
+      userName: this.currentUser.userName,
       discussionPostId: threadId,
     };
     this.discussionService.updateVote(request).subscribe((response) => {
       if (response.isSuccess) {
-        this.getPostDetails(this.postId);
+        this.getPostDetails();
       }
     });
   }
 
-  ngOnDestroy(): void {}
+  editTopic() {
+    this.topicEdit = true;
+  }
+
+  updatePost(details) {
+    if (details) {
+      const request = {
+        ...details,
+        parentPostId: this.postId,
+      };
+      this.discussionService
+        .updatePost(request, this.post.postId)
+        .subscribe((response) => {
+          if (response.isSuccess) {
+            this.getPostDetails();
+          }
+        });
+    }
+    this.topicEdit = false;
+  }
+
+  ngOnDestroy(): void { }
 }

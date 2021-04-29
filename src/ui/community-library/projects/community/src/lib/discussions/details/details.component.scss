@@ -72,37 +72,13 @@
   width: 34px;
   color: #b1b1b1;
 }
+.user-voted {
+  color: slategrey;
+}
 .thread-count {
   font-size: 15px;
   font-weight: 500;
 }
-.tag-technology {
-  color: #cc0000;
-}
-.tag-science {
-  color: green;
-}
-.tag-general {
-  color: blue;
-}
-.tag-history {
-  color: violet;
-}
-.tag-untagged {
-  color: #ab9364;
-}
-.tag-section-technology {
-  border-left: solid 5px #cc0000;
-}
-.tag-section-science {
-  border-left: solid 5px green;
-}
-.tag-section-general {
-  border-left: solid 5px blue;
-}
-.tag-section-history {
-  border-left: solid 5px violet;
-}
-.tag-section-untagged {
-  border-left: solid 5px #ab9364;
+.spinner {
+  height: calc(100vh - 140px);
 }

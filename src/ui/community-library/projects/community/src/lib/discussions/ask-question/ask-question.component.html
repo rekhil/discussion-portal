@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="ask-question">
   <div>
     <div fxLayout="column" fxLayoutGap="15px">
       <b>Title</b>
@@ -30,8 +30,11 @@
           </mat-autocomplete>
         </mat-form-field>
       </div>
-      <button mat-raised-button color="primary" (click)="postQuestion()"
-        [disabled]="!title || !htmlContent || !tags || tags.length == 0">Submit</button>
+      <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="flex-end center">
+        <button mat-raised-button (click)="cancel()" *ngIf="isEdit" fxFlex="20%">Cancel</button>
+        <button mat-raised-button color="primary" (click)="postQuestion()" [fxFlex]="isEdit ? '20%' : '100%'"
+          [disabled]="!title || !htmlContent || !tags || tags.length == 0">Submit</button>
+      </div>
     </div>
   </div>
 </mat-card>

@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Config } from "../../shared/config";
-import { DiscussionService } from "../services/discussion.service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Config } from 'src/app/shared/config';
+import { DiscussionService } from '../services/discussion.service';
 
 @Component({
-  selector: "app-filter",
-  templateUrl: "./filter.component.html",
-  styleUrls: ["./filter.component.scss"],
+  selector: 'app-filter',
+  templateUrl: './filter.component.html',
+  styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit {
   public postCount: number;
