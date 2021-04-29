@@ -74,3 +74,43 @@
     text-align: center;
   }
 }
+
+.tag-technology {
+  color: #cc0000;
+}
+.tag-science {
+  color: green;
+}
+.tag-general {
+  color: blue;
+}
+.tag-history {
+  color: violet;
+}
+.tag-untagged {
+  color: #ab9364;
+}
+
+.tag-technology,
+.tag-science,
+.tag-general,
+.tag-history,
+.tag-untagged {
+  height: 24px;
+}
+
+.tag-section-technology {
+  border-left: solid 5px #cc0000;
+}
+.tag-section-science {
+  border-left: solid 5px green;
+}
+.tag-section-general {
+  border-left: solid 5px blue;
+}
+.tag-section-history {
+  border-left: solid 5px violet;
+}
+.tag-section-untagged {
+  border-left: solid 5px #ab9364;
+}
