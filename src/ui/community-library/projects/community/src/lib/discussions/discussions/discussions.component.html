@@ -5,8 +5,16 @@
       <button mat-raised-button color="primary" type="button" (click)="askQuestion()">Create New Post</button>
     </div>
   </div>
-  <app-filter [(selectedOption)]="selectedOption" (setSelectedOptionFilter)="setSelectedOptionFilter($event)">
-  </app-filter>
+  <div fxLayout="row">
+    <div fxFlex="70%">
+      <app-filter [(selectedOption)]="selectedOption" (setSelectedOptionFilter)="setSelectedOptionFilter($event)"
+        (filterByTag)="filterByTag($event)"></app-filter>
+    </div>
+    <div fxFlex="30%" fxLayoutAlign="end">
+      <mat-paginator [length]="posts.length" #paginator [pageSize]="10" (page)="pageChange($event)">
+      </mat-paginator>
+    </div>
+  </div>
   <mat-divider></mat-divider>
   <!-- Default view - Discussions list starts -->
   <ng-container *ngIf="selectedOption != 3; else discussionsByCategory">
@@ -40,8 +48,6 @@
       </div>
       <mat-divider></mat-divider>
     </div>
-    <mat-paginator [length]="posts.length" #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator>
   </ng-container>
   <!-- Default view - Discussions list ends -->
   <ng-template #discussionsByCategory>

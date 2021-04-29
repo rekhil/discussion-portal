@@ -1,12 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UsersService } from '../../services/users.service';
+import { Component, Inject, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { UsersService } from "../../services/users.service";
 
 @Component({
-  selector: 'app-edit-user-dialog',
-  templateUrl: './edit-user-dialog.component.html',
-  styleUrls: ['./edit-user-dialog.component.scss'],
+  selector: "app-edit-user-dialog",
+  templateUrl: "./edit-user-dialog.component.html",
+  styleUrls: ["./edit-user-dialog.component.scss"],
 })
 export class EditUserDialogComponent implements OnInit {
   userForm: FormGroup;
