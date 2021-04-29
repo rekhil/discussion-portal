@@ -7,6 +7,9 @@ API: .Net Core 2.1
 
 Datebase: PostgreSQL 
 
+Deployed using Google Cloud Platform
+Deployed URL: https://discussion-portal-ui-311719.df.r.appspot.com/discussions
+
 
 # API Details 
 
