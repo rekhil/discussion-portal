@@ -17,9 +17,10 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <div class="actions">
+      <div class="actions" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between center">
         <button mat-raised-button color="primary" class="full-width" (click)="login()"
           [disabled]="!enableLogin && !loginForm.valid">Sign In</button>
+        <div class="register-btn" (click)="register()">Register</div>
       </div>
     </mat-card-actions>
   </mat-card>

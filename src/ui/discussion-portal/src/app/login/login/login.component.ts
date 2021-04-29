@@ -28,6 +28,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  register() {
+
+  }
+
   login() {
     this.loginForm.controls.username.setErrors(null);
     this.loginForm.controls.password.setErrors(null);

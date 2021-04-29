@@ -14,4 +14,11 @@
   .error {
     color: #f44336;
   }
+  .register-btn {
+    color: #4b62ea;
+    cursor: pointer;
+  }
+  .register-btn:hover {
+    text-decoration: underline;
+  }
 }
