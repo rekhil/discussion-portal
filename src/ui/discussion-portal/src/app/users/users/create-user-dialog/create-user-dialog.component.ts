@@ -10,7 +10,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class CreateUserDialogComponent implements OnInit {
   userForm: FormGroup;
-
+  toppingList: string[] = ['Brandng', 'UI/UX', 'Web-Design', 'Packaging', 'Print & Editorial'];
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CreateUserDialogComponent>,
@@ -27,6 +27,12 @@ export class CreateUserDialogComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required]],
+      phone: ['',[Validators.required]],
+      address: ['',[Validators.required]],
+      jobTitle: ['',[Validators.required]],
+      skills: ['',],
+      gender:['',[Validators.required]],
+      dob:['',[Validators.required]]
     });
   }
 

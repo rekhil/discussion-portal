@@ -59,3 +59,30 @@ angular-editor
 .tag-section-untagged {
   border-left: solid 5px #ab9364;
 }
+.radio-label{
+  .mat-radio-label{
+      .mat-radio-label-content{
+      font-weight: normal !important;
+      }
+  }
+}
+
+.radio-label{
+  .mat-radio-label{
+      .mat-radio-container{
+        .mat-radio-outer-circle{
+          border-color: #3f51b5;
+      }
+    }
+  }
+}
+
+.radio-label{
+  .mat-radio-label{
+      .mat-radio-container{
+        .mat-radio-inner-circle{
+          background-color: #3f51b5;
+      }
+    }
+  }
+}

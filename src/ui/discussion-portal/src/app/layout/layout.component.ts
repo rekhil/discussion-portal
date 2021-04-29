@@ -22,7 +22,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
     });
   }
 
-  viewProfile() {}
+  viewProfile() {
+    this.router.navigate(['profile']);
+  }
 
   logout() {
     this.authService.setAuthenticated(false);
