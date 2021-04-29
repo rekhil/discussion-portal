@@ -14,7 +14,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   public isLoggedIn: boolean;
   subscription: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.subscription = this.authService.loggedInState().subscribe((state) => {
@@ -27,6 +27,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   }
 
   logout() {
+    this.authService.setLoggedInSession(null);
     this.authService.setAuthenticated(false);
     this.router.navigate(['login']);
   }

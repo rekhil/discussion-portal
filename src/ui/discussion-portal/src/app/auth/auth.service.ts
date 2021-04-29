@@ -8,7 +8,7 @@ export class AuthService {
   private isUserAuthenticated: boolean;
   private authState = new Subject<boolean>();
 
-  constructor() {}
+  constructor() { }
 
   public setAuthenticated(value) {
     this.isUserAuthenticated = value;
@@ -21,5 +21,10 @@ export class AuthService {
 
   public loggedInState() {
     return this.authState.asObservable();
+  }
+
+  public setLoggedInSession(data: any) {
+    const userProfile = data ? JSON.stringify(data) : '';
+    window.localStorage.setItem('discussion@profile', userProfile);
   }
 }
