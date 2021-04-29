@@ -9,7 +9,11 @@ namespace DiscussionPortal.DataAccess
 
         int GetTotalTopicsCount();
 
+        int GetTotalTopicsCountWithTags(List<string> searchTags);
+
         IEnumerable<DiscussionPostRecord> SearchTopics(int pageNumber, int pageSize);
+
+        IEnumerable<DiscussionPostRecord> SearchTopicsWithTags(int pageNumber, int pageSize, List<string> searchTags);
 
         DiscussionPostRecord GetTopicDetailsByTopicId(long topicId);
 
