@@ -8,10 +8,11 @@ import { Config } from 'src/app/shared/config';
 })
 export class LoginService {
   private baseUrl = Config.apiBaseUrl + 'users/';
-
+  userData;
   constructor(private http: HttpClient) {}
 
   getUser(username: any): Observable<any> {
+    this.userData = username;
     return this.http.get<any>(this.baseUrl + username);
   }
 }
