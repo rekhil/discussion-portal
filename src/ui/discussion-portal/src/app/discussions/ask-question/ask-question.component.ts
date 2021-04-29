@@ -1,5 +1,13 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
   MatAutocomplete,
@@ -9,6 +17,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Config } from 'src/app/shared/config';
 
 import { DiscussionService } from '../services/discussion.service';
@@ -19,8 +28,10 @@ import { DiscussionService } from '../services/discussion.service';
   styleUrls: ['./ask-question.component.scss'],
 })
 export class AskQuestionComponent implements OnInit {
-  title: string;
-  htmlContent: any;
+  @Input() title: string;
+  @Input() htmlContent: any;
+  @Input() currentTags: string[];
+  @Output() updatePost = new EventEmitter();
 
   tags = [];
   options = Config.tags;
@@ -31,14 +42,24 @@ export class AskQuestionComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
+  isEdit: boolean;
 
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor(
     private discussionService: DiscussionService,
-    private router: Router
-  ) {
+    private router: Router,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    if (this.currentTags) {
+      this.currentTags.forEach((t) => {
+        this.tags.push(t);
+      });
+      this.isEdit = true;
+    }
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
@@ -47,19 +68,21 @@ export class AskQuestionComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
-
   postQuestion() {
     const request = {
       subject: this.title,
       postDescription: this.htmlContent,
       tags: Array.from(this.tags.values()),
       isTopic: true,
-      createdBy: 'stg',
+      createdBy: this.authService.username,
     };
-    this.discussionService.createPost(request).subscribe((data) => {
-      this.router.navigate(['/discussions']);
-    });
+    if (this.isEdit) {
+      this.updatePost.emit(request);
+    } else {
+      this.discussionService.createPost(request).subscribe((data) => {
+        this.router.navigate(['/discussions']);
+      });
+    }
   }
 
   add(event: MatChipInputEvent): void {
@@ -99,6 +122,11 @@ export class AskQuestionComponent implements OnInit {
     return this.options.filter(
       (tag) => tag.toLowerCase().indexOf(filterValue) === 0
     );
+  }
+
+  /* Cancel edit */
+  cancel() {
+    this.updatePost.emit();
   }
 
   ngOnDestroy(): void {}

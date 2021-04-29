@@ -35,6 +35,15 @@ angular-editor
 .tag-untagged {
   color: #ab9364;
 }
+
+.tag-technology,
+.tag-science,
+.tag-general,
+.tag-history,
+.tag-untagged {
+  height: 24px;
+}
+
 .tag-section-technology {
   border-left: solid 5px #cc0000;
 }

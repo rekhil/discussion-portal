@@ -1,6 +1,6 @@
 <div class="layout-wrapper" fxLayout="column">
   <div class="menu-wrapper" fxLayout="row" fxLayoutAlign="space-between">
-    <div fxLayout="row" fxLayoutGap="60px">
+    <div fxLayout="row" fxLayoutGap="60px" fxLayoutAlign="center center">
       <a [routerLink]="['/discussions']" class="home-link">Discussion Portal</a>
       <ng-container *ngIf="isLoggedIn">
         <div *ngFor="let item of menuItems">

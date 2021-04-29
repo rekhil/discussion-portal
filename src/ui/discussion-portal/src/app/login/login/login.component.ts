@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
     this.enableLogin = false;
     const data = this.loginForm.getRawValue();
     this.loginService.getUser(data.username).subscribe(
-      (data) => {
+      (user) => {
         this.authService.setAuthenticated(true);
+        this.authService.username = user.userName;
         this.router.navigate(['/discussions']);
       },
       () => {

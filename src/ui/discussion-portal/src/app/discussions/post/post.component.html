@@ -3,26 +3,41 @@
   <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center" class="thread">
     <div fxFlex="10%" fxLayout="column" fxLayoutAlign="center center" class="info">
       <div class="vote" (click)="vote(true, thread.postId)">
-        <mat-icon class="up-vote">play_arrow</mat-icon>
+        <mat-icon class="up-vote" [ngClass]="{'user-voted': likedByCurrentUser}">play_arrow</mat-icon>
       </div>
       <div class="vote-count">
         {{thread.likeCount - thread.disLikeCount}} {{thread.likeCount - thread.disLikeCount == 1 ? 'vote' : 'votes'}}
       </div>
       <div class="vote" (click)="vote(false, thread.postId)">
-        <mat-icon class="down-vote">play_arrow</mat-icon>
+        <mat-icon class="down-vote" [ngClass]="{'user-voted': dislikedByCurrentUser}">play_arrow</mat-icon>
       </div>
     </div>
     <div fxFlex="85%" class="thread-content">
-      <div class="thread-title">{{thread.subject}}</div>
-      <div class="thread-description">
-        <div [innerHTML]="thread.postDescription"></div>
-      </div>
-      <div class="bottom" fxLayout="row" fxLayoutGap="5px">
-        <div class="user-info">
-          <div class="action-time">Posted {{thread.createdOn | date:'medium'}} by</div>
-          <div class="user-name">{{thread.createdBy}}</div>
+      <ng-container *ngIf="!openEdit; else editTemp">
+        <!-- <div class="thread-title">{{thread.subject}}</div> -->
+        <div class="thread-description">
+          <div [innerHTML]="thread.postDescription"></div>
         </div>
-      </div>
+        <div class="bottom" fxLayout="row" fxLayoutGap="5px">
+          <div class="user-info" fxLayout="row" fxLayoutGap="5px">
+            <div class="action-time">Posted {{thread.createdOn | date:'medium'}} by</div>
+            <div class="user-name">{{thread.createdBy}}</div>
+            <a (click)="openEditor(true)" class="edit-link">Edit</a>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #editTemp>
+        <div fxLayout="column" fxLayoutGap="20px">
+          <div>
+            <angular-editor [placeholder]="'Type here...'" [(ngModel)]="editedReply"></angular-editor>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <button mat-raised-button (click)="openEditor(false)" fxFlex="20%">Cancel</button>
+            <button mat-raised-button color="primary" (click)="updateReply()" fxFlex="20%"
+              [disabled]="!editedReply">Update reply</button>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
   <div class="replies-wrapper" *ngIf="thread">
@@ -34,7 +49,7 @@
     <button class="reply-btn" type="button" (click)="showEditor = !showEditor">Add a comment</button>
     <div *ngIf="showChildNodes && thread.replyPosts" class="replies">
       <div class="post-section" *ngFor="let post of thread.replyPosts">
-        <app-post [parentPostId]="thread.postId" [thread]="post"></app-post>
+        <app-post [parentPostId]="thread.postId" [thread]="post" (refreshDetails)="refreshPostDetails()"></app-post>
       </div>
     </div>
     <div *ngIf="showEditor" class="editor-wrapper">
