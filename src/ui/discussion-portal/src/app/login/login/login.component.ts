@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       if (data && this.validLogin(data.userName, data.userName)) {
         this.authService.setLoggedInSession(data);
         this.authService.setAuthenticated(true);
-        this.authService.username = user.userName;
+        this.authService.username = data.userName;
         this.router.navigate(['/discussions']);
       } else {
         this.throwLoginError();
