@@ -22,7 +22,7 @@
           <div class="user-info" fxLayout="row" fxLayoutGap="5px">
             <div class="action-time">Posted {{thread.createdOn | date:'medium'}} by</div>
             <div class="user-name">{{thread.createdBy}}</div>
-            <a (click)="openEditor(true)" class="edit-link">Edit</a>
+            <a (click)="openEditor(true)" class="edit-link" *ngIf="currentUser?.userName == thread.createdBy">Edit</a>
           </div>
         </div>
       </ng-container>
