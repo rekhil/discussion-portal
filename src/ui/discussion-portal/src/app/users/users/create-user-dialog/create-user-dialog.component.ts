@@ -27,12 +27,12 @@ export class CreateUserDialogComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required]],
-      phone: ['',[Validators.required]],
-      address: ['',[Validators.required]],
-      jobTitle: ['',[Validators.required]],
+      phone: ['',],
+      address: ['',],
+      jobTitle: ['',],
       skills: ['',],
-      gender:['',[Validators.required]],
-      dob:['',[Validators.required]]
+      gender:['',],
+      dob:['',]
     });
   }
 
