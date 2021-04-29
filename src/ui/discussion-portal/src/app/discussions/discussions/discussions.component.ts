@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DiscussionService } from '../services/discussion.service';
 import { Observable } from 'rxjs';
@@ -51,6 +51,10 @@ export class DiscussionsComponent implements OnInit, OnDestroy {
           : -1;
       });
     }
+  }
+
+  pageChange(event: PageEvent) {
+    this.dataSource.paginator.pageIndex = event.pageIndex;
   }
 
   goToDetails(postId: any) {
