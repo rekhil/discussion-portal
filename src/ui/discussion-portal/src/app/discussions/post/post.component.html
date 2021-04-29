@@ -31,7 +31,7 @@
           <div>
             <angular-editor [placeholder]="'Type here...'" [(ngModel)]="editedReply"></angular-editor>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-around center">
+          <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="flex-end center">
             <button mat-raised-button (click)="openEditor(false)" fxFlex="20%">Cancel</button>
             <button mat-raised-button color="primary" (click)="updateReply()" fxFlex="20%"
               [disabled]="!editedReply">Update reply</button>
