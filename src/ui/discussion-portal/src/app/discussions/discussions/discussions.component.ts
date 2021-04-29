@@ -20,6 +20,7 @@ export class DiscussionsComponent implements OnInit, OnDestroy {
   public posts: any[];
   dataSource: MatTableDataSource<any>;
   selectedOption: number;
+  sourceData = [];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   obs: Observable<any>;
@@ -33,24 +34,47 @@ export class DiscussionsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.discussionService.posts$.subscribe((data) => {
       this.posts = data;
-      this.dataSource = new MatTableDataSource(data);
+      this.sourceData = data;
+      this.dataSource = new MatTableDataSource(this.posts);
       this.cdr.detectChanges();
       this.obs = this.dataSource.connect();
       this.dataSource.paginator = this.paginator;
     });
   }
 
+  filterByTag(tags) {
+    const filteredPosts = this.sourceData.filter((post) =>
+      post.tags.some((t) => tags.indexOf(t) > -1)
+    );
+    this.posts = filteredPosts;
+    this.reconnectTableSource();
+  }
+
   setSelectedOptionFilter($event) {
     this.selectedOption = $event;
+    if (this.selectedOption === 1) {
+      this.discussionService.searchPosts();
+    }
     // sort option - Top
     if (this.selectedOption === 2) {
       this.posts = this.posts.sort((post1, post2) => {
-        return post1.likeCount - post1.disLikeCount >
+        return post1.likeCount - post1.disLikeCount <
           post2.likeCount - post2.disLikeCount
           ? 1
-          : -1;
+          : post1.likeCount - post1.disLikeCount >
+            post2.likeCount - post2.disLikeCount
+          ? -1
+          : 0;
       });
+      this.reconnectTableSource();
     }
+  }
+
+  reconnectTableSource() {
+    this.dataSource.disconnect();
+    this.dataSource = new MatTableDataSource(this.posts);
+    this.cdr.detectChanges();
+    this.obs = this.dataSource.connect();
   }
 
   pageChange(event: PageEvent) {

@@ -13,8 +13,9 @@ export class FilterComponent implements OnInit {
   public selectedTags = [];
   @Input() selectedOption = 0; // 1,2,3.. in order of display
   @Output() setSelectedOptionFilter = new EventEmitter();
+  @Output() filterByTag = new EventEmitter();
 
-  constructor(private discussionService: DiscussionService) { }
+  constructor(private discussionService: DiscussionService) {}
 
   ngOnInit(): void {
     this.selectedTags = this.tags;
@@ -26,5 +27,9 @@ export class FilterComponent implements OnInit {
   setOption(option) {
     this.selectedOption = this.selectedOption === option ? 0 : option;
     this.setSelectedOptionFilter.emit(this.selectedOption);
+  }
+
+  filterByTags() {
+    this.filterByTag.emit(this.selectedTags);
   }
 }
