@@ -42,13 +42,14 @@ export class AskQuestionComponent implements OnInit {
   filteredTags: Observable<string[]>;
   isEdit: boolean;
 
-  @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
+  @ViewChild('tagInput', { static: false })
+  tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
   constructor(
     private discussionService: DiscussionService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (this.currentTags) {
@@ -66,7 +67,9 @@ export class AskQuestionComponent implements OnInit {
   }
 
   postQuestion() {
-    const loggedInUser = JSON.parse(window.localStorage.getItem('discussion@profile'));
+    const loggedInUser = JSON.parse(
+      window.localStorage.getItem('discussion@profile')
+    );
     const request = {
       subject: this.title,
       postDescription: this.htmlContent,
@@ -78,6 +81,7 @@ export class AskQuestionComponent implements OnInit {
       this.updatePost.emit(request);
     } else {
       this.discussionService.createPost(request).subscribe((data) => {
+        this.discussionService.searchPosts();
         this.router.navigate(['/discussions']);
       });
     }
@@ -127,5 +131,5 @@ export class AskQuestionComponent implements OnInit {
     this.updatePost.emit();
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy(): void {}
 }
