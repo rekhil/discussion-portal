@@ -17,7 +17,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Config } from 'src/app/shared/config';
+import { Config } from '../../shared/config';
 
 import { DiscussionService } from '../services/discussion.service';
 
@@ -42,8 +42,8 @@ export class AskQuestionComponent implements OnInit {
   filteredTags: Observable<string[]>;
   isEdit: boolean;
 
-  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
   constructor(
     private discussionService: DiscussionService,
