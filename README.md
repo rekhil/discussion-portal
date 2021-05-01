@@ -119,14 +119,19 @@ Request :
     "userName": "benosushil",
     "firstName": "Benedict",
     "lastName": "Kumar",
-    "email": "ben@ben.com"
+    "email": "ben@ben.com",
+    "password" : "beno",
+    "isAdmin" : false
 }
+
+Note : IsAdmin field changes are yet to be deployed
+
 
 ---------------------------------------------------------------------------------------------------------------------
 
 Edit User:
 
-PUT: url and request are same as of create user except http verb
+PUT: url and request (except password field) are same as of create user except http verb
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -134,4 +139,25 @@ Delete User:
 
 DELETE: https://xenon-anvil-310308.appspot.com/api/users/ben . Here ben is user name
 
+---------------------------------------------------------------------------------------------------------------------
 
+Login User:
+
+HttpPost : https://xenon-anvil-310308.appspot.com/api/users/login
+Request :
+{
+    "userName": "benosushil",
+    "Password": "beno"
+}
+
+---------------------------------------------------------------------------------------------------------------------
+
+User Password Reset :
+
+HttpPut: https://xenon-anvil-310308.appspot.com/api/users/password/reset
+Request : 
+{
+    "userName": "benosushil",
+    "Password": "beno",
+    "NewPassword": "sushil"
+}
