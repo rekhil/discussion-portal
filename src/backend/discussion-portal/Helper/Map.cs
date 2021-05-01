@@ -55,7 +55,8 @@ namespace DiscussionPortal.Helper
                 UserName = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Email = user.Email
+                Email = user.Email,
+                Password = user.Password
             };
         }
 
@@ -66,7 +67,8 @@ namespace DiscussionPortal.Helper
                 UserName = userRecord.UserName,
                 FirstName = userRecord.FirstName,
                 LastName = userRecord.LastName,
-                Email = userRecord.Email
+                Email = userRecord.Email,
+                Password = userRecord.Password
             };
         }
     }

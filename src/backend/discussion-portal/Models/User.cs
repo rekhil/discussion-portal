@@ -9,5 +9,8 @@
         public string LastName { get; set; }
 
         public string Email { get; set; }
+
+        [Newtonsoft.Json.JsonIgnore]
+        internal string Password { get; set; }
     }
 }

@@ -224,13 +224,13 @@ namespace DiscussionPortal.DataAccess
                 existingUser.FirstName = user.FirstName;
                 existingUser.LastName = user.LastName;
                 existingUser.Email = user.Email;
+                existingUser.Password = user.Password;
                 existingUser.IsActive = true;
                 _context.Users.Update(existingUser);
             }
             else
             {
                 user.IsActive = true;
-                user.Password = "password";
                 _context.Users.Add(user);
             }
             _context.SaveChanges();
