@@ -10,6 +10,8 @@
 
         public string Email { get; set; }
 
+        public bool IsAdmin { get; set; }
+
         [Newtonsoft.Json.JsonIgnore]
         internal string Password { get; set; }
     }
