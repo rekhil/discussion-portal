@@ -1,9 +1,9 @@
 ﻿using DiscussionPortal.Handlers;
 using DiscussionPortal.Models;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 
 namespace DiscussionPortal.Controllers
 {
@@ -83,7 +83,7 @@ namespace DiscussionPortal.Controllers
                     Error = "Invalid user name"
                 };
             }
-            if (existingUser.Password == hashPassword)
+            if (existingUser.Password != hashPassword)
             {
                 return new ResponseModel
                 {
@@ -91,17 +91,21 @@ namespace DiscussionPortal.Controllers
                     Error = "Invalid user name or password"
                 };
             }
-            return new ResponseModel();
+            return new ResponseModel
+            {
+                IsSuccess = true,
+                StatusCode = System.Net.HttpStatusCode.OK
+            };
         }
 
         private string HashPassword(string password)
         {
-            using (var algorithm = new Rfc2898DeriveBytes(password, 10, 10, HashAlgorithmName.SHA256))
-            {
-                var key = Convert.ToBase64String(algorithm.GetBytes(10));
-                var salt = Convert.ToBase64String(algorithm.Salt);
-                return $"{key}.{salt}";
-            }
+            return Convert.ToBase64String(KeyDerivation.Pbkdf2(
+            password: password,
+            salt: new byte[] { Convert.ToByte('A') },
+            prf: KeyDerivationPrf.HMACSHA1,
+            iterationCount: 10000,
+            numBytesRequested: 256 / 8));
         }
     }
 }
