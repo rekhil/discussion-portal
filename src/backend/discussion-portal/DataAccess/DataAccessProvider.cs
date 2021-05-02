@@ -224,7 +224,7 @@ namespace DiscussionPortal.DataAccess
                 existingUser.FirstName = user.FirstName;
                 existingUser.LastName = user.LastName;
                 existingUser.Email = user.Email;
-                existingUser.IsAdmin = user.IsAdmin;
+                existingUser.isAdmin = user.isAdmin;
                 existingUser.Password = user.Password;
                 existingUser.IsActive = true;
                 _context.Users.Update(existingUser);
@@ -243,7 +243,7 @@ namespace DiscussionPortal.DataAccess
             existingUser.FirstName = user.FirstName;
             existingUser.LastName = user.LastName;
             existingUser.Email = user.Email;
-            existingUser.IsAdmin = user.IsAdmin;
+            existingUser.isAdmin = user.isAdmin;
             existingUser.IsActive = true;
             _context.Users.Update(existingUser);
             _context.SaveChanges();
