@@ -7,9 +7,11 @@ import { Subject } from 'rxjs';
 export class AuthService {
   private isUserAuthenticated: boolean;
   private authState = new Subject<boolean>();
-  public username: string;
+  public isAdmin: boolean;
 
-  constructor() { }
+  constructor() {
+    window.localStorage.setItem("discussion@profile", "");
+  }
 
   public setAuthenticated(value) {
     this.isUserAuthenticated = value;
@@ -25,7 +27,12 @@ export class AuthService {
   }
 
   public setLoggedInSession(data: any) {
+    this.isAdmin = data ? data.isAdmin : false;
     const userProfile = data ? JSON.stringify(data) : '';
     window.localStorage.setItem('discussion@profile', userProfile);
+  }
+
+  public hasRoleCheck(role: string): boolean {
+    return (role === 'admin') ? this.isAdmin : true;
   }
 }

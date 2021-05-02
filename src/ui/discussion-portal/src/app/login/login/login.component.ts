@@ -48,19 +48,23 @@ export class LoginComponent implements OnInit {
     this.loginForm.controls.password.setErrors(null);
     this.enableLogin = false;
     const data = this.loginForm.getRawValue();
-    this.loginService.getUser(data.username).subscribe((data) => {
-      if (data && this.validLogin(data.userName, data.userName)) {
-        this.authService.setLoggedInSession(data);
-        this.authService.setAuthenticated(true);
-        this.authService.username = data.userName;
-        this.router.navigate(['/discussions']);
+    const request = {
+      userName: data.username,
+      password: data.password
+    }
+    this.loginService.loginUser(request).subscribe((loginResponse) => {
+      if (loginResponse.isSuccess) {
+        this.loginService.getUser(data.username).subscribe((data) => {
+          this.authService.setLoggedInSession(data);
+          this.authService.setAuthenticated(true);
+          this.router.navigate(['/discussions']);
+        }, () => {
+          this.throwLoginError();
+        })
       } else {
         this.throwLoginError();
       }
-    }, () => {
-      this.throwLoginError();
-    }
-    );
+    })
   }
 
   throwLoginError() {
@@ -68,10 +72,5 @@ export class LoginComponent implements OnInit {
     this.loginForm.get('password').setErrors({ invalid: true });
     this.errorMessage = 'Enter valid username and password!';
     this.enableLogin = true;
-  }
-
-  validLogin(user: string, pass: string) {
-    const { username, password } = this.loginForm.getRawValue();
-    return user === username && pass === password;
   }
 }

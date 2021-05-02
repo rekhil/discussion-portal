@@ -7,6 +7,17 @@
     <mat-form-field appearance="outline">
       <mat-label>Username</mat-label>
       <input matInput formControlName="userName" required>
+      <mat-error *ngIf="userForm.get('userName').hasError('minlength')">Atleast four characters required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" required>
+      <mat-error *ngIf="userForm.get('password').hasError('minlength')">Atleast four characters required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput formControlName="confirmPassword" required>
+      <mat-error *ngIf="userForm.get('confirmPassword').hasError('invalid')">Passwords do not match</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>First Name</mat-label>
@@ -23,6 +34,7 @@
       <input matInput formControlName="email" required>
       <mat-error>Enter valid email</mat-error>
     </mat-form-field>
+    <mat-checkbox formControlName="isAdmin" *ngIf="userLoggedIn">Mark as Admin</mat-checkbox>
     <button mat-raised-button color="primary" (click)="saveUserDetails()" [disabled]="!userForm.valid"> Submit
     </button>
   </div>

@@ -15,6 +15,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 const materialModules = [
   MatAutocompleteModule,
@@ -24,6 +26,8 @@ const materialModules = [
   MatIconModule,
   MatInputModule,
   MatRadioModule,
+  MatCheckboxModule,
+  MatSnackBarModule,
   MatChipsModule,
   MatTableModule,
   MatPaginatorModule,
@@ -38,4 +42,4 @@ const materialModules = [
   imports: [CommonModule, ...materialModules, FlexLayoutModule],
   exports: [...materialModules, FlexLayoutModule],
 })
-export class CustomMaterialModule {}
+export class CustomMaterialModule { }

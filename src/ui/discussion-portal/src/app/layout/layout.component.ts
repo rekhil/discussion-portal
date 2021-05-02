@@ -12,9 +12,9 @@ import { Config } from '../shared/config';
 export class LayoutComponent implements OnInit, OnDestroy {
   public menuItems = Config.menuItems;
   public isLoggedIn: boolean;
-  subscription: Subscription;
+  private subscription: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.subscription = this.authService.loggedInState().subscribe((state) => {
