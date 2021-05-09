@@ -1,5 +1,5 @@
 .layout-wrapper {
-  height: 100vh;
+  min-height: 100vh;
   .menu-wrapper {
     padding: 30px 20px;
     background: linear-gradient(-90deg, #ff4081, #3f51b5), #fff;
@@ -31,4 +31,7 @@
 }
 .dark-mode {
   background-color: #424242;
+  .menu-wrapper {
+    background: linear-gradient(-90deg, #151112, #454756), #fff;
+  }
 }

@@ -1,7 +1,7 @@
 <div [class.dark-mode]="isDark" class="layout-wrapper" fxLayout="column">
   <div class="menu-wrapper" fxLayout="row" fxLayoutAlign="space-between">
     <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center" class="full-wdith">
-      <a fxFlex="20" fxFlex.lt-lg="30" [routerLink]="['/discussions']" class="home-link">Discussion Portal</a>
+      <a fxFlex="20" fxFlex.lt-lg="30" [routerLink]="['/discussions']" class="home-link">Coconut Talk</a>
       <div fxFlex="60" fxFlex.lt-lg="50" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px"
         *ngIf="isLoggedIn">
         <div *ngFor="let item of menuItems">

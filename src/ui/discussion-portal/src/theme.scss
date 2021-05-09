@@ -26,4 +26,12 @@ $angular-dark-theme: mat-dark-theme(
 );
 .dark-mode {
   @include angular-material-color($angular-dark-theme);
+// Common Styles in dark mode
+  .text-color {
+      color: white;
+  }
+}
+// Common Styles
+.text-color {
+    color: #3c4146;
 }

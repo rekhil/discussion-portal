@@ -1,34 +1,38 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-4 mL">
-            <img src="../../assets/Profile_avatar_placeholder_large.png" width="350px" height="350px" alt="Profile Image">
+            <img src="../../assets/Profile_avatar_placeholder_large.png" width="350px" height="350px"
+                alt="Profile Image">
         </div>
         <div class="col-xs-8 mL-60">
-            <div style="font-size: 20px;">{{userDetails.firstName | titlecase}} {{userDetails.lastName | titlecase}}
-            <span><mat-icon class="icon"> location_on</mat-icon></span>
-            <span class="icon2">New York, NY</span>
+            <div class="text-color" style="font-size: 20px;">{{userDetails.firstName | titlecase}}
+                {{userDetails.lastName | titlecase}}
+                <span>
+                    <mat-icon class="icon"> location_on</mat-icon>
+                </span>
+                <span class="icon2">New York, NY</span>
             </div>
             <div class="p-design">Product Designer</div>
             <br><br><br>
             <div>
-                <div class="fsize">
-                 <span class="skills">SKILLS</span>
-                 <div style="margin-top: 20px;">Branding</div>
-                 <div>UI/UX</div>
-                 <div>Web-Design</div>
-                 <div>Packaging</div>
-                 <div>Print & Editorial</div>
+                <div class="fsize text-color">
+                    <span class="skills">SKILLS</span>
+                    <div style="margin-top: 20px;">Branding</div>
+                    <div>UI/UX</div>
+                    <div>Web-Design</div>
+                    <div>Packaging</div>
+                    <div>Print & Editorial</div>
                 </div>
             </div>
-            <div class="fsize" style="margin-top: 80px;">
+            <div class="fsize text-color" style="margin-top: 80px;">
                 <mat-icon class="about">account_circle</mat-icon>About
             </div>
             <hr>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4 mL fsize">
-            <div class="work">BASIC INFORMATION</div> 
+        <div class="col-xs-4 mL fsize text-color">
+            <div class="work">BASIC INFORMATION</div>
             <div class="mt18">Birthday:
                 <span class="ml15">June 5, 1992</span>
             </div>
@@ -36,20 +40,20 @@
                 <span class="ml15">Male</span>
             </div>
         </div>
-        <div class="col-xs-8 mL-60 fsize">
+        <div class="col-xs-8 mL-60 fsize text-color">
             <div>CONTACT INFORMATION</div>
             <div class="col-xs-6" style="margin-left: -30px;">
-            <div class="col-xs-3">    
-            <div class="mt18">Phone:</div>
-            <div class="mt18">Address:</div>
-            <div class="mt18">Email: </div>
-            <div class="mt18">Site:</div>
-            </div>
-            <div class="col-xs-9">    
-                <div class="mt18 color-text">+91 8113001911</div>
-                <div class="mt18">36A Newyork Texas</div>
-                <div class="mt18 color-text">{{userDetails.email}}</div>
-                <div class="mt18 color-text">www.test.com</div>
+                <div class="col-xs-3">
+                    <div class="mt18">Phone:</div>
+                    <div class="mt18">Address:</div>
+                    <div class="mt18">Email: </div>
+                    <div class="mt18">Site:</div>
+                </div>
+                <div class="col-xs-9">
+                    <div class="mt18 color-text">+91 8113001911</div>
+                    <div class="mt18">36A Newyork Texas</div>
+                    <div class="mt18 color-text">{{userDetails.email}}</div>
+                    <div class="mt18 color-text">www.test.com</div>
                 </div>
             </div>
         </div>
