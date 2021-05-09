@@ -1,4 +1,5 @@
 .layout-wrapper {
+  height: 100vh;
   .menu-wrapper {
     padding: 30px 20px;
     background: linear-gradient(-90deg, #ff4081, #3f51b5), #fff;
@@ -28,6 +29,6 @@
     width: 100%;
   }
 }
-.dark-mode .component-outlet {
+.dark-mode {
   background-color: #424242;
 }
