@@ -20,7 +20,7 @@
       <div class="actions" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="space-between center">
         <button mat-raised-button color="primary" class="full-width" (click)="login()"
           [disabled]="!enableLogin && !loginForm.valid">Sign In</button>
-        <div class="register-btn" (click)="register()">Create New Account</div>
+        <a class="register-btn" (click)="register()">Create New Account</a>
       </div>
     </mat-card-actions>
   </mat-card>
