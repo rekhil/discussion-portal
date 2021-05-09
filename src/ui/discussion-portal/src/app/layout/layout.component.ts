@@ -12,6 +12,8 @@ import { Config } from '../shared/config';
 export class LayoutComponent implements OnInit, OnDestroy {
   public menuItems = Config.menuItems;
   public isLoggedIn: boolean;
+  public isDark: boolean;
+  public theme: "Light" | "Dark" = "Light";
   private subscription: Subscription;
 
   constructor(public authService: AuthService, private router: Router) { }
@@ -30,6 +32,11 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.authService.setLoggedInSession(null);
     this.authService.setAuthenticated(false);
     this.router.navigate(['login']);
+  }
+
+  themeToggle() {
+    this.isDark = !this.isDark;
+    this.theme = (this.isDark) ? "Dark" : "Light";
   }
 
   ngOnDestroy() {

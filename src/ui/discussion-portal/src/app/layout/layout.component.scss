@@ -24,4 +24,10 @@
   .component-outlet {
     padding: 20px 30px;
   }
+  .full-wdith {
+    width: 100%;
+  }
+}
+.dark-mode .component-outlet {
+  background-color: #424242;
 }
