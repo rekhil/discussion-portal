@@ -56,7 +56,7 @@ namespace DiscussionPortal.Helper
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                isAdmin = user.IsAdmin,
+                IsAdmin = user.IsAdmin,
                 Password = user.Password
             };
         }
@@ -69,7 +69,7 @@ namespace DiscussionPortal.Helper
                 FirstName = userRecord.FirstName,
                 LastName = userRecord.LastName,
                 Email = userRecord.Email,
-                IsAdmin = userRecord.isAdmin,
+                IsAdmin = userRecord.IsAdmin,
                 Password = userRecord.Password
             };
         }
