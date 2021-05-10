@@ -1,4 +1,5 @@
-# Discussion Portal
+# Discussion Portal : Coconut Talk
+
 Discussion portals are key to speed-up the communication across communities of people. They help to organize the community appropriately.
 
 UI: Angular CLI version 8.0.2
@@ -11,19 +12,25 @@ Angular package published in: https://www.npmjs.com/package/ngx-community
 
 Deployed using Google Cloud Platform
 
-Deployed URL: https://discussion-portal-ui-311719.df.r.appspot.com/
+Portal URL (old): https://discussion-portal-ui-311719.df.r.appspot.com/
+Portal URL (new): https://discussion-portal-ui-313302.df.r.appspot.com/
 
+---------------------------------------------------------------------------------------------------------------------
 
 # API Details 
 
-# Discussions
+Base URL: https://polar-arbor-313208.appspot.com/
+
+---------------------------------------------------------------------------------------------------------------------
+
+# Discussion APIs
 
 Search all topics with pagination and filtering
 Note: If filtering by tags are not needed, set "Tags" field as null
 
-POST: https://xenon-anvil-310308.appspot.com/api/discussions/search
+POST: api/discussions/search
 
-Request :
+Sample request :
 {
     "Tags": ["Science","History","General"],
     "PageNumber": 1,
@@ -34,15 +41,16 @@ Request :
 
 Get all topic list
 
-GET: https://xenon-anvil-310308.appspot.com/api/discussions
+GET: api/discussions
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Create new post (topic/reply)
+Create new post 
+Note: Can be used to create topics or replies
 
-POST: https://xenon-anvil-310308.appspot.com/api/discussions
+POST: api/discussions
 
-Request :
+Sample request :
 {
    "subject":"Subject",
    "postDescription":"Description",
@@ -58,15 +66,16 @@ Request :
 
 Get topic details by Id
 
-GET: https://xenon-anvil-310308.appspot.com/api/discussions/1
+GET: api/discussions/{postId:long}
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Update existing post (Current user can only update post created by the same user)
+Update existing post 
+Note: Current user can only update post created by the same user
 
-PUT: https://xenon-anvil-310308.appspot.com/api/discussions/1
+PUT: api/discussions/{postId:long}
 
-Request :
+Sample request :
 {
    "subject":"Subject",
    "postDescription":"Description",
@@ -78,44 +87,49 @@ Request :
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Delete exisintg post (Current user can only edit post created by the same user, Selected post/reply and all replies under it will get deleted)
+Delete existing post 
+Note: Current user can only edit post created by the same user, Selected post/reply and all replies under it will get deleted
 
-DELETE: https://xenon-anvil-310308.appspot.com/api/discussions/1
+DELETE: api/discussions/{postId:long}
 
 ---------------------------------------------------------------------------------------------------------------------
 
 Like/Dislike Post (UpdatePostLikeStatus):
 
-POST: https://xenon-anvil-310308.appspot.com/api/discussions/UpdatePostLikeStatus
+POST: api/discussions/UpdatePostLikeStatus
 
-Request:
+Sample request:
 {
     "DiscussionPostId" : 2,
     "UserName" : "benosushil",
     "IsLike" : true
 }
 
-# User
+---------------------------------------------------------------------------------------------------------------------
 
-Get User By User Name. This can be used for log in also
+# User APIs
 
-GET: https://xenon-anvil-310308.appspot.com/api/users/benosushil => here benosushil is user name
+Get User By User Name
+Note: This can be used for login also
+
+GET: api/users/benosushil => here benosushil is user name
 
 ---------------------------------------------------------------------------------------------------------------------
 
 Search User 
 
-POST: https://xenon-anvil-310308.appspot.com/api/users/search
+POST: api/users/search
 
-Request (just a string): "beno"
+Sample request (just a string): 
+"beno"
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Create User: 
+Create User
 
-POST: https://xenon-anvil-310308.appspot.com/api/users
+POST: api/users
 
-Request : 
+Sample request : 
 {
     "userName": "benosushil",
     "firstName": "Benedict",
@@ -127,25 +141,25 @@ Request :
 
 Note : IsAdmin field changes are yet to be deployed
 
-
 ---------------------------------------------------------------------------------------------------------------------
 
-Edit User:
+Edit User
 
 PUT: url and request (except password field) are same as of create user except http verb
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Delete User: 
+Delete User
 
-DELETE: https://xenon-anvil-310308.appspot.com/api/users/ben . Here ben is user name
+DELETE: api/users/ben . Here ben is user name
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Login User:
+Login User
 
-HttpPost : https://xenon-anvil-310308.appspot.com/api/users/login
-Request :
+POST: api/users/login
+
+Sample request :
 {
     "userName": "benosushil",
     "Password": "beno"
@@ -153,10 +167,11 @@ Request :
 
 ---------------------------------------------------------------------------------------------------------------------
 
-User Password Reset :
+User Password Reset
 
-HttpPut: https://xenon-anvil-310308.appspot.com/api/users/password/reset
-Request : 
+PUT: api/users/password/reset
+
+Sample request : 
 {
     "userName": "benosushil",
     "Password": "beno",
