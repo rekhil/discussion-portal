@@ -1,6 +1,6 @@
 <div class="disc-wrapper">
   <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
-    <div class="header-title">All Posts</div>
+    <div class="header-title text-color">All Posts</div>
     <div class="header-actions">
       <button mat-raised-button color="primary" type="button" (click)="askQuestion()">Create New Post</button>
     </div>
@@ -18,7 +18,7 @@
   <mat-divider></mat-divider>
   <!-- Default view - Discussions list starts -->
   <ng-container *ngIf="selectedOption != 3; else discussionsByCategory">
-    <div fxLayout="row" fxLayoutGap="10px" class="column-headers">
+    <div fxLayout="row" fxLayoutGap="10px" class="text-color column-headers">
       <div fxFlex="70%"> Topics </div>
       <div fxFlex="10%" class="align-center"> Replies </div>
       <div fxFlex="10%" class="align-center"> Votes </div>
@@ -26,7 +26,7 @@
     </div>
     <mat-divider></mat-divider>
     <div fxLayout="column" fxLayoutAlign="center stretch" *ngFor="let post of obs | async">
-      <div fxLayout="row" fxLayoutGap="10px">
+      <div class="transparent-bg post-item" fxLayout="row" fxLayoutGap="10px">
         <div fxFlex="70%" fxLayout="column" fxLayoutGap="10px" (click)="goToDetails(post.postId)" class="post-details">
           <div class="title">{{post.subject}}</div>
           <div class="description">

@@ -1,5 +1,5 @@
 export class Config {
-  public static apiBaseUrl = 'https://xenon-anvil-310308.appspot.com/api/';
+  public static apiBaseUrl = 'https://polar-arbor-313208.appspot.com/api/';
   public static menuItems = [
     {
       name: 'Discussions',

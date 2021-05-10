@@ -1,0 +1,53 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$angular-primary: mat-palette($mat-blue, 500, 100, 900);
+$angular-accent: mat-palette($mat-pink, A200, A100, A400);
+$angular-warn: mat-palette($mat-red);
+$angular-default-theme: mat-light-theme(
+  (
+    color: (
+      primary: $angular-primary,
+      accent: $angular-accent,
+      warn: $angular-warn,
+    ),
+  )
+);
+@include angular-material-theme($angular-default-theme);
+
+$angular-dark-primary: mat-palette($mat-teal, 500, 100, 900);
+$angular-dark-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+$angular-dark-warn: mat-palette($mat-deep-orange);
+$angular-dark-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $angular-dark-primary,
+      accent: $angular-dark-accent,
+      warn: $angular-dark-warn,
+    ),
+  )
+);
+.dark-mode {
+  @include angular-material-color($angular-dark-theme);
+// Common Styles in dark mode
+  .text-color {
+      color: white;
+  }
+  .transparent-bg {
+      background-color: white;
+      box-shadow: 0 3px 5px -1px rgb(66 66 66), 0 6px 10px 0 rgb(66 66 66), 0 1px 18px 0 rgb(66 66 66);
+  }
+  a {
+    color: mat-color($angular-dark-primary);
+  }
+}
+// Common Styles
+.text-color {
+    color: #3c4146;
+}
+.transparent-bg {
+    background-color: transparent;
+}
+a {
+    color: mat-color($angular-primary);
+}

@@ -1,13 +1,22 @@
-<div class="layout-wrapper" fxLayout="column">
+<div [class.dark-mode]="isDark" class="layout-wrapper" fxLayout="column">
   <div class="menu-wrapper" fxLayout="row" fxLayoutAlign="space-between">
-    <div fxLayout="row" fxLayoutGap="60px" fxLayoutAlign="center center">
-      <a [routerLink]="['/discussions']" class="home-link">Discussion Portal</a>
-      <ng-container *ngIf="isLoggedIn">
+    <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between center" class="full-wdith">
+      <a fxFlex="20" fxFlex.lt-lg="30" [routerLink]="['/discussions']" class="home-link">Coconut Talk</a>
+      <div fxFlex="60" fxFlex.lt-lg="50" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px"
+        *ngIf="isLoggedIn">
         <div *ngFor="let item of menuItems">
           <a *ngIf="!item.adminSpecific || authService.isAdmin" [routerLink]="item.link" routerLinkActive="active"
             class="menu-link">{{item.name}}</a>
         </div>
-      </ng-container>
+      </div>
+      <!-- below button will help us change the theme at run-time. -->
+      <button mat-raised-button color="primary" (click)="themeToggle()"
+        matTooltip="Switch To {{(!this.isDark) ? 'Dark' : 'Light'}} Mode">
+        {{theme}} Mode
+        <mat-icon>
+          brightness_6
+        </mat-icon>
+      </button>
     </div>
     <div *ngIf="isLoggedIn">
       <button mat-icon-button [matMenuTriggerFor]="menu">
