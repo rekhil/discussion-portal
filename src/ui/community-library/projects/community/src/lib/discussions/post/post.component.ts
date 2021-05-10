@@ -6,6 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { DiscussionService } from '../services/discussion.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -26,9 +27,10 @@ export class PostComponent implements OnInit {
   editable: boolean;
   openEdit: boolean;
   editedReply: string;
-
+  postId;
   constructor(
-    private discussionService: DiscussionService
+    private discussionService: DiscussionService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,9 @@ export class PostComponent implements OnInit {
       (this.thread.disLikedUsers) ? (this.thread.disLikedUsers.findIndex(
         (user) => user === this.currentUser.userName
       ) > -1) : false;
+      this.route.paramMap.subscribe((params: ParamMap) => {
+        this.postId = params.get('postId');
+      });
   }
 
   vote(like: boolean, threadId: any) {
@@ -83,7 +88,7 @@ export class PostComponent implements OnInit {
       createdBy: this.currentUser.userName,
       parentPostId: this.thread.postId,
     };
-    this.discussionService.createPost(request).subscribe((response) => {
+    this.discussionService.updatePost(request,this.postId).subscribe((response) => {
       if (response.isSuccess) {
         this.refreshDetails.emit();
       }
