@@ -18,15 +18,16 @@ Deployed URL: https://discussion-portal-ui-311719.df.r.appspot.com/
 
 # Discussions
 
-Search all topics
+Search all topics with pagination and filtering
+Note: If filtering by tags are not needed, set "Tags" field as null
 
 POST: https://xenon-anvil-310308.appspot.com/api/discussions/search
 
 Request :
 {
-   "searchText":null,
-   "pageNumber":1,
-   "pageSize":20
+    "Tags": ["Science","History","General"],
+    "PageNumber": 1,
+    "PageSize": 5
 }
 
 ---------------------------------------------------------------------------------------------------------------------
