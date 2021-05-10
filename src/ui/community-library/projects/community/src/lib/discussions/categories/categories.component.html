@@ -1,10 +1,11 @@
-<div fxLayout="row" class="column-headers">
+<div fxLayout="row" class="text-color column-headers">
   <div fxFlex="85%"> Category </div>
   <div fxFlex="15%"> Posts </div>
 </div>
 <mat-divider></mat-divider>
 <div fxLayout="column" fxLayoutAlign="center" *ngFor="let category of postsByCategory">
-  <div fxLayout="row" fxLayoutAlign="center center" class="section tag-section-{{category.tag | lowercase}}">
+  <div fxLayout="row" fxLayoutAlign="center center"
+    class="transparent-bg section tag-section-{{category.tag | lowercase}}">
     <div fxFlex="85%" fxLayout="column" fxLayoutGap="10px">
       <div class="tag">{{category.tag}}</div>
       <ng-container *ngIf="category.posts.length > 0; else emptyMsg">

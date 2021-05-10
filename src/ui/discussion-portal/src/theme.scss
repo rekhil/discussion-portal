@@ -33,6 +33,10 @@ $angular-dark-theme: mat-dark-theme(
   .text-color {
       color: white;
   }
+  .transparent-bg {
+      background-color: white;
+      box-shadow: 0 3px 5px -1px rgb(66 66 66), 0 6px 10px 0 rgb(66 66 66), 0 1px 18px 0 rgb(66 66 66);
+  }
   a {
     color: mat-color($angular-dark-primary);
   }
@@ -40,6 +44,9 @@ $angular-dark-theme: mat-dark-theme(
 // Common Styles
 .text-color {
     color: #3c4146;
+}
+.transparent-bg {
+    background-color: transparent;
 }
 a {
     color: mat-color($angular-primary);
